@@ -37,11 +37,6 @@ main{flex:1;padding:24px 32px;max-width:1400px;width:100%;margin:0 auto}
 @media (max-width:900px){.chart-row{grid-template-columns:1fr}}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
 .card h3{margin:0 0 16px;font-size:14px;font-weight:600}.card canvas{max-height:320px}
-.pipeline{display:flex;align-items:center;justify-content:space-around;gap:12px;padding:20px 0;flex-wrap:wrap}
-.pipe-stage{flex:1;min-width:120px;text-align:center;border:2px solid var(--border);border-radius:var(--radius);padding:20px;background:var(--panel-2)}
-.pipe-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-.pipe-value{font-size:32px;font-weight:700}.pipe-sub{font-size:11px;color:var(--muted);margin-top:4px}
-.pipe-arrow{font-size:24px;color:var(--muted);flex-shrink:0}
 .muted{color:var(--muted);font-size:12px}
 .loading{display:flex;flex-direction:column;align-items:center;padding:80px 0;color:var(--muted)}
 .spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px}
@@ -78,6 +73,37 @@ main{flex:1;padding:24px 32px;max-width:1400px;width:100%;margin:0 auto}
 details.diag{margin-top:12px;background:var(--panel-2);border-radius:6px;padding:12px;font-size:12px}
 details.diag summary{cursor:pointer;color:var(--accent);font-weight:600}
 details.diag pre{background:rgba(0,0,0,.3);padding:8px;border-radius:4px;overflow-x:auto;font-size:11px;margin:8px 0;color:var(--text);max-height:300px}
+
+/* Objetivo editable */
+.objetivo-edit{display:flex;align-items:center;gap:8px;background:var(--panel);padding:8px 16px;border-radius:10px;border:1px solid var(--border)}
+.objetivo-edit label{font-size:12px;color:var(--muted);font-weight:500}
+.objetivo-edit input{background:var(--panel-2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:14px;font-family:inherit;font-weight:600;width:130px;text-align:right;font-variant-numeric:tabular-nums}
+.objetivo-edit input:focus{outline:none;border-color:var(--accent)}
+.objetivo-edit span{font-size:12px;color:var(--muted)}
+.objetivo-edit button{background:var(--accent);color:var(--bg);border:none;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer}
+.objetivo-edit button:hover{filter:brightness(1.1)}
+
+/* Pipeline cadena */
+.chain-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;padding:16px 0}
+@media (max-width:1000px){.chain-flow{grid-template-columns:1fr}}
+.chain-stage{background:var(--panel-2);border:2px solid var(--border);border-radius:var(--radius);padding:18px 16px;display:flex;flex-direction:column;gap:4px}
+.chain-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.chain-step{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.chain-name{font-size:14px;font-weight:700}
+.chain-producido{font-size:30px;font-weight:800;letter-spacing:-1px;font-variant-numeric:tabular-nums;line-height:1.1;margin-top:4px}
+.chain-producido-unit{font-size:12px;color:var(--muted);font-weight:500;margin-left:4px}
+.chain-row{display:flex;justify-content:space-between;font-size:12px;padding-top:8px;margin-top:8px;border-top:1px solid var(--border)}
+.chain-row span:first-child{color:var(--muted)}
+.chain-row span:last-child{font-weight:600;font-variant-numeric:tabular-nums}
+.chain-pct{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.chain-progress{height:8px;background:rgba(0,0,0,.3);border-radius:4px;margin-top:10px;overflow:hidden}
+.chain-progress-bar{height:100%;transition:width .6s ease}
+.chain-gap{background:rgba(250,204,21,.08);border:2px dashed var(--warning);border-radius:10px;padding:12px 10px;min-width:120px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.chain-gap.negative{background:rgba(74,222,128,.08);border-color:var(--success)}
+.chain-gap-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700;line-height:1.3}
+.chain-gap-value{font-size:20px;font-weight:800;margin:6px 0;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.chain-gap-sub{font-size:10px;color:var(--muted);line-height:1.3}
+@media (max-width:1000px){.chain-gap{min-width:auto}}
 </style>
 </head>
 <body>
@@ -114,7 +140,7 @@ details.diag pre{background:rgba(0,0,0,.3);padding:8px;border-radius:4px;overflo
 
 <script>
 // ============================================================
-// CONFIGURACIÓN DE PROCESOS
+// CONFIGURACIÓN
 // ============================================================
 const CONFIG = {
   corte:       { label:'Corte',       color:'#38bdf8', toMake:'Metros a Cortar',    made:'Metros Producidos', machine:'Maquina', person:'Persona', ref:'Referencia', style:'Estilo', order:'Codigo Produccion' },
@@ -122,11 +148,6 @@ const CONFIG = {
   sanforizado: { label:'Sanforizado', color:'#34d399', toMake:'Metros a Sanforizar',made:'Metros Producidos', machine:'Maquina', person:'Persona', ref:'Referencia', style:'Estilo', order:'Codigo Produccion' },
 };
 
-// ============================================================
-// MANIFEST DINÁMICO
-// Todos los archivos viven en data/. Se cargan desde manifest.json
-// así nunca hay que tocar este HTML al agregar nuevos lotes.
-// ============================================================
 const DATA_DIR = 'data';
 const MANIFEST_PATH = `${DATA_DIR}/manifest.json`;
 
@@ -146,6 +167,7 @@ const SUBVIEWS = [
 ];
 
 const HORAS_DISPONIBLES_DIA = 24;
+const OBJETIVO_DEFAULT = 493379;
 
 const state = {
   raw: { corte:[], revision:[], sanforizado:[], revision2:[] },
@@ -156,6 +178,7 @@ const state = {
   view: 'global',
   subview: { corte:'resumen', revision:'resumen', sanforizado:'resumen' },
   filters: { desde:'', hasta:'' },
+  objetivo: OBJETIVO_DEFAULT,
   charts: {},
 };
 
@@ -180,7 +203,6 @@ function parseDateTime(fechaStr, horaStr) {
   if ([d,m,y,hh,mm].some(v => isNaN(v))) return null;
   return new Date(y, m-1, d, hh, mm);
 }
-
 function computeDurationHours(row) {
   const ini = parseDateTime(row.Inicio, row['Hora Inicio']);
   const fin = parseDateTime(row['fecha fin'], row['fecha fin_hora']);
@@ -190,14 +212,12 @@ function computeDurationHours(row) {
   if (diff < 0 || diff > 48) return null;
   return diff;
 }
-
 function parseHMS(hms) {
   if (!hms) return 0;
   const parts = String(hms).split(':').map(Number);
   if (parts.length !== 3 || parts.some(isNaN)) return 0;
   return parts[0] + parts[1]/60 + parts[2]/3600;
 }
-
 function deriveTurno(horaInicio) {
   if (!horaInicio) return 'Desconocido';
   const h = parseInt(horaInicio.split(':')[0], 10);
@@ -206,11 +226,9 @@ function deriveTurno(horaInicio) {
   if (h >= 14 && h < 22) return 'Tarde';
   return 'Noche';
 }
-
 function topN(obj, n) { return Object.entries(obj).sort((a,b)=>b[1].made-a[1].made).slice(0,n); }
 function inputToYYYYMMDD(s) { return s ? s.replace(/-/g, '') : ''; }
 function yyyymmddToInput(s) { return s ? `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}` : ''; }
-
 function filtrarPorFecha(rows, desde, hasta) {
   if (!desde && !hasta) return rows;
   return rows.filter(r => {
@@ -238,7 +256,6 @@ async function loadManifest() {
   const res = await fetch(MANIFEST_PATH);
   if (!res.ok) throw new Error(`No se pudo cargar ${MANIFEST_PATH} (HTTP ${res.status})`);
   const m = await res.json();
-
   const pref = (arr) => (arr || []).map(f => `${DATA_DIR}/${f}`);
   DATA_MANIFEST.corte       = pref(m.corte);
   DATA_MANIFEST.revision    = pref(m.revision);
@@ -249,63 +266,45 @@ async function loadManifest() {
   CALIDAD_MANIFEST.reporte       = pref(m.reporte_extraccion ? [m.reporte_extraccion] : []);
   PDF_MANIFEST.textos            = pref(m.todas_texto_lineas ? [m.todas_texto_lineas] : []);
   PDF_MANIFEST.tablas            = pref(m.todas_tablas_celdas ? [m.todas_tablas_celdas] : []);
-
-  console.log('📋 Manifest cargado:', m);
+  const saved = localStorage.getItem('sisgo_objetivo');
+  if (saved) { const num = parseFloat(saved); if (!isNaN(num) && num > 0) state.objetivo = num; }
+  else if (m.objetivo_mensual) { const num = parseFloat(m.objetivo_mensual); if (!isNaN(num) && num > 0) state.objetivo = num; }
+  console.log('📋 Manifest cargado. Objetivo:', state.objetivo);
 }
 
 async function loadAllData(){
-  try {
-    await loadManifest();
-  } catch (err) {
+  try { await loadManifest(); }
+  catch (err) {
     document.getElementById('app').innerHTML = `
       <section class="view"><h2>⚠️ No se encontró el manifest</h2>
       <div class="error-card">
         <strong>Error:</strong> ${err.message}
         <p>Verifica que exista <code>data/manifest.json</code> junto a <code>index.html</code>.</p>
-        <p>Si estás en local, recuerda usar <code>python -m http.server 8000</code> y abrir por <code>http://localhost:8000</code>.</p>
+        <p>Si estás en local, usa <code>python -m http.server 8000</code> y abre por <code>http://localhost:8000</code>.</p>
       </div></section>`;
     throw new Error('Falta manifest.json');
   }
-
   const errores = [];
-
   for (const p of ['corte','revision','sanforizado','revision2']){
     const all = [];
     for (const f of DATA_MANIFEST[p]){
-      try {
-        const rows = await loadCSV(f);
-        all.push(...rows);
-        console.log(`✅ ${p}: ${rows.length} filas desde ${f}`);
-      } catch(err){
-        console.error(`❌ ${p}:`, err.message);
-        errores.push({proceso:p, archivo:f, mensaje:err.message});
-      }
+      try { const rows = await loadCSV(f); all.push(...rows); console.log(`✅ ${p}: ${rows.length}`); }
+      catch(err){ console.error(`❌ ${p}:`, err.message); errores.push({proceso:p, archivo:f, mensaje:err.message}); }
     }
     state.raw[p] = all;
   }
-
   for (const f of CALIDAD_MANIFEST.porReferencia) {
-    try {
-      const rows = await loadCSV(f);
-      state.calidad.porReferencia.push(...rows);
-      console.log(`✅ Calidad ref: ${rows.length}`);
-    } catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+    try { const rows = await loadCSV(f); state.calidad.porReferencia.push(...rows); console.log(`✅ Calidad ref: ${rows.length}`); }
+    catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
   }
   for (const f of CALIDAD_MANIFEST.porTurno) {
-    try {
-      const rows = await loadCSV(f);
-      state.calidad.porTurno.push(...rows);
-      console.log(`✅ Calidad turnos: ${rows.length}`);
-    } catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+    try { const rows = await loadCSV(f); state.calidad.porTurno.push(...rows); }
+    catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
   }
   for (const f of CALIDAD_MANIFEST.reporte) {
-    try {
-      const rows = await loadCSV(f);
-      state.calidad.reporte.push(...rows);
-      console.log(`✅ Reporte extracción: ${rows.length}`);
-    } catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+    try { const rows = await loadCSV(f); state.calidad.reporte.push(...rows); }
+    catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
   }
-
   for (const f of PDF_MANIFEST.textos) {
     try { const rows = await loadCSV(f); state.pdfs.textos.push(...rows); console.log(`✅ textos: ${rows.length}`); }
     catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
@@ -314,7 +313,6 @@ async function loadAllData(){
     try { const rows = await loadCSV(f); state.pdfs.tablas.push(...rows); console.log(`✅ tablas: ${rows.length}`); }
     catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
   }
-
   if (errores.length) {
     document.getElementById('app').innerHTML = `
       <section class="view"><h2>⚠️ Diagnóstico</h2>
@@ -327,7 +325,7 @@ async function loadAllData(){
 }
 
 // ============================================================
-// KPI COMPUTATION
+// KPI POR PROCESO
 // ============================================================
 function computeProcessKPIs(rows, proceso){
   const cfg = CONFIG[proceso];
@@ -466,16 +464,69 @@ function computeRevision2KPIs(rows) {
     revisadores, telares, turnos, referencias };
 }
 
-function computeGlobalKPIs(kpis){
-  const refs={};
-  for (const p of ['corte','revision','sanforizado']) refs[p]=new Set(Object.keys(kpis[p].byRef));
-  const inAll = [...refs.corte].filter(r => refs.revision.has(r) && refs.sanforizado.has(r));
-  const totalHours = kpis.corte.totalHours + kpis.revision.totalHours + kpis.sanforizado.totalHours;
-  const totalMade = kpis.corte.totalMade + kpis.revision.totalMade + kpis.sanforizado.totalMade;
-  return { totalMade, totalHours, avgRate: totalHours >= 1 ? totalMade / totalHours : 0,
-    corte:kpis.corte, revision:kpis.revision, sanforizado:kpis.sanforizado, refs, inAll };
+// ============================================================
+// GLOBAL: cadena Sanforizado → Revisión → Corte
+// ============================================================
+function computeGlobalKPIs(kpis) {
+  const sanf = kpis.sanforizado;
+  const rev = kpis.revision;
+  const corte = kpis.corte;
+
+  const objetivo = state.objetivo;
+  const sanforizadoM = sanf.totalMade;
+  const revisionM = rev.totalMade;
+  const corteM = corte.totalMade;
+
+  // Esperado por etapa (cadena secuencial)
+  const esperadoSanf = objetivo;        // Sanforizado se mide contra objetivo
+  const esperadoRev = sanforizadoM;     // Revisión se mide contra lo que salió de Sanforizado
+  const esperadoCorte = revisionM;      // Corte se mide contra lo que salió de Revisión
+
+  // Diferencia por procesar (inventario entre etapas)
+  const diffSanfRev = sanforizadoM - revisionM;
+  const diffRevCorte = revisionM - corteM;
+
+  // Cumplimiento vs objetivo (para las 3 etapas)
+  const cumplSanf = objetivo > 0 ? sanforizadoM / objetivo : 0;
+  const cumplRev = objetivo > 0 ? revisionM / objetivo : 0;
+  const cumplCorte = objetivo > 0 ? corteM / objetivo : 0;
+
+  // Eficiencia interna: qué % de lo que le llegó procesó
+  const eficInternaSanf = esperadoSanf > 0 ? sanforizadoM / esperadoSanf : 0;
+  const eficInternaRev = esperadoRev > 0 ? revisionM / esperadoRev : 0;
+  const eficInternaCorte = esperadoCorte > 0 ? corteM / esperadoCorte : 0;
+
+  // Pendiente para llegar al objetivo (con la salida final de Corte)
+  const pendienteObjetivo = objetivo - corteM;
+
+  const refsSanf = new Set(Object.keys(sanf.byRef));
+  const refsRev = new Set(Object.keys(rev.byRef));
+  const refsCorte = new Set(Object.keys(corte.byRef));
+  const enLas3 = [...refsSanf].filter(r => refsRev.has(r) && refsCorte.has(r)).length;
+
+  // Días con datos
+  const allDays = new Set();
+  for (const p of ['corte','revision','sanforizado']) {
+    for (const row of state.filtered[p]) if (row.fecha) allDays.add(row.fecha);
+  }
+
+  return {
+    objetivo,
+    sanforizadoM, revisionM, corteM,
+    esperadoSanf, esperadoRev, esperadoCorte,
+    diffSanfRev, diffRevCorte,
+    cumplSanf, cumplRev, cumplCorte,
+    eficInternaSanf, eficInternaRev, eficInternaCorte,
+    pendienteObjetivo,
+    refsSanf: refsSanf.size, refsRev: refsRev.size, refsCorte: refsCorte.size,
+    enLas3, diasConDatos: allDays.size,
+    sanf, rev, corte,
+  };
 }
 
+// ============================================================
+// TIEMPOS PERDIDOS + CALIDAD
+// ============================================================
 function parseTiemposPerdidos(textos) {
   const result = { corte:{}, revision:{}, sanforizado:{} };
   const relevant = textos.filter(t => t.tipo_informe === 'tiempos_perdidos');
@@ -539,20 +590,14 @@ function computeCalidadFromCSV(rows) {
     if (!result.revision[fecha]) result.revision[fecha] = { referencias: {} };
     const existing = result.revision[fecha].referencias[ref];
     const nueva = {
-      referencia: ref,
-      estilo: String(row.estilo || '').trim(),
-      primera: toNum(row.primera),
-      gtm: toNum(row.gtm),
-      segunda: toNum(row.segunda),
-      sexta: toNum(row.sexta),
-      total,
-      pctPrimera: toNum(row.pct_primera),
+      referencia: ref, estilo: String(row.estilo || '').trim(),
+      primera: toNum(row.primera), gtm: toNum(row.gtm),
+      segunda: toNum(row.segunda), sexta: toNum(row.sexta),
+      total, pctPrimera: toNum(row.pct_primera),
     };
     if (existing) {
-      existing.primera += nueva.primera;
-      existing.gtm += nueva.gtm;
-      existing.segunda += nueva.segunda;
-      existing.sexta += nueva.sexta;
+      existing.primera += nueva.primera; existing.gtm += nueva.gtm;
+      existing.segunda += nueva.segunda; existing.sexta += nueva.sexta;
       existing.total += nueva.total;
     } else {
       result.revision[fecha].referencias[ref] = nueva;
@@ -569,7 +614,6 @@ const CHART_DEFAULTS = {
   plugins:{ legend:{ labels:{ color:'#8b9bb4', font:{size:11} } } },
   scales:{ x:{ ticks:{color:'#8b9bb4',font:{size:11}}, grid:{color:'#243049'} }, y:{ ticks:{color:'#8b9bb4',font:{size:11}}, grid:{color:'#243049'} } },
 };
-
 function attachSorting(container) {
   container.querySelectorAll('th[data-sort]').forEach(th => {
     th.addEventListener('click', () => {
@@ -591,7 +635,6 @@ function attachSorting(container) {
     });
   });
 }
-
 function recomputeAllKPIs() {
   const { desde, hasta } = state.filters;
   for (const p of ['corte','revision','sanforizado']) {
@@ -605,49 +648,243 @@ function recomputeAllKPIs() {
 }
 
 // ============================================================
-// RENDER: GLOBAL
+// RENDER: GLOBAL (cadena secuencial)
 // ============================================================
 function renderGlobal(app){
   const g = state.kpis.global;
-  const procs = ['corte','revision','sanforizado'];
+
+  const colorCumpl = (v) => v >= 0.95 ? 'var(--success)' : v >= 0.75 ? 'var(--warning)' : 'var(--danger)';
+
   const filtroTxt = state.filters.desde || state.filters.hasta
     ? `Filtrado: ${state.filters.desde || '…'} → ${state.filters.hasta || '…'}`
-    : 'Sin filtro de fecha';
+    : 'Sin filtro · mes completo';
+
   app.innerHTML = `
     <section class="view">
-      <h2>Visión Global</h2>
-      <p class="muted" style="margin-bottom:16px">${filtroTxt}</p>
-      <div class="kpi-grid">
-        <div class="kpi-card"><div class="kpi-label">Metros totales producidos</div><div class="kpi-value">${fmtNum(g.totalMade)}</div><div class="kpi-sub">Suma de los 3 procesos</div></div>
-        <div class="kpi-card"><div class="kpi-label">Horas-máquina activas</div><div class="kpi-value">${fmtNum(g.totalHours)} h</div><div class="kpi-sub">Rate global: ${fmtNum(g.avgRate)} mts/h</div></div>
-        ${procs.map(p => { const k = g[p]; return `<div class="kpi-card" style="border-left:4px solid ${k.color}"><div class="kpi-label">${k.label}</div><div class="kpi-value">${fmtNum(k.totalMade)}</div><div class="kpi-sub">${fmtPct(k.efficiency)} efic · ${fmtNum(k.avgRate)} mts/h</div></div>`; }).join('')}
-      </div>
-      <div class="chart-row">
-        <div class="card"><h3>Producción por proceso</h3><canvas id="ch-global-prod"></canvas></div>
-        <div class="card"><h3>Eficiencia por proceso</h3><canvas id="ch-global-eff"></canvas></div>
-      </div>
-      <div class="card">
-        <h3>Cobertura del pipeline</h3>
-        <div class="pipeline">
-          ${procs.map((p, i) => `<div class="pipe-stage" style="border-color:${g[p].color}"><div class="pipe-label">${g[p].label}</div><div class="pipe-value">${g.refs[p].size}</div><div class="pipe-sub">referencias</div></div>${i < 2 ? '<div class="pipe-arrow">→</div>' : ''}`).join('')}
+      <div class="view-header">
+        <div>
+          <h2>Visión Global · Cadena de producción</h2>
+          <p class="muted" style="margin:4px 0 0">${filtroTxt} · ${g.diasConDatos} días con datos</p>
         </div>
-        <p class="muted">${g.inAll.length} referencias completaron las 3 etapas</p>
+        <div class="objetivo-edit">
+          <label>Objetivo mensual</label>
+          <input type="number" id="obj-input" value="${Math.round(g.objetivo)}" step="1" min="1">
+          <span>m</span>
+          <button id="obj-save">Actualizar</button>
+        </div>
+      </div>
+
+      <!-- KPI principales -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Objetivo mensual</div>
+          <div class="kpi-value">${fmtNum(g.objetivo)} <span style="font-size:14px;color:var(--muted)">m</span></div>
+          <div class="kpi-sub">Referencia para las 3 etapas</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Producción final (Corte)</div>
+          <div class="kpi-value">${fmtNum(g.corteM)}</div>
+          <div class="kpi-sub">${fmtPct(g.cumplCorte)} del objetivo</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Pendiente vs objetivo</div>
+          <div class="kpi-value" style="color:${g.pendienteObjetivo >= 0 ? 'var(--warning)' : 'var(--success)'}">${fmtNum(Math.abs(g.pendienteObjetivo))}</div>
+          <div class="kpi-sub">${g.pendienteObjetivo >= 0 ? 'm por producir' : 'm de superávit'}</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Referencias en las 3 etapas</div>
+          <div class="kpi-value">${g.enLas3}</div>
+          <div class="kpi-sub">${g.refsSanf} sanf · ${g.refsRev} rev · ${g.refsCorte} corte</div>
+        </div>
+      </div>
+
+      <!-- Cadena -->
+      <div class="card">
+        <h3>Cadena secuencial · Sanforizado → Revisión → Corte</h3>
+        <p class="muted" style="margin:0 0 16px">Cada etapa procesa lo que sale de la anterior. El cumplimiento se mide siempre contra el objetivo. La diferencia es inventario pendiente de procesar (o stock previo si es negativo).</p>
+
+        <div class="chain-flow">
+
+          <!-- 1. Sanforizado -->
+          <div class="chain-stage" style="border-color:#34d399">
+            <div class="chain-header">
+              <span class="chain-step">1 · Entrada</span>
+              <span style="color:#34d399;font-weight:800;font-size:12px">Sanforizado</span>
+            </div>
+            <div class="chain-producido" style="color:#34d399">${fmtNum(g.sanforizadoM)}<span class="chain-producido-unit">m</span></div>
+            <div class="chain-row"><span>Esperado</span><span>${fmtNum(g.esperadoSanf)} m</span></div>
+            <div class="chain-row"><span>Eficiencia interna</span><span>${fmtPct(g.eficInternaSanf)}</span></div>
+            <div class="chain-row"><span>Cumplimiento objetivo</span><span class="chain-pct" style="color:${colorCumpl(g.cumplSanf)}">${fmtPct(g.cumplSanf)}</span></div>
+            <div class="chain-progress"><div class="chain-progress-bar" style="width:${Math.min(100,g.cumplSanf*100)}%;background:${colorCumpl(g.cumplSanf)}"></div></div>
+          </div>
+
+          <!-- Gap 1 -->
+          <div class="chain-gap ${g.diffSanfRev < 0 ? 'negative' : ''}">
+            <div class="chain-gap-label">Por procesar<br>en Revisión</div>
+            <div class="chain-gap-value" style="color:${g.diffSanfRev >= 0 ? 'var(--warning)' : 'var(--success)'}">${g.diffSanfRev >= 0 ? '+' : ''}${fmtNum(g.diffSanfRev)}</div>
+            <div class="chain-gap-sub">${g.diffSanfRev >= 0 ? 'pendiente' : 'usó stock'}</div>
+          </div>
+
+          <!-- 2. Revisión -->
+          <div class="chain-stage" style="border-color:#a78bfa">
+            <div class="chain-header">
+              <span class="chain-step">2 · Intermedio</span>
+              <span style="color:#a78bfa;font-weight:800;font-size:12px">Revisión</span>
+            </div>
+            <div class="chain-producido" style="color:#a78bfa">${fmtNum(g.revisionM)}<span class="chain-producido-unit">m</span></div>
+            <div class="chain-row"><span>Esperado</span><span>${fmtNum(g.esperadoRev)} m</span></div>
+            <div class="chain-row"><span>Eficiencia interna</span><span>${fmtPct(g.eficInternaRev)}</span></div>
+            <div class="chain-row"><span>Cumplimiento objetivo</span><span class="chain-pct" style="color:${colorCumpl(g.cumplRev)}">${fmtPct(g.cumplRev)}</span></div>
+            <div class="chain-progress"><div class="chain-progress-bar" style="width:${Math.min(100,g.cumplRev*100)}%;background:${colorCumpl(g.cumplRev)}"></div></div>
+          </div>
+
+          <!-- Gap 2 -->
+          <div class="chain-gap ${g.diffRevCorte < 0 ? 'negative' : ''}">
+            <div class="chain-gap-label">Por procesar<br>en Corte</div>
+            <div class="chain-gap-value" style="color:${g.diffRevCorte >= 0 ? 'var(--warning)' : 'var(--success)'}">${g.diffRevCorte >= 0 ? '+' : ''}${fmtNum(g.diffRevCorte)}</div>
+            <div class="chain-gap-sub">${g.diffRevCorte >= 0 ? 'pendiente' : 'usó stock'}</div>
+          </div>
+
+          <!-- 3. Corte -->
+          <div class="chain-stage" style="border-color:#38bdf8">
+            <div class="chain-header">
+              <span class="chain-step">3 · Salida</span>
+              <span style="color:#38bdf8;font-weight:800;font-size:12px">Corte</span>
+            </div>
+            <div class="chain-producido" style="color:#38bdf8">${fmtNum(g.corteM)}<span class="chain-producido-unit">m</span></div>
+            <div class="chain-row"><span>Esperado</span><span>${fmtNum(g.esperadoCorte)} m</span></div>
+            <div class="chain-row"><span>Eficiencia interna</span><span>${fmtPct(g.eficInternaCorte)}</span></div>
+            <div class="chain-row"><span>Cumplimiento objetivo</span><span class="chain-pct" style="color:${colorCumpl(g.cumplCorte)}">${fmtPct(g.cumplCorte)}</span></div>
+            <div class="chain-progress"><div class="chain-progress-bar" style="width:${Math.min(100,g.cumplCorte*100)}%;background:${colorCumpl(g.cumplCorte)}"></div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Gráficos -->
+      <div class="chart-row">
+        <div class="card"><h3>Cumplimiento vs objetivo (493,379 m)</h3><canvas id="ch-cumpl"></canvas></div>
+        <div class="card"><h3>Flujo acumulado por etapa</h3><canvas id="ch-flow"></canvas></div>
+      </div>
+
+      <!-- Tabla detalle -->
+      <div class="card">
+        <h3>Detalle por etapa</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Etapa</th>
+                <th class="num">Producido</th>
+                <th class="num">Esperado</th>
+                <th class="num">Diferencia por procesar</th>
+                <th class="num">Eficiencia interna</th>
+                <th class="num">Cumplimiento vs objetivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span style="color:#34d399;font-weight:bold">●</span> 1. Sanforizado</td>
+                <td class="num">${fmtNum(g.sanforizadoM)}</td>
+                <td class="num">${fmtNum(g.esperadoSanf)}</td>
+                <td class="num">—</td>
+                <td class="num">${fmtPct(g.eficInternaSanf)}</td>
+                <td class="num" style="color:${colorCumpl(g.cumplSanf)}">${fmtPct(g.cumplSanf)}</td>
+              </tr>
+              <tr>
+                <td><span style="color:#a78bfa;font-weight:bold">●</span> 2. Revisión</td>
+                <td class="num">${fmtNum(g.revisionM)}</td>
+                <td class="num">${fmtNum(g.esperadoRev)}</td>
+                <td class="num" style="color:${g.diffSanfRev >= 0 ? 'var(--warning)' : 'var(--success)'}">${g.diffSanfRev >= 0 ? '+' : ''}${fmtNum(g.diffSanfRev)}</td>
+                <td class="num">${fmtPct(g.eficInternaRev)}</td>
+                <td class="num" style="color:${colorCumpl(g.cumplRev)}">${fmtPct(g.cumplRev)}</td>
+              </tr>
+              <tr>
+                <td><span style="color:#38bdf8;font-weight:bold">●</span> 3. Corte</td>
+                <td class="num">${fmtNum(g.corteM)}</td>
+                <td class="num">${fmtNum(g.esperadoCorte)}</td>
+                <td class="num" style="color:${g.diffRevCorte >= 0 ? 'var(--warning)' : 'var(--success)'}">${g.diffRevCorte >= 0 ? '+' : ''}${fmtNum(g.diffRevCorte)}</td>
+                <td class="num">${fmtPct(g.eficInternaCorte)}</td>
+                <td class="num" style="color:${colorCumpl(g.cumplCorte)}">${fmtPct(g.cumplCorte)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin-top:12px">
+          <b>Eficiencia interna</b> = producido / esperado de esa etapa.
+          <b>Cumplimiento</b> = producido / objetivo mensual (493,379 m).
+        </p>
       </div>
     </section>`;
-  setTimeout(()=>{
-    state.charts.globalProd = new Chart(document.getElementById('ch-global-prod'), {
-      type:'bar', data:{ labels:procs.map(p=>g[p].label), datasets:[{label:'Metros', data:procs.map(p=>g[p].totalMade), backgroundColor:procs.map(p=>g[p].color), borderRadius:6}]},
-      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+
+  const objInput = document.getElementById('obj-input');
+  const objSave = document.getElementById('obj-save');
+  const guardar = () => {
+    const val = parseFloat(objInput.value);
+    if (!isNaN(val) && val > 0) {
+      state.objetivo = val;
+      localStorage.setItem('sisgo_objetivo', String(val));
+      recomputeAllKPIs();
+      render();
+    }
+  };
+  objSave.addEventListener('click', guardar);
+  objInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') guardar(); });
+
+  setTimeout(() => {
+    // Chart: cumplimiento por etapa
+    state.charts.cumpl = new Chart(document.getElementById('ch-cumpl'), {
+      type: 'bar',
+      data: {
+        labels: ['Sanforizado', 'Revisión', 'Corte'],
+        datasets: [
+          {
+            label: 'Producido (m)',
+            data: [g.sanforizadoM, g.revisionM, g.corteM],
+            backgroundColor: ['#34d399', '#a78bfa', '#38bdf8'],
+            borderRadius: 6,
+          },
+          {
+            label: 'Objetivo',
+            data: [g.objetivo, g.objetivo, g.objetivo],
+            backgroundColor: 'rgba(139,155,180,.25)',
+            borderRadius: 6,
+          },
+        ],
+      },
+      options: {
+        ...CHART_DEFAULTS,
+        scales: { ...CHART_DEFAULTS.scales, y: { ...CHART_DEFAULTS.scales.y, beginAtZero: true } },
+      },
     });
-    state.charts.globalEff = new Chart(document.getElementById('ch-global-eff'), {
-      type:'bar', data:{ labels:procs.map(p=>g[p].label), datasets:[{label:'Eficiencia %', data:procs.map(p=>g[p].efficiency*100), backgroundColor:procs.map(p=>g[p].color), borderRadius:6}]},
-      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}, scales:{...CHART_DEFAULTS.scales, y:{...CHART_DEFAULTS.scales.y, max:100, ticks:{...CHART_DEFAULTS.scales.y.ticks, callback:(v)=>v+'%'}}}},
+
+    // Chart: flujo acumulado
+    state.charts.flow = new Chart(document.getElementById('ch-flow'), {
+      type: 'line',
+      data: {
+        labels: ['Objetivo', 'Sanforizado', 'Revisión', 'Corte'],
+        datasets: [{
+          label: 'Metros',
+          data: [g.objetivo, g.sanforizadoM, g.revisionM, g.corteM],
+          borderColor: '#38bdf8',
+          backgroundColor: 'rgba(56,189,248,.15)',
+          fill: true,
+          tension: 0.35,
+          pointRadius: 6,
+          pointBackgroundColor: ['#8b9bb4', '#34d399', '#a78bfa', '#38bdf8'],
+        }],
+      },
+      options: {
+        ...CHART_DEFAULTS,
+        plugins: { ...CHART_DEFAULTS.plugins, legend: { display: false } },
+        scales: { ...CHART_DEFAULTS.scales, y: { ...CHART_DEFAULTS.scales.y, beginAtZero: true } },
+      },
     });
   }, 0);
 }
 
 // ============================================================
-// RENDER: PROCESS (subnav)
+// RENDER: PROCESS
 // ============================================================
 function renderProcess(app, proceso){
   const cfg = CONFIG[proceso];
@@ -928,10 +1165,7 @@ function renderPerdidas(app, proceso){
   const cs = Object.values(causas).sort((a,b)=>b.horas-a.horas);
   if (fechas.length === 0) {
     app.innerHTML = `<div class="warn-card"><strong>Sin datos de tiempos perdidos para el rango seleccionado.</strong>
-      <p>Los PDFs de <code>tiempos_perdidos_*.pdf</code> no están disponibles o están ilegibles.</p>
-      <details class="diag"><summary>Ver diagnóstico</summary>
-      <pre>Filas con tipo_informe=tiempos_perdidos: ${state.pdfs.textos.filter(t=>t.tipo_informe==='tiempos_perdidos').length}
-Filas con calidad=ok: ${state.pdfs.textos.filter(t=>t.tipo_informe==='tiempos_perdidos' && t.calidad==='ok').length}</pre></details></div>`;
+      <p>Los PDFs de <code>tiempos_perdidos_*.pdf</code> no están disponibles o están ilegibles.</p></div>`;
     return;
   }
   app.innerHTML = `
@@ -978,7 +1212,7 @@ function renderRevisores(app, proceso) {
   const k = state.kpis.revision2;
   if (!k || k.totalPiezas === 0) {
     app.innerHTML = `<div class="warn-card"><strong>Sin datos del extractor revision2.</strong>
-      <p>Verifica que el archivo de revisadores esté listado en <code>data/manifest.json</code> bajo <code>revision2</code>.</p></div>`;
+      <p>Verifica que el archivo esté listado en <code>data/manifest.json</code> bajo <code>revision2</code>.</p></div>`;
     return;
   }
   const revs = Object.values(k.revisadores).sort((a,b)=>b.mts-a.mts);
@@ -1021,23 +1255,17 @@ function renderRevisores(app, proceso) {
       </div>
     </div>
     <div class="chart-row">
-      <div class="card">
-        <h3>Telares</h3>
-        <div class="table-wrap">
-          <table class="data-table">
-            <thead><tr><th>Telar</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Horas insp.</th></tr></thead>
-            <tbody>${tels.slice(0, 15).map(t => `<tr><td>${t.name}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtDec(t.horas, 1)}</td></tr>`).join('')}</tbody>
-          </table>
-        </div>
+      <div class="card"><h3>Telares</h3>
+        <div class="table-wrap"><table class="data-table">
+          <thead><tr><th>Telar</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Horas insp.</th></tr></thead>
+          <tbody>${tels.slice(0, 15).map(t => `<tr><td>${t.name}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtDec(t.horas, 1)}</td></tr>`).join('')}</tbody>
+        </table></div>
       </div>
-      <div class="card">
-        <h3>Turnos</h3>
-        <div class="table-wrap">
-          <table class="data-table">
-            <thead><tr><th>Turno</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Rend. (m/h)</th></tr></thead>
-            <tbody>${turns.map(t => { const rate = t.horas>=0.1 ? t.mts/t.horas : 0; return `<tr><td>${t.name}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtNum(rate)}</td></tr>`; }).join('')}</tbody>
-          </table>
-        </div>
+      <div class="card"><h3>Turnos</h3>
+        <div class="table-wrap"><table class="data-table">
+          <thead><tr><th>Turno</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Rend. (m/h)</th></tr></thead>
+          <tbody>${turns.map(t => { const rate = t.horas>=0.1 ? t.mts/t.horas : 0; return `<tr><td>${t.name}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtNum(rate)}</td></tr>`; }).join('')}</tbody>
+        </table></div>
       </div>
     </div>`;
   setTimeout(()=>{
@@ -1072,22 +1300,12 @@ function renderCalidad(app, proceso){
     const sinArchivo = state.calidad.porReferencia.length === 0;
     app.innerHTML = `<div class="warn-card">
       <strong>Sin datos de calidad para el rango seleccionado.</strong>
-      ${sinArchivo ? `
-        <p>No se cargó <code>data/calidad_por_referencia.csv</code>.</p>
-        <p>Verifica que esté listado en <code>data/manifest.json</code> y que el archivo exista.</p>
-      ` : `
-        <p>Hay <b>${state.calidad.porReferencia.length}</b> filas cargadas del CSV, pero ninguna cae en el rango seleccionado o no tienen <code>total &gt; 0</code>.</p>
+      ${sinArchivo ? `<p>No se cargó <code>data/calidad_por_referencia.csv</code>.</p>` :
+        `<p>Hay <b>${state.calidad.porReferencia.length}</b> filas cargadas, pero ninguna cae en el rango o no tienen <code>total &gt; 0</code>.</p>
         <details class="diag" open><summary>Ver diagnóstico</summary>
         <pre>Archivo CSV cargado: ${state.calidad.porReferencia.length} filas
-PDFs reportados:
-  · Legibles (ok): ${okCount}
-  · Ilegibles: ${ilegibles}
-  · Total reporte: ${rep.length}
-
-Fechas con datos en el CSV:
-${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha || '').trim()))].sort().join(', ') || '—'}
-        </pre></details>
-      `}
+PDFs: ok=${okCount}, ilegibles=${ilegibles}, total=${rep.length}
+Fechas en CSV: ${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha || '').trim()))].sort().join(', ') || '—'}</pre></details>`}
     </div>`;
     return;
   }
@@ -1167,10 +1385,8 @@ ${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha || '').trim())
         </table>
       </div>
     </div>`;
-
   setTimeout(()=>{
     attachSorting(app);
-
     const byDay = {};
     for (const f of fechas) {
       const refsDia = Object.values(data[f].referencias || {});
@@ -1186,26 +1402,21 @@ ${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha || '').trim())
         datasets: [
           { label: '% 1ra', data: dias.map(d => byDay[d].total>0 ? (byDay[d].primera/byDay[d].total)*100 : 0),
             borderColor:'#4ade80', backgroundColor:'rgba(74,222,128,.15)', fill:true, tension:0.3, pointRadius:4 },
-          { label:'Meta 90%', data: dias.map(()=>90),
-            borderColor:'rgba(139,155,180,.4)', borderDash:[5,5], pointRadius:0, fill:false },
+          { label:'Meta 90%', data: dias.map(()=>90), borderColor:'rgba(139,155,180,.4)', borderDash:[5,5], pointRadius:0, fill:false },
         ],
       },
       options: {...CHART_DEFAULTS, scales:{...CHART_DEFAULTS.scales, y:{...CHART_DEFAULTS.scales.y, min:0, max:100, ticks:{...CHART_DEFAULTS.scales.y.ticks, callback:v=>v+'%'}}}},
     });
-
     state.charts.calDist = new Chart(document.getElementById('ch-cal-dist'), {
       type: 'doughnut',
-      data: {
-        labels: ['1ra','2da','GTM','6ta'],
-        datasets: [{ data:[t1,t2,tg,t6], backgroundColor:['#4ade80','#facc15','#8b9bb4','#f87171'], borderColor:'#111a2b', borderWidth:2 }],
-      },
+      data: { labels: ['1ra','2da','GTM','6ta'], datasets: [{ data:[t1,t2,tg,t6], backgroundColor:['#4ade80','#facc15','#8b9bb4','#f87171'], borderColor:'#111a2b', borderWidth:2 }]},
       options: {...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{position:'right', labels:{color:'#e2e8f0', font:{size:12}, padding:12}}}, scales:{}},
     });
   }, 0);
 }
 
 // ============================================================
-// ROUTING + FILTROS
+// ROUTING + FILTROS + BOOT
 // ============================================================
 function render(){
   Object.values(state.charts).forEach(c => c.destroy());
@@ -1214,20 +1425,19 @@ function render(){
   if (state.view === 'global') renderGlobal(app);
   else renderProcess(app, state.view);
 }
-
 function setView(view){
   state.view = view;
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
   render();
 }
-
 function applyFilterAndRender() {
   recomputeAllKPIs();
   const s = document.getElementById('f-status');
-  s.textContent = (state.filters.desde || state.filters.hasta) ? `Filtrado ${state.filters.desde || '…'} → ${state.filters.hasta || '…'}` : 'Sin filtro · mostrando todo';
+  s.textContent = (state.filters.desde || state.filters.hasta)
+    ? `Filtrado ${state.filters.desde || '…'} → ${state.filters.hasta || '…'}`
+    : 'Sin filtro · mostrando todo';
   render();
 }
-
 function setupFilterBar() {
   const fd = document.getElementById('f-desde');
   const fh = document.getElementById('f-hasta');
@@ -1257,7 +1467,6 @@ function setupFilterBar() {
   fh.addEventListener('change', onChange);
   fr.addEventListener('click', () => { fd.value=''; fh.value=''; state.filters.desde=''; state.filters.hasta=''; applyFilterAndRender(); });
 }
-
 async function init(){
   const status = document.getElementById('status');
   status.textContent = 'Cargando datos…';
@@ -1266,11 +1475,7 @@ async function init(){
     recomputeAllKPIs();
     const total = Object.values(state.raw).reduce((s,r)=>s+r.length,0);
     status.textContent = `${fmtNum(total)} registros · ${state.calidad.porReferencia.length} calidad`;
-  } catch(err) {
-    console.error(err);
-    status.textContent = '❌ Error de carga';
-    return;
-  }
+  } catch(err) { console.error(err); status.textContent = '❌ Error de carga'; return; }
   document.getElementById('main-nav').addEventListener('click', (e)=>{
     const btn = e.target.closest('.nav-btn');
     if (btn) setView(btn.dataset.view);
