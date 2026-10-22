@@ -1,0 +1,97 @@
+﻿fecha,archivo,ruta_completa,calidad_archivo,referencias,error
+20261001,produccion_20261001.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261001.pdf,ok,4,
+20261002,produccion_20261002.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261002.pdf,ok,8,
+20261003,produccion_20261003.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261003.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261004,produccion_20261004.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261004.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261005,produccion_20261005.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261005.pdf,ok,5,
+20261006,produccion_20261006.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261006.pdf,ok,4,
+20261007,produccion_20261007.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261007.pdf,ok,4,
+20261008,produccion_20261008.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261008.pdf,ok,2,
+20261009,produccion_20261009.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261009.pdf,ok,1,
+20261010,produccion_20261010.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261010.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261011,produccion_20261011.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261011.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261012,produccion_20261012.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261012.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261013,produccion_20261013.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261013.pdf,ok,1,
+20261014,produccion_20261014.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261014.pdf,ok,3,
+20261015,produccion_20261015.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261015.pdf,ok,3,
+20261016,produccion_20261016.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261016.pdf,ok,3,
+20261017,produccion_20261017.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261017.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261018,produccion_20261018.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261018.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261019,produccion_20261019.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261019.pdf,ok,4,
+20261020,produccion_20261020.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261020.pdf,ok,6,
+20261021,produccion_20261021.pdf,corte_completo_20261001_20261021\pdfs_produccion\produccion_20261021.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261020,produccion_20261020.pdf,corte_completo_20261020_20261022\pdfs_produccion\produccion_20261020.pdf,ok,6,
+20261021,produccion_20261021.pdf,corte_completo_20261020_20261022\pdfs_produccion\produccion_20261021.pdf,ok,3,
+20261022,produccion_20261022.pdf,corte_completo_20261020_20261022\pdfs_produccion\produccion_20261022.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260901,produccion_20260901.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260901.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260902,produccion_20260902.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260902.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260903,produccion_20260903.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260903.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260904,produccion_20260904.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260904.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260905,produccion_20260905.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260905.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260906,produccion_20260906.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260906.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260907,produccion_20260907.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260907.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260908,produccion_20260908.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260908.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260909,produccion_20260909.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260909.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260910,produccion_20260910.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260910.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260911,produccion_20260911.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260911.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260912,produccion_20260912.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260912.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260913,produccion_20260913.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260913.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260914,produccion_20260914.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260914.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260915,produccion_20260915.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260915.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260916,produccion_20260916.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260916.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260917,produccion_20260917.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260917.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260918,produccion_20260918.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260918.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260919,produccion_20260919.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260919.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260920,produccion_20260920.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260920.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260921,produccion_20260921.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260921.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260922,produccion_20260922.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260922.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260923,produccion_20260923.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260923.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20260924,produccion_20260924.pdf,revision2_completo_20260901_20260924\pdfs_produccion\produccion_20260924.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261001,produccion_20261001.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261001.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261002,produccion_20261002.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261002.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261003,produccion_20261003.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261003.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261004,produccion_20261004.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261004.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261005,produccion_20261005.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261005.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261006,produccion_20261006.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261006.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261007,produccion_20261007.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261007.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261008,produccion_20261008.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261008.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261009,produccion_20261009.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261009.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261010,produccion_20261010.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261010.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261011,produccion_20261011.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261011.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261012,produccion_20261012.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261012.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261013,produccion_20261013.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261013.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261014,produccion_20261014.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261014.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261015,produccion_20261015.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261015.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261016,produccion_20261016.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261016.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261017,produccion_20261017.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261017.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261018,produccion_20261018.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261018.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261019,produccion_20261019.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261019.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261020,produccion_20261020.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261020.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261021,produccion_20261021.pdf,revision_completo_20261001_20261021\pdfs_produccion\produccion_20261021.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261020,produccion_20261020.pdf,revision_completo_20261020_20261022\pdfs_produccion\produccion_20261020.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261021,produccion_20261021.pdf,revision_completo_20261020_20261022\pdfs_produccion\produccion_20261021.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261022,produccion_20261022.pdf,revision_completo_20261020_20261022\pdfs_produccion\produccion_20261022.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261001,produccion_20261001.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261001.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261002,produccion_20261002.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261002.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261003,produccion_20261003.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261003.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261004,produccion_20261004.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261004.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261005,produccion_20261005.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261005.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261006,produccion_20261006.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261006.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261007,produccion_20261007.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261007.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261008,produccion_20261008.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261008.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261009,produccion_20261009.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261009.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261010,produccion_20261010.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261010.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261011,produccion_20261011.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261011.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261012,produccion_20261012.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261012.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261013,produccion_20261013.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261013.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261014,produccion_20261014.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261014.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261015,produccion_20261015.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261015.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261016,produccion_20261016.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261016.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261017,produccion_20261017.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261017.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261018,produccion_20261018.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261018.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261019,produccion_20261019.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261019.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261020,produccion_20261020.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261020.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261021,produccion_20261021.pdf,sanforizado_completo_20261001_20261021\pdfs_produccion\produccion_20261021.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261020,produccion_20261020.pdf,sanforizado_completo_20261020_20261022\pdfs_produccion\produccion_20261020.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261021,produccion_20261021.pdf,sanforizado_completo_20261020_20261022\pdfs_produccion\produccion_20261021.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX
+20261022,produccion_20261022.pdf,sanforizado_completo_20261020_20261022\pdfs_produccion\produccion_20261022.pdf,ok,0,No se encontraron referencias con el patrón XXX-XXXXX

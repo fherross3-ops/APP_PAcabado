@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SISGO · Dashboard Producción</title>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0b1220;--panel:#111a2b;--panel-2:#1a2438;--border:#243049;--text:#e2e8f0;--muted:#8b9bb4;--accent:#38bdf8;--corte:#38bdf8;--revision:#a78bfa;--sanforizado:#34d399;--radius:12px;--success:#4ade80;--warning:#facc15;--danger:#f87171}
+*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}body{display:flex;flex-direction:column}
+.app-header{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:linear-gradient(180deg,#0f172a,#0b1220);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;flex-wrap:wrap;gap:12px}
+.brand h1{margin:0;font-size:22px;letter-spacing:-.5px}.brand h1 span{color:var(--accent)}.brand p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+.main-nav{display:flex;gap:8px;background:var(--panel);padding:4px;border-radius:10px;border:1px solid var(--border)}
+.nav-btn{background:transparent;border:none;color:var(--muted);padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500}
+.nav-btn:hover{color:var(--text)}.nav-btn.active{background:var(--panel-2);color:var(--accent)}
+.filter-bar{display:flex;align-items:center;gap:12px;padding:10px 32px;background:var(--panel);border-bottom:1px solid var(--border);flex-wrap:wrap;font-size:12px}
+.filter-bar label{color:var(--muted);font-weight:500}
+.filter-bar input[type=date]{background:var(--panel-2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:12px;font-family:inherit}
+.filter-bar button{background:var(--panel-2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer}
+.filter-bar button:hover{border-color:var(--accent);color:var(--accent)}
+.filter-bar .filter-status{margin-left:auto;color:var(--muted);font-size:11px}
+main{flex:1;padding:24px 32px;max-width:1400px;width:100%;margin:0 auto}
+.view-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.view-header h2{margin:0;font-size:24px;font-weight:600}
+.subnav{display:flex;gap:4px;background:var(--panel);padding:4px;border-radius:10px;border:1px solid var(--border);flex-wrap:wrap}
+.subnav-btn{background:transparent;border:none;color:var(--muted);padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500}
+.subnav-btn:hover{color:var(--text)}.subnav-btn.active{background:var(--panel-2);color:var(--accent)}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px}
+.kpi-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+.kpi-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.kpi-value{font-size:26px;font-weight:700;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.kpi-sub{font-size:12px;color:var(--muted);margin-top:6px}
+.progress{height:6px;background:var(--panel-2);border-radius:3px;margin-top:10px;overflow:hidden}
+.progress-bar{height:100%;transition:width .6s ease}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media (max-width:900px){.chart-row{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.card h3{margin:0 0 16px;font-size:14px;font-weight:600}.card canvas{max-height:320px}
+.pipeline{display:flex;align-items:center;justify-content:space-around;gap:12px;padding:20px 0;flex-wrap:wrap}
+.pipe-stage{flex:1;min-width:120px;text-align:center;border:2px solid var(--border);border-radius:var(--radius);padding:20px;background:var(--panel-2)}
+.pipe-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.pipe-value{font-size:32px;font-weight:700}.pipe-sub{font-size:11px;color:var(--muted);margin-top:4px}
+.pipe-arrow{font-size:24px;color:var(--muted);flex-shrink:0}
+.muted{color:var(--muted);font-size:12px}
+.loading{display:flex;flex-direction:column;align-items:center;padding:80px 0;color:var(--muted)}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.app-footer{display:flex;justify-content:space-between;padding:12px 32px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);background:var(--panel)}
+.error-card{background:rgba(248,113,113,.1);border:1px solid var(--danger);color:var(--danger);padding:16px;border-radius:var(--radius);margin-bottom:16px}
+.info-card{background:rgba(56,189,248,.08);border:1px solid var(--accent);color:var(--text);padding:16px;border-radius:var(--radius);margin-bottom:16px;font-size:13px;line-height:1.6}
+.warn-card{background:rgba(250,204,21,.08);border:1px solid var(--warning);color:var(--text);padding:16px;border-radius:var(--radius);margin-bottom:16px;font-size:13px;line-height:1.6}
+.warn-card code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px;font-size:12px}
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table th{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border);color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;user-select:none}
+.data-table th:hover{color:var(--accent)}
+.data-table td{padding:8px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}
+.data-table tr:hover{background:var(--panel-2)}.data-table .num{text-align:right}
+.data-table .good{color:var(--success)}.data-table .bad{color:var(--danger)}.data-table .warn{color:var(--warning)}
+.shift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+@media (max-width:900px){.shift-grid{grid-template-columns:1fr}}
+.shift-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:20px;border-top:4px solid var(--accent)}
+.shift-card.manana{border-top-color:#fbbf24}.shift-card.tarde{border-top-color:#38bdf8}.shift-card.noche{border-top-color:#a78bfa}
+.shift-title{font-size:13px;font-weight:600;margin-bottom:12px}
+.shift-metric{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
+.shift-metric:last-child{border-bottom:none}.shift-metric span:first-child{color:var(--muted)}
+.shift-metric span:last-child{font-weight:600;font-variant-numeric:tabular-nums}
+.anomaly-list{display:flex;flex-direction:column;gap:8px;max-height:400px;overflow-y:auto}
+.anomaly-item{padding:10px 12px;background:var(--panel-2);border-left:3px solid var(--warning);border-radius:6px;font-size:12px}
+.anomaly-item.danger{border-left-color:var(--danger)}.anomaly-item b{color:var(--text)}
+.table-wrap{overflow-x:auto}
+.q-badge{display:inline-block;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:600;margin-right:4px}
+.q-1ra{background:rgba(74,222,128,.15);color:#4ade80}
+.q-2da{background:rgba(250,204,21,.15);color:#facc15}
+.q-gtm{background:rgba(139,155,180,.15);color:#8b9bb4}
+.q-6ta{background:rgba(248,113,113,.15);color:#f87171}
+.causa-tag{display:inline-block;padding:2px 8px;background:rgba(248,113,113,.15);color:#f87171;border-radius:4px;font-size:11px;font-weight:600}
+details.diag{margin-top:12px;background:var(--panel-2);border-radius:6px;padding:12px;font-size:12px}
+details.diag summary{cursor:pointer;color:var(--accent);font-weight:600}
+details.diag pre{background:rgba(0,0,0,.3);padding:8px;border-radius:4px;overflow-x:auto;font-size:11px;margin:8px 0;color:var(--text);max-height:300px}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <div class="brand">
+    <h1>Jeantex <span>SISGO</span></h1>
+    <p>Dashboard de Producción · Corte · Revisión · Sanforizado</p>
+  </div>
+  <nav class="main-nav" id="main-nav">
+    <button class="nav-btn active" data-view="global">Global</button>
+    <button class="nav-btn" data-view="corte">Corte</button>
+    <button class="nav-btn" data-view="revision">Revisión</button>
+    <button class="nav-btn" data-view="sanforizado">Sanforizado</button>
+  </nav>
+</header>
+
+<div class="filter-bar">
+  <label for="f-desde">Desde</label>
+  <input type="date" id="f-desde">
+  <label for="f-hasta">Hasta</label>
+  <input type="date" id="f-hasta">
+  <button id="f-reset">Limpiar filtro</button>
+  <span class="filter-status" id="f-status">Sin filtro · mostrando todo</span>
+</div>
+
+<main id="app">
+  <div class="loading"><div class="spinner"></div><p>Cargando datos…</p></div>
+</main>
+
+<footer class="app-footer">
+  <span>Datos provenientes de CSVs · SISGO</span>
+  <span id="status"></span>
+</footer>
+
+<script>
+// ============================================================
+// CONFIGURACIÓN DE PROCESOS
+// ============================================================
+const CONFIG = {
+  corte:       { label:'Corte',       color:'#38bdf8', toMake:'Metros a Cortar',    made:'Metros Producidos', machine:'Maquina', person:'Persona', ref:'Referencia', style:'Estilo', order:'Codigo Produccion' },
+  revision:    { label:'Revisión',    color:'#a78bfa', toMake:'Metros a Revisar',   made:'Metros Producidos', machine:'Maquina', person:'Persona', ref:'Referencia', style:'Estilo', order:'Codigo Produccion' },
+  sanforizado: { label:'Sanforizado', color:'#34d399', toMake:'Metros a Sanforizar',made:'Metros Producidos', machine:'Maquina', person:'Persona', ref:'Referencia', style:'Estilo', order:'Codigo Produccion' },
+};
+
+// ============================================================
+// MANIFEST DINÁMICO
+// Todos los archivos viven en data/. Se cargan desde manifest.json
+// así nunca hay que tocar este HTML al agregar nuevos lotes.
+// ============================================================
+const DATA_DIR = 'data';
+const MANIFEST_PATH = `${DATA_DIR}/manifest.json`;
+
+let DATA_MANIFEST   = { corte: [], revision: [], sanforizado: [], revision2: [] };
+let CALIDAD_MANIFEST = { porReferencia: [], porTurno: [], reporte: [] };
+let PDF_MANIFEST    = { textos: [], tablas: [] };
+
+const SUBVIEWS = [
+  { id: 'resumen',     label: 'Resumen',             processes: ['corte','revision','sanforizado'] },
+  { id: 'operarios',   label: 'Operarios',           processes: ['corte','revision','sanforizado'] },
+  { id: 'turnos',      label: 'Turnos',              processes: ['corte','revision','sanforizado'] },
+  { id: 'maquinas',    label: 'Máquinas',            processes: ['corte','revision','sanforizado'] },
+  { id: 'referencias', label: 'Referencias',         processes: ['corte','revision','sanforizado'] },
+  { id: 'perdidas',    label: 'Tiempos Perdidos',    processes: ['corte','revision','sanforizado'] },
+  { id: 'revisores',   label: 'Revisores y Telares', processes: ['revision'] },
+  { id: 'calidad',     label: 'Calidad',             processes: ['revision'] },
+];
+
+const HORAS_DISPONIBLES_DIA = 24;
+
+const state = {
+  raw: { corte:[], revision:[], sanforizado:[], revision2:[] },
+  filtered: { corte:[], revision:[], sanforizado:[], revision2:[] },
+  pdfs: { textos: [], tablas: [] },
+  calidad: { porReferencia: [], porTurno: [], reporte: [] },
+  kpis: {},
+  view: 'global',
+  subview: { corte:'resumen', revision:'resumen', sanforizado:'resumen' },
+  filters: { desde:'', hasta:'' },
+  charts: {},
+};
+
+// ============================================================
+// UTILS
+// ============================================================
+const toNum = (v) => { const n = parseFloat(String(v??'').replace(/[^\d.\-]/g,'')); return isNaN(n)?0:n; };
+const fmtNum = (n) => new Intl.NumberFormat('es-VE').format(Math.round(n||0));
+const fmtDec = (n, d=1) => (n==null||isNaN(n))?'—':Number(n).toFixed(d);
+const fmtPct = (n) => ((n||0)*100).toFixed(1)+'%';
+const shortDate = (f) => (f&&f.length===8)?`${f.slice(6,8)}/${f.slice(4,6)}`:(f||'?');
+
+function parseDateTime(fechaStr, horaStr) {
+  if (!fechaStr || !horaStr) return null;
+  let d, m, y;
+  if (fechaStr.includes('/')) {
+    const parts = fechaStr.split('/');
+    d = Number(parts[0]); m = Number(parts[1]); y = Number(parts[2]);
+    if (y < 100) y += 2000;
+  } else { y = Number(fechaStr.slice(0,4)); m = Number(fechaStr.slice(4,6)); d = Number(fechaStr.slice(6,8)); }
+  const [hh, mm] = horaStr.split(':').map(Number);
+  if ([d,m,y,hh,mm].some(v => isNaN(v))) return null;
+  return new Date(y, m-1, d, hh, mm);
+}
+
+function computeDurationHours(row) {
+  const ini = parseDateTime(row.Inicio, row['Hora Inicio']);
+  const fin = parseDateTime(row['fecha fin'], row['fecha fin_hora']);
+  if (!ini || !fin) return null;
+  let diff = (fin - ini) / 3600000;
+  if (diff < 0) diff += 24;
+  if (diff < 0 || diff > 48) return null;
+  return diff;
+}
+
+function parseHMS(hms) {
+  if (!hms) return 0;
+  const parts = String(hms).split(':').map(Number);
+  if (parts.length !== 3 || parts.some(isNaN)) return 0;
+  return parts[0] + parts[1]/60 + parts[2]/3600;
+}
+
+function deriveTurno(horaInicio) {
+  if (!horaInicio) return 'Desconocido';
+  const h = parseInt(horaInicio.split(':')[0], 10);
+  if (isNaN(h)) return 'Desconocido';
+  if (h >= 6 && h < 14) return 'Mañana';
+  if (h >= 14 && h < 22) return 'Tarde';
+  return 'Noche';
+}
+
+function topN(obj, n) { return Object.entries(obj).sort((a,b)=>b[1].made-a[1].made).slice(0,n); }
+function inputToYYYYMMDD(s) { return s ? s.replace(/-/g, '') : ''; }
+function yyyymmddToInput(s) { return s ? `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}` : ''; }
+
+function filtrarPorFecha(rows, desde, hasta) {
+  if (!desde && !hasta) return rows;
+  return rows.filter(r => {
+    const f = r.fecha || r.fecha_filtro || '';
+    if (desde && f < desde) return false;
+    if (hasta && f > hasta) return false;
+    return true;
+  });
+}
+
+// ============================================================
+// CARGA
+// ============================================================
+function loadCSV(path){
+  return new Promise((resolve,reject)=>{
+    Papa.parse(path,{
+      download:true, header:true, skipEmptyLines:true,
+      transformHeader:(h)=>h.replace(/^\ufeff/,'').trim(),
+      complete:(r)=>resolve(r.data), error:(e)=>reject(e),
+    });
+  });
+}
+
+async function loadManifest() {
+  const res = await fetch(MANIFEST_PATH);
+  if (!res.ok) throw new Error(`No se pudo cargar ${MANIFEST_PATH} (HTTP ${res.status})`);
+  const m = await res.json();
+
+  const pref = (arr) => (arr || []).map(f => `${DATA_DIR}/${f}`);
+  DATA_MANIFEST.corte       = pref(m.corte);
+  DATA_MANIFEST.revision    = pref(m.revision);
+  DATA_MANIFEST.sanforizado = pref(m.sanforizado);
+  DATA_MANIFEST.revision2   = pref(m.revision2);
+  CALIDAD_MANIFEST.porReferencia = pref(m.calidad_por_referencia ? [m.calidad_por_referencia] : []);
+  CALIDAD_MANIFEST.porTurno      = pref(m.calidad_por_turno ? [m.calidad_por_turno] : []);
+  CALIDAD_MANIFEST.reporte       = pref(m.reporte_extraccion ? [m.reporte_extraccion] : []);
+  PDF_MANIFEST.textos            = pref(m.todas_texto_lineas ? [m.todas_texto_lineas] : []);
+  PDF_MANIFEST.tablas            = pref(m.todas_tablas_celdas ? [m.todas_tablas_celdas] : []);
+
+  console.log('📋 Manifest cargado:', m);
+}
+
+async function loadAllData(){
+  try {
+    await loadManifest();
+  } catch (err) {
+    document.getElementById('app').innerHTML = `
+      <section class="view"><h2>⚠️ No se encontró el manifest</h2>
+      <div class="error-card">
+        <strong>Error:</strong> ${err.message}
+        <p>Verifica que exista <code>data/manifest.json</code> junto a <code>index.html</code>.</p>
+        <p>Si estás en local, recuerda usar <code>python -m http.server 8000</code> y abrir por <code>http://localhost:8000</code>.</p>
+      </div></section>`;
+    throw new Error('Falta manifest.json');
+  }
+
+  const errores = [];
+
+  for (const p of ['corte','revision','sanforizado','revision2']){
+    const all = [];
+    for (const f of DATA_MANIFEST[p]){
+      try {
+        const rows = await loadCSV(f);
+        all.push(...rows);
+        console.log(`✅ ${p}: ${rows.length} filas desde ${f}`);
+      } catch(err){
+        console.error(`❌ ${p}:`, err.message);
+        errores.push({proceso:p, archivo:f, mensaje:err.message});
+      }
+    }
+    state.raw[p] = all;
+  }
+
+  for (const f of CALIDAD_MANIFEST.porReferencia) {
+    try {
+      const rows = await loadCSV(f);
+      state.calidad.porReferencia.push(...rows);
+      console.log(`✅ Calidad ref: ${rows.length}`);
+    } catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+  }
+  for (const f of CALIDAD_MANIFEST.porTurno) {
+    try {
+      const rows = await loadCSV(f);
+      state.calidad.porTurno.push(...rows);
+      console.log(`✅ Calidad turnos: ${rows.length}`);
+    } catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+  }
+  for (const f of CALIDAD_MANIFEST.reporte) {
+    try {
+      const rows = await loadCSV(f);
+      state.calidad.reporte.push(...rows);
+      console.log(`✅ Reporte extracción: ${rows.length}`);
+    } catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+  }
+
+  for (const f of PDF_MANIFEST.textos) {
+    try { const rows = await loadCSV(f); state.pdfs.textos.push(...rows); console.log(`✅ textos: ${rows.length}`); }
+    catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+  }
+  for (const f of PDF_MANIFEST.tablas) {
+    try { const rows = await loadCSV(f); state.pdfs.tablas.push(...rows); console.log(`✅ tablas: ${rows.length}`); }
+    catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+  }
+
+  if (errores.length) {
+    document.getElementById('app').innerHTML = `
+      <section class="view"><h2>⚠️ Diagnóstico</h2>
+      <div class="error-card"><strong>${errores.length} archivo(s) con error:</strong>
+      <ul style="margin-top:8px;line-height:1.7">
+      ${errores.map(e => `<li><b>${e.proceso}</b> → <code>${e.archivo}</code><br><small>${e.mensaje}</small></li>`).join('')}
+      </ul></div></section>`;
+    throw new Error('Fallo de carga');
+  }
+}
+
+// ============================================================
+// KPI COMPUTATION
+// ============================================================
+function computeProcessKPIs(rows, proceso){
+  const cfg = CONFIG[proceso];
+  let totalToMake=0, totalMade=0, totalHours=0;
+  const orders=new Set(), refs=new Set(), styles=new Set(), persons=new Set(), machines=new Set(), allDays=new Set();
+  const byDay={}, byOperator={}, byMachine={}, byRef={}, byShift={};
+  const anomalies = [];
+  const SHIFTS = ['Mañana','Tarde','Noche'];
+  SHIFTS.forEach(s => byShift[s] = { made:0, toMake:0, orders:0, hours:0, operators:new Set(), machines:new Set() });
+
+  for (const row of rows){
+    const made = toNum(row[cfg.made]);
+    const toMake = toNum(row[cfg.toMake]);
+    const dur = computeDurationHours(row);
+    const turno = deriveTurno(row['Hora Inicio']);
+    const fecha = row.fecha || row.Inicio;
+    totalMade += made;
+    if (toMake > 0) totalToMake += toMake;
+    if (dur != null) totalHours += dur;
+    if (row[cfg.order]) orders.add(row[cfg.order]);
+    if (row[cfg.ref]) refs.add(row[cfg.ref]);
+    if (row[cfg.style]) styles.add(row[cfg.style]);
+    if (row[cfg.person]) persons.add(row[cfg.person]);
+    if (row[cfg.machine]) machines.add(row[cfg.machine]);
+    if (fecha) allDays.add(fecha);
+    if (fecha) {
+      byDay[fecha] = byDay[fecha] || { made:0, toMake:0, orders:0, hours:0 };
+      byDay[fecha].made += made; byDay[fecha].toMake += toMake; byDay[fecha].orders += 1;
+      if (dur != null) byDay[fecha].hours += dur;
+    }
+    const pName = row[cfg.person];
+    if (pName) {
+      byOperator[pName] = byOperator[pName] || { name:pName, made:0, toMake:0, orders:0, hours:0, days:new Set(), shifts:{Mañana:0,Tarde:0,Noche:0}, machines:new Set() };
+      const op = byOperator[pName];
+      op.made += made; op.toMake += toMake; op.orders += 1;
+      if (dur != null) op.hours += dur;
+      if (fecha) op.days.add(fecha);
+      op.shifts[turno] = (op.shifts[turno]||0) + 1;
+      if (row[cfg.machine]) op.machines.add(row[cfg.machine]);
+    }
+    const mName = row[cfg.machine];
+    if (mName) {
+      byMachine[mName] = byMachine[mName] || { name:mName, made:0, toMake:0, orders:0, hours:0, days:new Set(), operators:new Set() };
+      const mc = byMachine[mName];
+      mc.made += made; mc.toMake += toMake; mc.orders += 1;
+      if (dur != null) { mc.hours += dur; if (fecha) mc.days.add(fecha); }
+      if (pName) mc.operators.add(pName);
+    }
+    const sh = byShift[turno];
+    if (sh) {
+      sh.made += made; sh.toMake += toMake; sh.orders += 1;
+      if (dur != null) sh.hours += dur;
+      if (pName) sh.operators.add(pName);
+      if (mName) sh.machines.add(mName);
+    }
+    const refName = row[cfg.ref];
+    if (refName) {
+      byRef[refName] = byRef[refName] || { name:refName, made:0, toMake:0, orders:0, hours:0, styles:new Set() };
+      byRef[refName].made += made; byRef[refName].toMake += toMake; byRef[refName].orders += 1;
+      if (dur != null) byRef[refName].hours += dur;
+      if (row[cfg.style]) byRef[refName].styles.add(row[cfg.style]);
+    }
+    if (dur != null && dur > 0 && made === 0)
+      anomalies.push({ tipo:'Sin producción', severidad:'warning', detalle:`Orden ${row.ID} · ${pName||'?'} · ${mName||'?'} · dur ${fmtDec(dur)}h · produjo 0` });
+    if (dur != null && dur > 12)
+      anomalies.push({ tipo:'Duración excesiva', severidad:'danger', detalle:`Orden ${row.ID} · ${pName||'?'} · dur ${fmtDec(dur)}h` });
+    if (toMake > 0 && made > toMake * 1.15)
+      anomalies.push({ tipo:'Sobre-producción', severidad:'warning', detalle:`Orden ${row.ID} · plan ${fmtNum(toMake)} / real ${fmtNum(made)}` });
+  }
+  Object.values(byOperator).forEach(op => {
+    op.rate = (op.hours >= 1 && op.made > 0) ? op.made / op.hours : null;
+    op.efficiency = op.toMake > 0 ? op.made / op.toMake : null;
+    op.daysCount = op.days.size;
+    op.madePerDay = op.daysCount > 0 ? op.made / op.daysCount : 0;
+    const se = Object.entries(op.shifts).filter(([,n]) => n > 0);
+    op.predominantShift = se.length ? se.sort((a,b) => b[1]-a[1])[0][0] : '—';
+  });
+  Object.values(byMachine).forEach(mc => {
+    mc.utilization = mc.days.size > 0 ? mc.hours / (mc.days.size * HORAS_DISPONIBLES_DIA) : 0;
+    mc.rate = (mc.hours >= 1 && mc.made > 0) ? mc.made / mc.hours : null;
+    mc.efficiency = mc.toMake > 0 ? mc.made / mc.toMake : null;
+  });
+  Object.values(byShift).forEach(sh => {
+    sh.rate = (sh.hours >= 1 && sh.made > 0) ? sh.made / sh.hours : null;
+    sh.efficiency = sh.toMake > 0 ? sh.made / sh.toMake : null;
+    sh.operatorCount = sh.operators.size;
+  });
+  return { proceso, label:cfg.label, color:cfg.color, totalToMake, totalMade,
+    efficiency: totalToMake>0 ? totalMade/totalToMake : 0, totalHours,
+    avgRate: totalHours >= 1 ? totalMade / totalHours : 0,
+    orders:orders.size, referencias:refs.size, estilos:styles.size,
+    personas:persons.size, maquinas:machines.size, days:allDays.size,
+    byDay, byOperator, byMachine, byRef, byShift, anomalies, rows:rows.length };
+}
+
+function computeRevision2KPIs(rows) {
+  const filtered = filtrarPorFecha(rows, state.filters.desde, state.filters.hasta);
+  let totalMts = 0, totalHoras = 0, totalPiezas = 0;
+  const revisadores = {}, telares = {}, turnos = {}, referencias = {};
+  for (const row of filtered) {
+    const mts = toNum(row['Mts Totales']);
+    const horas = parseHMS(row['Tiempo Inspeccion']);
+    const revisador = (row['Revisador'] || '').trim();
+    const telar = (row['Telar'] || '').trim();
+    const turno = (row['Turno'] || '').trim();
+    const ref = (row['Referencia'] || '').trim();
+    const estilo = (row['Estilo'] || '').trim();
+    totalMts += mts; totalHoras += horas; totalPiezas += 1;
+    if (revisador) {
+      revisadores[revisador] = revisadores[revisador] || { name:revisador, piezas:0, mts:0, horas:0, turnos:{} };
+      revisadores[revisador].piezas += 1; revisadores[revisador].mts += mts; revisadores[revisador].horas += horas;
+      revisadores[revisador].turnos[turno] = (revisadores[revisador].turnos[turno]||0) + 1;
+    }
+    if (telar) {
+      telares[telar] = telares[telar] || { name:telar, piezas:0, mts:0, horas:0 };
+      telares[telar].piezas += 1; telares[telar].mts += mts; telares[telar].horas += horas;
+    }
+    if (turno) {
+      turnos[turno] = turnos[turno] || { name:turno, piezas:0, mts:0, horas:0 };
+      turnos[turno].piezas += 1; turnos[turno].mts += mts; turnos[turno].horas += horas;
+    }
+    if (ref) {
+      referencias[ref] = referencias[ref] || { name:ref, estilo, piezas:0, mts:0, horas:0 };
+      referencias[ref].piezas += 1; referencias[ref].mts += mts; referencias[ref].horas += horas;
+    }
+  }
+  Object.values(revisadores).forEach(r => {
+    r.rate = r.horas >= 0.1 ? r.mts / r.horas : null;
+    r.mtsPerPieza = r.piezas > 0 ? r.mts / r.piezas : 0;
+    r.horasPerPieza = r.piezas > 0 ? r.horas / r.piezas : 0;
+    const se = Object.entries(r.turnos).filter(([,n]) => n > 0);
+    r.predominantShift = se.length ? se.sort((a,b) => b[1]-a[1])[0][0] : '—';
+  });
+  return { filtered, totalMts, totalHoras, totalPiezas,
+    rate: totalHoras >= 0.1 ? totalMts / totalHoras : 0,
+    revisadores, telares, turnos, referencias };
+}
+
+function computeGlobalKPIs(kpis){
+  const refs={};
+  for (const p of ['corte','revision','sanforizado']) refs[p]=new Set(Object.keys(kpis[p].byRef));
+  const inAll = [...refs.corte].filter(r => refs.revision.has(r) && refs.sanforizado.has(r));
+  const totalHours = kpis.corte.totalHours + kpis.revision.totalHours + kpis.sanforizado.totalHours;
+  const totalMade = kpis.corte.totalMade + kpis.revision.totalMade + kpis.sanforizado.totalMade;
+  return { totalMade, totalHours, avgRate: totalHours >= 1 ? totalMade / totalHours : 0,
+    corte:kpis.corte, revision:kpis.revision, sanforizado:kpis.sanforizado, refs, inAll };
+}
+
+function parseTiemposPerdidos(textos) {
+  const result = { corte:{}, revision:{}, sanforizado:{} };
+  const relevant = textos.filter(t => t.tipo_informe === 'tiempos_perdidos');
+  for (const proceso of ['corte','revision','sanforizado']) {
+    let cm = null, inResumen = false;
+    const lines = relevant.filter(t => t.proceso === proceso).sort((a,b) => {
+      const fa = String(a.fecha||'').localeCompare(String(b.fecha||''));
+      if (fa !== 0) return fa;
+      const pa = parseInt(a.pagina,10)||0, pb = parseInt(b.pagina,10)||0;
+      if (pa !== pb) return pa - pb;
+      return (parseInt(a.linea,10)||0) - (parseInt(b.linea,10)||0);
+    });
+    for (const line of lines) {
+      const fecha = line.fecha;
+      if (!fecha || line.calidad === 'ilegible' || line.calidad === 'vacio') continue;
+      const text = (line.texto || '').trim();
+      if (!text) continue;
+      if (!result[proceso][fecha]) result[proceso][fecha] = { causas: [], resumen: {} };
+      const day = result[proceso][fecha];
+      const maq = text.match(/^((?:CORTADORA|REVISADORA|SANFORIZADO)[^0-9]*#?\s*\d*.*)$/i);
+      if (maq && text.length < 60 && !/\d\.\d/.test(text)) { cm = text.replace(/[^A-Z0-9#\s]/gi, '').trim(); inResumen = false; continue; }
+      if (/Resumen por Causa/i.test(text)) { inResumen = true; continue; }
+      const cm2 = text.match(/^(\d+)\s+(\d+)\s+(.+?)\s+([\d.]+)\s+([\d.]+)\s*$/);
+      if (cm2) {
+        const h = parseFloat(cm2[4]); const p = parseFloat(cm2[5]);
+        if (!isNaN(h) && !isNaN(p) && h <= 24 && p <= 100) {
+          day.causas.push({ maquina: cm, esResumen: inResumen, codigo: cm2[2], causa: cm2[3].trim(), horas: h, porcentaje: p });
+        }
+        continue;
+      }
+      const patterns = [
+        ['produccionEsperada', /Total produccion esperada:\s*([\d.]+)\s*mts/i],
+        ['produccionReal', /Total produccion Real:\s*([\d.]+)\s*mts/i],
+        ['tiempoPerdido', /Total Tiempos perdidos:\s*([\d.]+)\s*hrs/i],
+        ['produccionPerdida', /Total Produccion Perdida:\s*([\d.]+)\s*mts/i],
+        ['diferencia', /Diferencia:\s*([\d.-]+)\s*mts/i],
+        ['porJustificar', /tiempo perdido por justificar:\s*([\d.-]+)\s*hrs/i],
+      ];
+      for (const [k, re] of patterns) {
+        const m = text.match(re);
+        if (m) { day.resumen[k] = parseFloat(m[1]); break; }
+      }
+    }
+  }
+  for (const p of ['corte','revision','sanforizado']) {
+    for (const f of Object.keys(result[p])) {
+      const d = result[p][f];
+      if (d.causas.some(c => !c.esResumen)) d.causas = d.causas.filter(c => !c.esResumen);
+    }
+  }
+  return result;
+}
+
+function computeCalidadFromCSV(rows) {
+  const result = { revision: {} };
+  for (const row of rows) {
+    const fecha = String(row.fecha || '').trim();
+    const ref = String(row.referencia || '').trim();
+    const total = toNum(row.total);
+    if (!fecha || !ref || total <= 0) continue;
+    if (!result.revision[fecha]) result.revision[fecha] = { referencias: {} };
+    const existing = result.revision[fecha].referencias[ref];
+    const nueva = {
+      referencia: ref,
+      estilo: String(row.estilo || '').trim(),
+      primera: toNum(row.primera),
+      gtm: toNum(row.gtm),
+      segunda: toNum(row.segunda),
+      sexta: toNum(row.sexta),
+      total,
+      pctPrimera: toNum(row.pct_primera),
+    };
+    if (existing) {
+      existing.primera += nueva.primera;
+      existing.gtm += nueva.gtm;
+      existing.segunda += nueva.segunda;
+      existing.sexta += nueva.sexta;
+      existing.total += nueva.total;
+    } else {
+      result.revision[fecha].referencias[ref] = nueva;
+    }
+  }
+  return result;
+}
+
+// ============================================================
+// CHARTS + SORTING
+// ============================================================
+const CHART_DEFAULTS = {
+  responsive:true, maintainAspectRatio:true,
+  plugins:{ legend:{ labels:{ color:'#8b9bb4', font:{size:11} } } },
+  scales:{ x:{ ticks:{color:'#8b9bb4',font:{size:11}}, grid:{color:'#243049'} }, y:{ ticks:{color:'#8b9bb4',font:{size:11}}, grid:{color:'#243049'} } },
+};
+
+function attachSorting(container) {
+  container.querySelectorAll('th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.sort;
+      const isNum = th.dataset.type === 'num';
+      const table = th.closest('table');
+      const tbody = table.querySelector('tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      const dir = th.dataset.dir === 'asc' ? 'desc' : 'asc';
+      table.querySelectorAll('th').forEach(h => h.dataset.dir = '');
+      th.dataset.dir = dir;
+      rows.sort((a,b) => {
+        const av = a.dataset[key] ?? '';
+        const bv = b.dataset[key] ?? '';
+        let cmp = isNum ? (parseFloat(av)||0) - (parseFloat(bv)||0) : String(av).localeCompare(String(bv));
+        return dir === 'asc' ? cmp : -cmp;
+      });
+      rows.forEach(r => tbody.appendChild(r));
+    });
+  });
+}
+
+function recomputeAllKPIs() {
+  const { desde, hasta } = state.filters;
+  for (const p of ['corte','revision','sanforizado']) {
+    state.filtered[p] = filtrarPorFecha(state.raw[p], desde, hasta);
+    state.kpis[p] = computeProcessKPIs(state.filtered[p], p);
+  }
+  state.kpis.global = computeGlobalKPIs(state.kpis);
+  state.kpis.perdidas = parseTiemposPerdidos(state.pdfs.textos);
+  state.kpis.calidad = computeCalidadFromCSV(state.calidad.porReferencia);
+  state.kpis.revision2 = computeRevision2KPIs(state.raw.revision2);
+}
+
+// ============================================================
+// RENDER: GLOBAL
+// ============================================================
+function renderGlobal(app){
+  const g = state.kpis.global;
+  const procs = ['corte','revision','sanforizado'];
+  const filtroTxt = state.filters.desde || state.filters.hasta
+    ? `Filtrado: ${state.filters.desde || '…'} → ${state.filters.hasta || '…'}`
+    : 'Sin filtro de fecha';
+  app.innerHTML = `
+    <section class="view">
+      <h2>Visión Global</h2>
+      <p class="muted" style="margin-bottom:16px">${filtroTxt}</p>
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-label">Metros totales producidos</div><div class="kpi-value">${fmtNum(g.totalMade)}</div><div class="kpi-sub">Suma de los 3 procesos</div></div>
+        <div class="kpi-card"><div class="kpi-label">Horas-máquina activas</div><div class="kpi-value">${fmtNum(g.totalHours)} h</div><div class="kpi-sub">Rate global: ${fmtNum(g.avgRate)} mts/h</div></div>
+        ${procs.map(p => { const k = g[p]; return `<div class="kpi-card" style="border-left:4px solid ${k.color}"><div class="kpi-label">${k.label}</div><div class="kpi-value">${fmtNum(k.totalMade)}</div><div class="kpi-sub">${fmtPct(k.efficiency)} efic · ${fmtNum(k.avgRate)} mts/h</div></div>`; }).join('')}
+      </div>
+      <div class="chart-row">
+        <div class="card"><h3>Producción por proceso</h3><canvas id="ch-global-prod"></canvas></div>
+        <div class="card"><h3>Eficiencia por proceso</h3><canvas id="ch-global-eff"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Cobertura del pipeline</h3>
+        <div class="pipeline">
+          ${procs.map((p, i) => `<div class="pipe-stage" style="border-color:${g[p].color}"><div class="pipe-label">${g[p].label}</div><div class="pipe-value">${g.refs[p].size}</div><div class="pipe-sub">referencias</div></div>${i < 2 ? '<div class="pipe-arrow">→</div>' : ''}`).join('')}
+        </div>
+        <p class="muted">${g.inAll.length} referencias completaron las 3 etapas</p>
+      </div>
+    </section>`;
+  setTimeout(()=>{
+    state.charts.globalProd = new Chart(document.getElementById('ch-global-prod'), {
+      type:'bar', data:{ labels:procs.map(p=>g[p].label), datasets:[{label:'Metros', data:procs.map(p=>g[p].totalMade), backgroundColor:procs.map(p=>g[p].color), borderRadius:6}]},
+      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    state.charts.globalEff = new Chart(document.getElementById('ch-global-eff'), {
+      type:'bar', data:{ labels:procs.map(p=>g[p].label), datasets:[{label:'Eficiencia %', data:procs.map(p=>g[p].efficiency*100), backgroundColor:procs.map(p=>g[p].color), borderRadius:6}]},
+      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}, scales:{...CHART_DEFAULTS.scales, y:{...CHART_DEFAULTS.scales.y, max:100, ticks:{...CHART_DEFAULTS.scales.y.ticks, callback:(v)=>v+'%'}}}},
+    });
+  }, 0);
+}
+
+// ============================================================
+// RENDER: PROCESS (subnav)
+// ============================================================
+function renderProcess(app, proceso){
+  const cfg = CONFIG[proceso];
+  const available = SUBVIEWS.filter(s => s.processes.includes(proceso));
+  let sub = state.subview[proceso] || 'resumen';
+  if (!available.find(s => s.id === sub)) sub = 'resumen';
+  app.innerHTML = `
+    <section class="view">
+      <div class="view-header">
+        <h2 style="color:${cfg.color}">${cfg.label}</h2>
+        <div class="subnav">${available.map(s => `<button class="subnav-btn ${s.id===sub?'active':''}" data-subview="${s.id}">${s.label}</button>`).join('')}</div>
+      </div>
+      <div id="subview-content"></div>
+    </section>`;
+  const content = document.getElementById('subview-content');
+  switch (sub) {
+    case 'operarios': renderOperarios(content, proceso); break;
+    case 'turnos': renderTurnos(content, proceso); break;
+    case 'maquinas': renderMaquinas(content, proceso); break;
+    case 'referencias': renderReferencias(content, proceso); break;
+    case 'perdidas': renderPerdidas(content, proceso); break;
+    case 'revisores': renderRevisores(content, proceso); break;
+    case 'calidad': renderCalidad(content, proceso); break;
+    default: renderResumen(content, proceso);
+  }
+  app.querySelectorAll('.subnav-btn').forEach(btn => {
+    btn.addEventListener('click', () => { state.subview[proceso] = btn.dataset.subview; render(); });
+  });
+}
+
+function renderResumen(app, proceso){
+  const k = state.kpis[proceso];
+  const cfg = CONFIG[proceso];
+  app.innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Metros producidos</div><div class="kpi-value">${fmtNum(k.totalMade)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Metros planificados</div><div class="kpi-value">${fmtNum(k.totalToMake)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Eficiencia</div><div class="kpi-value">${fmtPct(k.efficiency)}</div><div class="progress"><div class="progress-bar" style="width:${Math.min(100,k.efficiency*100)}%;background:${cfg.color}"></div></div></div>
+      <div class="kpi-card"><div class="kpi-label">Rate promedio</div><div class="kpi-value">${fmtNum(k.avgRate)} <span style="font-size:14px;color:var(--muted)">mts/h</span></div><div class="kpi-sub">${fmtNum(k.totalHours)} horas activas</div></div>
+      <div class="kpi-card"><div class="kpi-label">Órdenes</div><div class="kpi-value">${k.orders}</div><div class="kpi-sub">${k.referencias} refs · ${k.estilos} estilos</div></div>
+      <div class="kpi-card"><div class="kpi-label">Operarios</div><div class="kpi-value">${k.personas}</div><div class="kpi-sub">${k.maquinas} máquinas · ${k.days} días</div></div>
+    </div>
+    <div class="card"><h3>Producción por día</h3><canvas id="ch-day"></canvas></div>
+    <div class="chart-row">
+      <div class="card"><h3>Top operarios (metros)</h3><canvas id="ch-person"></canvas></div>
+      <div class="card"><h3>Top referencias (metros)</h3><canvas id="ch-ref"></canvas></div>
+    </div>
+    <div class="card"><h3>Producción por máquina</h3><canvas id="ch-machine"></canvas></div>`;
+  setTimeout(()=>{
+    const days = Object.keys(k.byDay).sort();
+    state.charts.day = new Chart(document.getElementById('ch-day'), {
+      type:'bar', data:{ labels:days.map(shortDate), datasets:[{label:'Metros', data:days.map(d=>k.byDay[d].made), backgroundColor:cfg.color, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    const tp = topN(k.byOperator, 10);
+    state.charts.person = new Chart(document.getElementById('ch-person'), {
+      type:'bar', data:{ labels:tp.map(([n])=>n.split(',')[0]), datasets:[{label:'Metros', data:tp.map(([,v])=>v.made), backgroundColor:cfg.color, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, indexAxis:'y', plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    const tr = topN(k.byRef, 10);
+    state.charts.ref = new Chart(document.getElementById('ch-ref'), {
+      type:'bar', data:{ labels:tr.map(([n])=>n), datasets:[{label:'Metros', data:tr.map(([,v])=>v.made), backgroundColor:cfg.color, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, indexAxis:'y', plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    const machines = Object.values(k.byMachine).sort((a,b)=>b.made-a.made);
+    state.charts.machine = new Chart(document.getElementById('ch-machine'), {
+      type:'bar', data:{ labels:machines.map(m=>m.name), datasets:[{label:'Metros', data:machines.map(m=>m.made), backgroundColor:cfg.color, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+  }, 0);
+}
+
+function renderOperarios(app, proceso){
+  const k = state.kpis[proceso];
+  const cfg = CONFIG[proceso];
+  const ops = Object.values(k.byOperator).sort((a,b)=>b.made-a.made);
+  app.innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Operarios activos</div><div class="kpi-value">${ops.length}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Horas totales</div><div class="kpi-value">${fmtNum(k.totalHours)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Rate promedio</div><div class="kpi-value">${fmtNum(k.avgRate)} <span style="font-size:14px;color:var(--muted)">mts/h</span></div></div>
+      <div class="kpi-card"><div class="kpi-label">Promedio por operario</div><div class="kpi-value">${fmtNum(ops.reduce((s,o)=>s+o.made,0)/(ops.length||1))}</div></div>
+    </div>
+    <div class="chart-row">
+      <div class="card"><h3>Top 10 por metros producidos</h3><canvas id="ch-op-made"></canvas></div>
+      <div class="card"><h3>Top 10 por rate (mts/h, mínimo 2h)</h3><canvas id="ch-op-rate"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Detalle por operario</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="tab-op">
+          <thead><tr>
+            <th data-sort="name">Operario</th><th data-sort="turno">Turno pred.</th>
+            <th class="num" data-sort="made" data-type="num">Metros</th>
+            <th class="num" data-sort="orders" data-type="num">Órdenes</th>
+            <th class="num" data-sort="hours" data-type="num">Horas</th>
+            <th class="num" data-sort="rate" data-type="num">Rate (m/h)</th>
+            <th class="num" data-sort="efficiency" data-type="num">Efic.</th>
+            <th class="num" data-sort="days" data-type="num">Días</th>
+            <th class="num" data-sort="perDay" data-type="num">Mts/día</th>
+          </tr></thead>
+          <tbody>
+            ${ops.map(o => `<tr data-name="${o.name.split(',')[0].trim()}" data-turno="${o.predominantShift}" data-made="${o.made}" data-orders="${o.orders}" data-hours="${o.hours}" data-rate="${o.rate||0}" data-efficiency="${o.efficiency||0}" data-days="${o.daysCount}" data-perDay="${o.madePerDay}">
+              <td>${o.name}</td><td>${o.predominantShift}</td>
+              <td class="num">${fmtNum(o.made)}</td><td class="num">${o.orders}</td>
+              <td class="num">${fmtDec(o.hours)}</td>
+              <td class="num">${o.rate!=null?fmtNum(o.rate):'—'}</td>
+              <td class="num">${o.efficiency!=null?fmtPct(o.efficiency):'—'}</td>
+              <td class="num">${o.daysCount}</td><td class="num">${fmtNum(o.madePerDay)}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+  setTimeout(()=>{
+    const t10 = ops.slice(0, 10);
+    state.charts.opMade = new Chart(document.getElementById('ch-op-made'), {
+      type:'bar', data:{ labels:t10.map(o=>o.name.split(',')[0].trim()), datasets:[{label:'Metros', data:t10.map(o=>o.made), backgroundColor:cfg.color, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, indexAxis:'y', plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    const ro = ops.filter(o=>o.rate!=null && o.hours>=2).sort((a,b)=>b.rate-a.rate).slice(0,10);
+    state.charts.opRate = new Chart(document.getElementById('ch-op-rate'), {
+      type:'bar', data:{ labels:ro.map(o=>o.name.split(',')[0].trim()), datasets:[{label:'mts/hora', data:ro.map(o=>o.rate), backgroundColor:cfg.color, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, indexAxis:'y', plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    attachSorting(app);
+  }, 0);
+}
+
+function renderTurnos(app, proceso){
+  const k = state.kpis[proceso];
+  const shifts = ['Mañana','Tarde','Noche'];
+  const sd = shifts.map(s => ({ name:s, ...k.byShift[s] }));
+  const tsm = sd.reduce((s,x)=>s+x.made,0);
+  app.innerHTML = `
+    <div class="shift-grid">
+      ${sd.map(sh => {
+        const cls = sh.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+        const share = tsm>0 ? sh.made/tsm : 0;
+        return `<div class="shift-card ${cls}">
+          <div class="shift-title">Turno ${sh.name}</div>
+          <div class="shift-metric"><span>Metros</span><span>${fmtNum(sh.made)}</span></div>
+          <div class="shift-metric"><span>% del total</span><span>${fmtPct(share)}</span></div>
+          <div class="shift-metric"><span>Órdenes</span><span>${sh.orders}</span></div>
+          <div class="shift-metric"><span>Operarios</span><span>${sh.operatorCount}</span></div>
+          <div class="shift-metric"><span>Horas activas</span><span>${fmtNum(sh.hours)}</span></div>
+          <div class="shift-metric"><span>Rate</span><span>${sh.rate!=null?fmtNum(sh.rate)+' m/h':'—'}</span></div>
+          <div class="shift-metric"><span>Eficiencia</span><span>${sh.efficiency!=null?fmtPct(sh.efficiency):'—'}</span></div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="chart-row">
+      <div class="card"><h3>Producción por turno</h3><canvas id="ch-shift-prod"></canvas></div>
+      <div class="card"><h3>Rate promedio por turno</h3><canvas id="ch-shift-rate"></canvas></div>
+    </div>`;
+  setTimeout(()=>{
+    const colors = ['#fbbf24','#38bdf8','#a78bfa'];
+    state.charts.shiftProd = new Chart(document.getElementById('ch-shift-prod'), {
+      type:'bar', data:{ labels:shifts, datasets:[{label:'Metros', data:sd.map(s=>s.made), backgroundColor:colors, borderRadius:6}]},
+      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    state.charts.shiftRate = new Chart(document.getElementById('ch-shift-rate'), {
+      type:'bar', data:{ labels:shifts, datasets:[{label:'mts/hora', data:sd.map(s=>s.rate||0), backgroundColor:colors, borderRadius:6}]},
+      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+  }, 0);
+}
+
+function renderMaquinas(app, proceso){
+  const k = state.kpis[proceso];
+  const cfg = CONFIG[proceso];
+  const machines = Object.values(k.byMachine).sort((a,b)=>b.made-a.made);
+  app.innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Máquinas</div><div class="kpi-value">${machines.length}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Horas activas</div><div class="kpi-value">${fmtNum(k.totalHours)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Utilización promedio</div><div class="kpi-value">${fmtPct(machines.length ? machines.reduce((s,m)=>s+m.utilization,0)/machines.length : 0)}</div><div class="kpi-sub">Base: ${HORAS_DISPONIBLES_DIA}h/día</div></div>
+      <div class="kpi-card"><div class="kpi-label">Rate global</div><div class="kpi-value">${fmtNum(k.avgRate)} <span style="font-size:14px;color:var(--muted)">m/h</span></div></div>
+    </div>
+    <div class="chart-row">
+      <div class="card"><h3>Utilización por máquina</h3><canvas id="ch-mach-util"></canvas></div>
+      <div class="card"><h3>Rate por máquina (mts/h)</h3><canvas id="ch-mach-rate"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Detalle por máquina</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="tab-mach">
+          <thead><tr>
+            <th data-sort="name">Máquina</th>
+            <th class="num" data-sort="made" data-type="num">Metros</th>
+            <th class="num" data-sort="orders" data-type="num">Órdenes</th>
+            <th class="num" data-sort="hours" data-type="num">Horas activas</th>
+            <th class="num" data-sort="days" data-type="num">Días activos</th>
+            <th class="num" data-sort="util" data-type="num">Utilización</th>
+            <th class="num" data-sort="rate" data-type="num">Rate</th>
+            <th class="num" data-sort="effic" data-type="num">Efic.</th>
+            <th class="num" data-sort="ops" data-type="num">Operarios</th>
+          </tr></thead>
+          <tbody>
+            ${machines.map(m => `<tr data-name="${m.name}" data-made="${m.made}" data-orders="${m.orders}" data-hours="${m.hours}" data-days="${m.days.size}" data-util="${m.utilization}" data-rate="${m.rate||0}" data-effic="${m.efficiency||0}" data-ops="${m.operators.size}">
+              <td>${m.name}</td><td class="num">${fmtNum(m.made)}</td><td class="num">${m.orders}</td>
+              <td class="num">${fmtDec(m.hours)}</td><td class="num">${m.days.size}</td>
+              <td class="num">${fmtPct(m.utilization)}</td>
+              <td class="num">${m.rate!=null?fmtNum(m.rate):'—'}</td>
+              <td class="num">${m.efficiency!=null?fmtPct(m.efficiency):'—'}</td>
+              <td class="num">${m.operators.size}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+  setTimeout(()=>{
+    state.charts.machUtil = new Chart(document.getElementById('ch-mach-util'), {
+      type:'bar', data:{ labels:machines.map(m=>m.name), datasets:[{label:'Utilización %', data:machines.map(m=>m.utilization*100), backgroundColor:cfg.color, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}, scales:{...CHART_DEFAULTS.scales, y:{...CHART_DEFAULTS.scales.y, max:100, ticks:{...CHART_DEFAULTS.scales.y.ticks, callback:(v)=>v+'%'}}}},
+    });
+    state.charts.machRate = new Chart(document.getElementById('ch-mach-rate'), {
+      type:'bar', data:{ labels:machines.map(m=>m.name), datasets:[{label:'mts/hora', data:machines.map(m=>m.rate||0), backgroundColor:cfg.color, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    attachSorting(app);
+  }, 0);
+}
+
+function renderReferencias(app, proceso){
+  const k = state.kpis[proceso];
+  const refs = Object.values(k.byRef).sort((a,b)=>b.made-a.made);
+  const anomalies = k.anomalies;
+  app.innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Referencias</div><div class="kpi-value">${refs.length}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Estilos</div><div class="kpi-value">${k.estilos}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Anomalías</div><div class="kpi-value" style="color:${anomalies.length?'var(--warning)':'var(--success)'}">${anomalies.length}</div></div>
+    </div>
+    <div class="card">
+      <h3>Top 20 referencias</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="tab-ref">
+          <thead><tr>
+            <th data-sort="ref">Referencia</th><th data-sort="styles">Estilos</th>
+            <th class="num" data-sort="made" data-type="num">Metros</th>
+            <th class="num" data-sort="orders" data-type="num">Órdenes</th>
+            <th class="num" data-sort="hours" data-type="num">Horas</th>
+            <th class="num" data-sort="effic" data-type="num">Efic.</th>
+          </tr></thead>
+          <tbody>
+            ${refs.slice(0, 20).map(r => {
+              const eff = r.toMake>0 ? r.made/r.toMake : null;
+              return `<tr data-ref="${r.name}" data-styles="${[...r.styles].join(', ')}" data-made="${r.made}" data-orders="${r.orders}" data-hours="${r.hours}" data-effic="${eff||0}">
+                <td>${r.name}</td><td class="muted">${[...r.styles].join(', ')}</td>
+                <td class="num">${fmtNum(r.made)}</td><td class="num">${r.orders}</td>
+                <td class="num">${fmtDec(r.hours)}</td>
+                <td class="num">${eff!=null?fmtPct(eff):'—'}</td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>⚠️ Anomalías (${anomalies.length})</h3>
+      ${anomalies.length === 0 ? '<p class="muted">No se detectaron anomalías.</p>' :
+        `<div class="anomaly-list">${anomalies.map(a => `<div class="anomaly-item ${a.severidad==='danger'?'danger':''}"><b>${a.tipo}</b> · <span class="muted">${a.detalle}</span></div>`).join('')}</div>`}
+    </div>`;
+  setTimeout(()=>attachSorting(app), 0);
+}
+
+function renderPerdidas(app, proceso){
+  const data = (state.kpis.perdidas[proceso]) || {};
+  const { desde, hasta } = state.filters;
+  const fechas = Object.keys(data).filter(f => { if (desde && f < desde) return false; if (hasta && f > hasta) return false; return true; }).sort();
+  const totalHoras = fechas.reduce((s, f) => s + data[f].causas.reduce((a,c)=>a+c.horas,0), 0);
+  const totalPP = fechas.reduce((s, f) => s + (data[f].resumen.produccionPerdida || 0), 0);
+  const totalPR = fechas.reduce((s, f) => s + (data[f].resumen.produccionReal || 0), 0);
+  const totalPE = fechas.reduce((s, f) => s + (data[f].resumen.produccionEsperada || 0), 0);
+  const causas = {};
+  fechas.forEach(f => data[f].causas.forEach(c => { if (!causas[c.causa]) causas[c.causa] = { causa:c.causa, horas:0, ap:0 }; causas[c.causa].horas += c.horas; causas[c.causa].ap += 1; }));
+  const cs = Object.values(causas).sort((a,b)=>b.horas-a.horas);
+  if (fechas.length === 0) {
+    app.innerHTML = `<div class="warn-card"><strong>Sin datos de tiempos perdidos para el rango seleccionado.</strong>
+      <p>Los PDFs de <code>tiempos_perdidos_*.pdf</code> no están disponibles o están ilegibles.</p>
+      <details class="diag"><summary>Ver diagnóstico</summary>
+      <pre>Filas con tipo_informe=tiempos_perdidos: ${state.pdfs.textos.filter(t=>t.tipo_informe==='tiempos_perdidos').length}
+Filas con calidad=ok: ${state.pdfs.textos.filter(t=>t.tipo_informe==='tiempos_perdidos' && t.calidad==='ok').length}</pre></details></div>`;
+    return;
+  }
+  app.innerHTML = `
+    <div class="info-card">Datos extraídos de <code>tiempos_perdidos_*.pdf</code> para ${fechas.length} fecha(s): ${fechas.map(shortDate).join(', ')}.</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Horas perdidas</div><div class="kpi-value" style="color:var(--danger)">${fmtDec(totalHoras, 2)} h</div></div>
+      <div class="kpi-card"><div class="kpi-label">Producción perdida</div><div class="kpi-value" style="color:var(--warning)">${fmtNum(totalPP)} mts</div></div>
+      <div class="kpi-card"><div class="kpi-label">Producción real</div><div class="kpi-value">${fmtNum(totalPR)} mts</div></div>
+      <div class="kpi-card"><div class="kpi-label">Producción esperada</div><div class="kpi-value">${fmtNum(totalPE)} mts</div><div class="kpi-sub">Cumplimiento: ${fmtPct(totalPE>0 ? totalPR/totalPE : 0)}</div></div>
+    </div>
+    <div class="card">
+      <h3>Causas consolidadas</h3>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Causa</th><th class="num">Horas totales</th><th class="num">Apariciones</th><th class="num">Promedio</th></tr></thead>
+          <tbody>${cs.map(c => `<tr><td><span class="causa-tag">${c.causa}</span></td><td class="num">${fmtDec(c.horas, 2)}</td><td class="num">${c.ap}</td><td class="num">${fmtDec(c.horas / c.ap, 2)}</td></tr>`).join('')}</tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Detalle por día</h3>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Fecha</th><th class="num">Causas</th><th class="num">Horas perdidas</th><th class="num">Prod. esperada</th><th class="num">Prod. real</th><th class="num">Prod. perdida</th><th class="num">Cumpl.</th></tr></thead>
+          <tbody>${fechas.map(f => { const d = data[f]; const hp = d.causas.reduce((a,c)=>a+c.horas,0); const pe = d.resumen.produccionEsperada||0; const pr = d.resumen.produccionReal||0; const pp = d.resumen.produccionPerdida||0;
+            return `<tr><td>${shortDate(f)}</td><td class="num">${d.causas.length}</td><td class="num">${fmtDec(hp, 2)}</td><td class="num">${fmtNum(pe)}</td><td class="num">${fmtNum(pr)}</td><td class="num">${fmtNum(pp)}</td><td class="num">${pe>0?fmtPct(pr/pe):'—'}</td></tr>`;
+          }).join('')}</tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Causas por día</h3>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Fecha</th><th>Máquina</th><th>Causa</th><th class="num">Horas</th><th class="num">% Tiempo</th></tr></thead>
+          <tbody>${fechas.flatMap(f => data[f].causas.map(c => `<tr><td>${shortDate(f)}</td><td>${c.maquina || '—'}</td><td><span class="causa-tag">${c.causa}</span></td><td class="num">${fmtDec(c.horas, 2)}</td><td class="num">${fmtDec(c.porcentaje, 2)}%</td></tr>`)).join('')}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+function renderRevisores(app, proceso) {
+  if (proceso !== 'revision') return;
+  const k = state.kpis.revision2;
+  if (!k || k.totalPiezas === 0) {
+    app.innerHTML = `<div class="warn-card"><strong>Sin datos del extractor revision2.</strong>
+      <p>Verifica que el archivo de revisadores esté listado en <code>data/manifest.json</code> bajo <code>revision2</code>.</p></div>`;
+    return;
+  }
+  const revs = Object.values(k.revisadores).sort((a,b)=>b.mts-a.mts);
+  const tels = Object.values(k.telares).sort((a,b)=>b.mts-a.mts);
+  const turns = Object.values(k.turnos).sort((a,b)=>b.mts-a.mts);
+  app.innerHTML = `
+    <div class="info-card">Datos del extractor <code>revision2</code>. ${k.totalPiezas} piezas revisadas en ${revs.length} revisadores y ${tels.length} telares.</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Piezas revisadas</div><div class="kpi-value">${fmtNum(k.totalPiezas)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Metros revisados</div><div class="kpi-value">${fmtNum(k.totalMts)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Tiempo inspección</div><div class="kpi-value">${fmtDec(k.totalHoras, 1)} h</div></div>
+      <div class="kpi-card"><div class="kpi-label">Rendimiento promedio</div><div class="kpi-value">${fmtNum(k.rate)} <span style="font-size:14px;color:var(--muted)">mts/h</span></div><div class="kpi-sub">${fmtNum(k.totalMts / (k.totalPiezas||1))} mts/pieza</div></div>
+    </div>
+    <div class="chart-row">
+      <div class="card"><h3>Top revisadores por metros</h3><canvas id="ch-rv-made"></canvas></div>
+      <div class="card"><h3>Top revisadores por rendimiento (mts/h)</h3><canvas id="ch-rv-rate"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Revisadores</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="tab-rv">
+          <thead><tr>
+            <th data-sort="name">Revisador</th><th data-sort="turno">Turno pred.</th>
+            <th class="num" data-sort="piezas" data-type="num">Piezas</th>
+            <th class="num" data-sort="mts" data-type="num">Metros</th>
+            <th class="num" data-sort="horas" data-type="num">Horas</th>
+            <th class="num" data-sort="rate" data-type="num">Rend. (m/h)</th>
+            <th class="num" data-sort="mpp" data-type="num">Mts/pieza</th>
+            <th class="num" data-sort="hpp" data-type="num">Horas/pieza</th>
+          </tr></thead>
+          <tbody>${revs.map(r => `<tr data-name="${r.name}" data-turno="${r.predominantShift}" data-piezas="${r.piezas}" data-mts="${r.mts}" data-horas="${r.horas}" data-rate="${r.rate||0}" data-mpp="${r.mtsPerPieza}" data-hpp="${r.horasPerPieza}">
+            <td>${r.name}</td><td>${r.predominantShift}</td>
+            <td class="num">${r.piezas}</td><td class="num">${fmtNum(r.mts)}</td>
+            <td class="num">${fmtDec(r.horas)}</td>
+            <td class="num">${r.rate!=null?fmtNum(r.rate):'—'}</td>
+            <td class="num">${fmtNum(r.mtsPerPieza)}</td>
+            <td class="num">${fmtDec(r.horasPerPieza, 2)}</td>
+          </tr>`).join('')}</tbody>
+        </table>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="card">
+        <h3>Telares</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Telar</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Horas insp.</th></tr></thead>
+            <tbody>${tels.slice(0, 15).map(t => `<tr><td>${t.name}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtDec(t.horas, 1)}</td></tr>`).join('')}</tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Turnos</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Turno</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Rend. (m/h)</th></tr></thead>
+            <tbody>${turns.map(t => { const rate = t.horas>=0.1 ? t.mts/t.horas : 0; return `<tr><td>${t.name}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtNum(rate)}</td></tr>`; }).join('')}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>`;
+  setTimeout(()=>{
+    const c = CONFIG.revision.color;
+    const top10 = revs.slice(0, 10);
+    state.charts.rvMade = new Chart(document.getElementById('ch-rv-made'), {
+      type:'bar', data:{ labels:top10.map(r=>r.name.split(' ')[0]), datasets:[{label:'Metros', data:top10.map(r=>r.mts), backgroundColor:c, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, indexAxis:'y', plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    const rateTop = revs.filter(r=>r.rate!=null).sort((a,b)=>b.rate-a.rate).slice(0, 10);
+    state.charts.rvRate = new Chart(document.getElementById('ch-rv-rate'), {
+      type:'bar', data:{ labels:rateTop.map(r=>r.name.split(' ')[0]), datasets:[{label:'mts/hora', data:rateTop.map(r=>r.rate), backgroundColor:c, borderRadius:4}]},
+      options:{...CHART_DEFAULTS, indexAxis:'y', plugins:{...CHART_DEFAULTS.plugins, legend:{display:false}}},
+    });
+    attachSorting(app);
+  }, 0);
+}
+
+function renderCalidad(app, proceso){
+  if (proceso !== 'revision') {
+    app.innerHTML = `<div class="warn-card">La calidad se extrae del informe de producción de Revisión.</div>`;
+    return;
+  }
+  const data = (state.kpis.calidad && state.kpis.calidad.revision) || {};
+  const { desde, hasta } = state.filters;
+  const fechas = Object.keys(data).filter(f => { if (desde && f < desde) return false; if (hasta && f > hasta) return false; return true; }).sort();
+
+  if (fechas.length === 0) {
+    const rep = state.calidad.reporte || [];
+    const okCount = rep.filter(r => String(r.calidad_archivo || '').trim() === 'ok').length;
+    const ilegibles = rep.filter(r => String(r.calidad_archivo || '').trim() === 'ilegible').length;
+    const sinArchivo = state.calidad.porReferencia.length === 0;
+    app.innerHTML = `<div class="warn-card">
+      <strong>Sin datos de calidad para el rango seleccionado.</strong>
+      ${sinArchivo ? `
+        <p>No se cargó <code>data/calidad_por_referencia.csv</code>.</p>
+        <p>Verifica que esté listado en <code>data/manifest.json</code> y que el archivo exista.</p>
+      ` : `
+        <p>Hay <b>${state.calidad.porReferencia.length}</b> filas cargadas del CSV, pero ninguna cae en el rango seleccionado o no tienen <code>total &gt; 0</code>.</p>
+        <details class="diag" open><summary>Ver diagnóstico</summary>
+        <pre>Archivo CSV cargado: ${state.calidad.porReferencia.length} filas
+PDFs reportados:
+  · Legibles (ok): ${okCount}
+  · Ilegibles: ${ilegibles}
+  · Total reporte: ${rep.length}
+
+Fechas con datos en el CSV:
+${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha || '').trim()))].sort().join(', ') || '—'}
+        </pre></details>
+      `}
+    </div>`;
+    return;
+  }
+
+  const agg = {};
+  let t1 = 0, t2 = 0, tg = 0, t6 = 0, tt = 0;
+  for (const f of fechas) {
+    for (const r of Object.values(data[f].referencias || {})) {
+      if (!agg[r.referencia]) agg[r.referencia] = { referencia:r.referencia, estilo:r.estilo, primera:0, gtm:0, segunda:0, sexta:0, total:0, fechas:new Set() };
+      const a = agg[r.referencia];
+      a.primera += r.primera; a.gtm += r.gtm; a.segunda += r.segunda; a.sexta += r.sexta; a.total += r.total;
+      a.fechas.add(f);
+    }
+  }
+  const lotsByRef = {};
+  for (const row of state.filtered.revision || []) {
+    if (row.Referencia && row.Lote && row.Lote !== '0') {
+      if (!lotsByRef[row.Referencia]) lotsByRef[row.Referencia] = new Set();
+      lotsByRef[row.Referencia].add(row.Lote);
+    }
+  }
+  const list = Object.values(agg).map(r => {
+    const sum = r.primera + r.gtm + r.segunda + r.sexta;
+    const tot = r.total || sum;
+    return { ...r, total: tot, pct1ra: tot>0 ? r.primera/tot : 0, fechasCount: r.fechas.size, lotes: lotsByRef[r.referencia] ? [...lotsByRef[r.referencia]] : [] };
+  }).sort((a,b)=>b.total-a.total);
+  list.forEach(r => { t1 += r.primera; tg += r.gtm; t2 += r.segunda; t6 += r.sexta; tt += r.total; });
+  const pct = tt>0 ? t1/tt : 0;
+  const defectos = tt>0 ? (tg + t2 + t6)/tt : 0;
+  app.innerHTML = `
+    <div class="info-card">Datos de calidad desde <code>data/calidad_por_referencia.csv</code>. ${fechas.length} fecha(s): ${fechas.map(shortDate).join(', ')}.</div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">% 1ra calidad</div><div class="kpi-value" style="color:var(--success)">${fmtPct(pct)}</div><div class="progress"><div class="progress-bar" style="width:${pct*100}%;background:var(--success)"></div></div></div>
+      <div class="kpi-card"><div class="kpi-label">Tasa de defectos</div><div class="kpi-value" style="color:var(--danger)">${fmtPct(defectos)}</div><div class="kpi-sub">2da + 6ta + GTM</div></div>
+      <div class="kpi-card"><div class="kpi-label">Metros 1ra</div><div class="kpi-value">${fmtNum(t1)}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Total revisado</div><div class="kpi-value">${fmtNum(tt)}</div><div class="kpi-sub">${list.length} referencias</div></div>
+    </div>
+    <div class="card">
+      <h3>Desglose global</h3>
+      <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
+        <div class="kpi-card"><div class="kpi-label"><span class="q-badge q-1ra">1ra</span></div><div class="kpi-value">${fmtNum(t1)}</div><div class="kpi-sub">${fmtPct(tt>0?t1/tt:0)}</div></div>
+        <div class="kpi-card"><div class="kpi-label"><span class="q-badge q-2da">2da</span></div><div class="kpi-value">${fmtNum(t2)}</div><div class="kpi-sub">${fmtPct(tt>0?t2/tt:0)}</div></div>
+        <div class="kpi-card"><div class="kpi-label"><span class="q-badge q-gtm">GTM</span></div><div class="kpi-value">${fmtNum(tg)}</div><div class="kpi-sub">${fmtPct(tt>0?tg/tt:0)}</div></div>
+        <div class="kpi-card"><div class="kpi-label"><span class="q-badge q-6ta">6ta</span></div><div class="kpi-value">${fmtNum(t6)}</div><div class="kpi-sub">${fmtPct(tt>0?t6/tt:0)}</div></div>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="card"><h3>% 1ra calidad por día</h3><canvas id="ch-cal-evol"></canvas></div>
+      <div class="card"><h3>Distribución global</h3><canvas id="ch-cal-dist"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Calidad por referencia y lotes</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="tab-cal">
+          <thead><tr>
+            <th data-sort="ref">Referencia</th><th data-sort="estilo">Estilo</th><th data-sort="lotes">Lotes</th>
+            <th class="num" data-sort="primera" data-type="num"><span class="q-badge q-1ra">1ra</span></th>
+            <th class="num" data-sort="segunda" data-type="num"><span class="q-badge q-2da">2da</span></th>
+            <th class="num" data-sort="gtm" data-type="num"><span class="q-badge q-gtm">GTM</span></th>
+            <th class="num" data-sort="sexta" data-type="num"><span class="q-badge q-6ta">6ta</span></th>
+            <th class="num" data-sort="total" data-type="num">Total</th>
+            <th class="num" data-sort="pct1ra" data-type="num">% 1ra</th>
+            <th class="num" data-sort="fechas" data-type="num">Días</th>
+          </tr></thead>
+          <tbody>${list.map(r => {
+            const cls = r.pct1ra >= 0.90 ? 'good' : (r.pct1ra < 0.60 ? 'bad' : 'warn');
+            return `<tr data-ref="${r.referencia}" data-estilo="${r.estilo}" data-lotes="${r.lotes.join(', ')}" data-primera="${r.primera}" data-segunda="${r.segunda}" data-gtm="${r.gtm}" data-sexta="${r.sexta}" data-total="${r.total}" data-pct1ra="${r.pct1ra}" data-fechas="${r.fechasCount}">
+              <td>${r.referencia}</td><td>${r.estilo}</td>
+              <td class="muted" style="max-width:220px;font-size:11px">${r.lotes.join(', ') || '—'}</td>
+              <td class="num">${fmtNum(r.primera)}</td><td class="num">${fmtNum(r.segunda)}</td>
+              <td class="num">${fmtNum(r.gtm)}</td><td class="num">${fmtNum(r.sexta)}</td>
+              <td class="num">${fmtNum(r.total)}</td>
+              <td class="num ${cls}">${fmtPct(r.pct1ra)}</td>
+              <td class="num">${r.fechasCount}</td>
+            </tr>`;
+          }).join('')}</tbody>
+        </table>
+      </div>
+    </div>`;
+
+  setTimeout(()=>{
+    attachSorting(app);
+
+    const byDay = {};
+    for (const f of fechas) {
+      const refsDia = Object.values(data[f].referencias || {});
+      let p = 0, t = 0;
+      refsDia.forEach(r => { p += r.primera; t += r.total; });
+      byDay[f] = { primera: p, total: t };
+    }
+    const dias = Object.keys(byDay).sort();
+    state.charts.calEvol = new Chart(document.getElementById('ch-cal-evol'), {
+      type: 'line',
+      data: {
+        labels: dias.map(shortDate),
+        datasets: [
+          { label: '% 1ra', data: dias.map(d => byDay[d].total>0 ? (byDay[d].primera/byDay[d].total)*100 : 0),
+            borderColor:'#4ade80', backgroundColor:'rgba(74,222,128,.15)', fill:true, tension:0.3, pointRadius:4 },
+          { label:'Meta 90%', data: dias.map(()=>90),
+            borderColor:'rgba(139,155,180,.4)', borderDash:[5,5], pointRadius:0, fill:false },
+        ],
+      },
+      options: {...CHART_DEFAULTS, scales:{...CHART_DEFAULTS.scales, y:{...CHART_DEFAULTS.scales.y, min:0, max:100, ticks:{...CHART_DEFAULTS.scales.y.ticks, callback:v=>v+'%'}}}},
+    });
+
+    state.charts.calDist = new Chart(document.getElementById('ch-cal-dist'), {
+      type: 'doughnut',
+      data: {
+        labels: ['1ra','2da','GTM','6ta'],
+        datasets: [{ data:[t1,t2,tg,t6], backgroundColor:['#4ade80','#facc15','#8b9bb4','#f87171'], borderColor:'#111a2b', borderWidth:2 }],
+      },
+      options: {...CHART_DEFAULTS, plugins:{...CHART_DEFAULTS.plugins, legend:{position:'right', labels:{color:'#e2e8f0', font:{size:12}, padding:12}}}, scales:{}},
+    });
+  }, 0);
+}
+
+// ============================================================
+// ROUTING + FILTROS
+// ============================================================
+function render(){
+  Object.values(state.charts).forEach(c => c.destroy());
+  state.charts = {};
+  const app = document.getElementById('app');
+  if (state.view === 'global') renderGlobal(app);
+  else renderProcess(app, state.view);
+}
+
+function setView(view){
+  state.view = view;
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  render();
+}
+
+function applyFilterAndRender() {
+  recomputeAllKPIs();
+  const s = document.getElementById('f-status');
+  s.textContent = (state.filters.desde || state.filters.hasta) ? `Filtrado ${state.filters.desde || '…'} → ${state.filters.hasta || '…'}` : 'Sin filtro · mostrando todo';
+  render();
+}
+
+function setupFilterBar() {
+  const fd = document.getElementById('f-desde');
+  const fh = document.getElementById('f-hasta');
+  const fr = document.getElementById('f-reset');
+  const fechas = new Set();
+  for (const p of ['corte','revision','sanforizado']) {
+    for (const row of state.raw[p]) if (row.fecha) fechas.add(row.fecha);
+  }
+  for (const row of state.raw.revision2) if (row.fecha_filtro) fechas.add(row.fecha_filtro);
+  for (const row of state.calidad.porReferencia) if (row.fecha) fechas.add(String(row.fecha).trim());
+  const sorted = [...fechas].sort();
+  if (sorted.length > 0) {
+    fd.min = fh.min = yyyymmddToInput(sorted[0]);
+    fd.max = fh.max = yyyymmddToInput(sorted[sorted.length-1]);
+  }
+  const onChange = () => {
+    state.filters.desde = inputToYYYYMMDD(fd.value);
+    state.filters.hasta = inputToYYYYMMDD(fh.value);
+    if (state.filters.desde && state.filters.hasta && state.filters.desde > state.filters.hasta) {
+      const t = state.filters.desde; state.filters.desde = state.filters.hasta; state.filters.hasta = t;
+      fd.value = yyyymmddToInput(state.filters.desde);
+      fh.value = yyyymmddToInput(state.filters.hasta);
+    }
+    applyFilterAndRender();
+  };
+  fd.addEventListener('change', onChange);
+  fh.addEventListener('change', onChange);
+  fr.addEventListener('click', () => { fd.value=''; fh.value=''; state.filters.desde=''; state.filters.hasta=''; applyFilterAndRender(); });
+}
+
+async function init(){
+  const status = document.getElementById('status');
+  status.textContent = 'Cargando datos…';
+  try {
+    await loadAllData();
+    recomputeAllKPIs();
+    const total = Object.values(state.raw).reduce((s,r)=>s+r.length,0);
+    status.textContent = `${fmtNum(total)} registros · ${state.calidad.porReferencia.length} calidad`;
+  } catch(err) {
+    console.error(err);
+    status.textContent = '❌ Error de carga';
+    return;
+  }
+  document.getElementById('main-nav').addEventListener('click', (e)=>{
+    const btn = e.target.closest('.nav-btn');
+    if (btn) setView(btn.dataset.view);
+  });
+  setupFilterBar();
+  render();
+}
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
