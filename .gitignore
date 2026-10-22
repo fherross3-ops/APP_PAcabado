@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+*.pdf
+!data/*.pdf
+.claude/
+.vscode/
+ABRIR_DASHBOARD.bat
