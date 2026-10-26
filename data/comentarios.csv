@@ -1,1 +1,3 @@
 
+id,fecha,proceso,categoria,titulo,descripcion,lote,responsable,estado,prioridad,creado_por,creado_en
+1,2026-10-23,general,otro,"Archivo creado","Registro inicial del sistema de comentarios. Puedes eliminar esta fila.",,Sistema,cerrado,baja,ADMIN,2026-10-23 00:00
