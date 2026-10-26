@@ -11,7 +11,7 @@
 *{box-sizing:border-box}html,body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}body{display:flex;flex-direction:column}
 .app-header{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:linear-gradient(180deg,#0f172a,#0b1220);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;flex-wrap:wrap;gap:12px}
 .brand h1{margin:0;font-size:22px;letter-spacing:-.5px}.brand h1 span{color:var(--accent)}.brand p{margin:2px 0 0;font-size:12px;color:var(--muted)}
-.main-nav{display:flex;gap:8px;background:var(--panel);padding:4px;border-radius:10px;border:1px solid var(--border)}
+.main-nav{display:flex;gap:8px;background:var(--panel);padding:4px;border-radius:10px;border:1px solid var(--border);flex-wrap:wrap}
 .nav-btn{background:transparent;border:none;color:var(--muted);padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500}
 .nav-btn:hover{color:var(--text)}.nav-btn.active{background:var(--panel-2);color:var(--accent)}
 .filter-bar{display:flex;align-items:center;gap:12px;padding:10px 32px;background:var(--panel);border-bottom:1px solid var(--border);flex-wrap:wrap;font-size:12px}
@@ -42,7 +42,7 @@ main{flex:1;padding:24px 32px;max-width:1400px;width:100%;margin:0 auto}
 .spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .app-footer{display:flex;justify-content:space-between;padding:12px 32px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);background:var(--panel)}
-.error-card{background:rgba(248,113,113,.1);border:1px solid var(--danger);color:var(--danger);padding:16px;border-radius:var(--radius);margin-bottom:16px}
+.error-card{background:rgba(248,113,113,.1);border:1px solid var(--danger);color:var(--text);padding:16px;border-radius:var(--radius);margin-bottom:16px;font-size:13px;line-height:1.6}
 .info-card{background:rgba(56,189,248,.08);border:1px solid var(--accent);color:var(--text);padding:16px;border-radius:var(--radius);margin-bottom:16px;font-size:13px;line-height:1.6}
 .warn-card{background:rgba(250,204,21,.08);border:1px solid var(--warning);color:var(--text);padding:16px;border-radius:var(--radius);margin-bottom:16px;font-size:13px;line-height:1.6}
 .warn-card code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px;font-size:12px}
@@ -74,7 +74,6 @@ details.diag{margin-top:12px;background:var(--panel-2);border-radius:6px;padding
 details.diag summary{cursor:pointer;color:var(--accent);font-weight:600}
 details.diag pre{background:rgba(0,0,0,.3);padding:8px;border-radius:4px;overflow-x:auto;font-size:11px;margin:8px 0;color:var(--text);max-height:300px}
 
-/* Objetivo editable */
 .objetivo-edit{display:flex;align-items:center;gap:8px;background:var(--panel);padding:8px 16px;border-radius:10px;border:1px solid var(--border)}
 .objetivo-edit label{font-size:12px;color:var(--muted);font-weight:500}
 .objetivo-edit input{background:var(--panel-2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:14px;font-family:inherit;font-weight:600;width:130px;text-align:right;font-variant-numeric:tabular-nums}
@@ -83,7 +82,6 @@ details.diag pre{background:rgba(0,0,0,.3);padding:8px;border-radius:4px;overflo
 .objetivo-edit button{background:var(--accent);color:var(--bg);border:none;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer}
 .objetivo-edit button:hover{filter:brightness(1.1)}
 
-/* Pipeline cadena */
 .chain-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;padding:16px 0}
 @media (max-width:1000px){.chain-flow{grid-template-columns:1fr}}
 .chain-stage{background:var(--panel-2);border:2px solid var(--border);border-radius:var(--radius);padding:18px 16px;display:flex;flex-direction:column;gap:4px}
@@ -104,23 +102,60 @@ details.diag pre{background:rgba(0,0,0,.3);padding:8px;border-radius:4px;overflo
 .chain-gap-value{font-size:20px;font-weight:800;margin:6px 0;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
 .chain-gap-sub{font-size:10px;color:var(--muted);line-height:1.3}
 @media (max-width:1000px){.chain-gap{min-width:auto}}
+
+.btn-primary{background:var(--accent);color:var(--bg);border:none;border-radius:6px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn-primary:hover{filter:brightness(1.1)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 16px;font-size:13px;cursor:pointer;font-family:inherit}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.form-input,.form-select,.form-textarea{background:var(--panel-2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:13px;font-family:inherit;width:100%;box-sizing:border-box}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent)}
+.form-textarea{resize:vertical;min-height:60px}
+.form-label{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;font-weight:600}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media (max-width:700px){.form-row{grid-template-columns:1fr}}
+.cfg-input{background:var(--panel-2);color:var(--text);border:1px solid transparent;border-radius:4px;padding:4px 6px;font-size:12px;font-family:inherit}
+.cfg-input:hover{border-color:var(--border)}
+.cfg-input:focus{outline:none;border-color:var(--accent);background:var(--bg)}
+
+.comment-card{background:var(--panel-2);border-left:3px solid var(--muted);border-radius:6px;padding:12px 14px;margin-bottom:8px}
+.comment-card.prio-baja{border-left-color:var(--muted)}
+.comment-card.prio-media{border-left-color:var(--accent)}
+.comment-card.prio-alta{border-left-color:var(--warning)}
+.comment-card.prio-critica{border-left-color:var(--danger)}
+.comment-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px}
+.comment-title{font-weight:600;font-size:13px}
+.comment-meta{font-size:11px;color:var(--muted);margin-top:2px}
+.comment-body{font-size:12px;color:var(--text);margin-top:6px;line-height:1.5}
+.comment-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.tag{font-size:10px;padding:2px 6px;border-radius:3px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.tag-proceso{background:rgba(56,189,248,.15);color:#38bdf8}
+.tag-estado-abierto{background:rgba(250,204,21,.15);color:#facc15}
+.tag-estado-en_proceso{background:rgba(56,189,248,.15);color:#38bdf8}
+.tag-estado-cerrado{background:rgba(74,222,128,.15);color:#4ade80}
+.tag-prioridad-baja{background:rgba(139,155,180,.15);color:#8b9bb4}
+.tag-prioridad-media{background:rgba(56,189,248,.15);color:#38bdf8}
+.tag-prioridad-alta{background:rgba(250,204,21,.15);color:#facc15}
+.tag-prioridad-critica{background:rgba(248,113,113,.15);color:#f87171}
 </style>
 </head>
 <body>
 <header class="app-header">
   <div class="brand">
     <h1>Jeantex <span>SISGO</span></h1>
-    <p>Dashboard de Producción · Corte · Revisión · Sanforizado</p>
+    <p>Dashboard de Producción</p>
   </div>
   <nav class="main-nav" id="main-nav">
     <button class="nav-btn active" data-view="global">Global</button>
     <button class="nav-btn" data-view="corte">Corte</button>
     <button class="nav-btn" data-view="revision">Revisión</button>
     <button class="nav-btn" data-view="sanforizado">Sanforizado</button>
+    <button class="nav-btn" data-view="comentarios">Comentarios</button>
+    <button class="nav-btn" data-view="configuracion">Configuración</button>
   </nav>
 </header>
 
-<div class="filter-bar">
+<div class="filter-bar" id="filter-bar">
   <label for="f-desde">Desde</label>
   <input type="date" id="f-desde">
   <label for="f-hasta">Hasta</label>
@@ -139,9 +174,6 @@ details.diag pre{background:rgba(0,0,0,.3);padding:8px;border-radius:4px;overflo
 </footer>
 
 <script>
-// ============================================================
-// CONFIGURACIÓN
-// ============================================================
 const CONFIG = {
   corte:       { label:'Corte',       color:'#38bdf8', toMake:'Metros a Cortar',    made:'Metros Producidos', machine:'Maquina', person:'Persona', ref:'Referencia', style:'Estilo', order:'Codigo Produccion' },
   revision:    { label:'Revisión',    color:'#a78bfa', toMake:'Metros a Revisar',   made:'Metros Producidos', machine:'Maquina', person:'Persona', ref:'Referencia', style:'Estilo', order:'Codigo Produccion' },
@@ -154,6 +186,7 @@ const MANIFEST_PATH = `${DATA_DIR}/manifest.json`;
 let DATA_MANIFEST   = { corte: [], revision: [], sanforizado: [], revision2: [] };
 let CALIDAD_MANIFEST = { porReferencia: [], porTurno: [], reporte: [] };
 let PDF_MANIFEST    = { textos: [], tablas: [] };
+let META_MANIFEST   = { config: [], comentarios: [] };
 
 const SUBVIEWS = [
   { id: 'resumen',     label: 'Resumen',             processes: ['corte','revision','sanforizado'] },
@@ -174,6 +207,10 @@ const state = {
   filtered: { corte:[], revision:[], sanforizado:[], revision2:[] },
   pdfs: { textos: [], tablas: [] },
   calidad: { porReferencia: [], porTurno: [], reporte: [] },
+  config: {},           // mapa clave -> valor
+  configRaw: [],        // filas completas del CSV
+  comentarios: [],
+  miNombre: '',
   kpis: {},
   view: 'global',
   subview: { corte:'resumen', revision:'resumen', sanforizado:'resumen' },
@@ -182,14 +219,15 @@ const state = {
   charts: {},
 };
 
-// ============================================================
-// UTILS
-// ============================================================
 const toNum = (v) => { const n = parseFloat(String(v??'').replace(/[^\d.\-]/g,'')); return isNaN(n)?0:n; };
 const fmtNum = (n) => new Intl.NumberFormat('es-VE').format(Math.round(n||0));
 const fmtDec = (n, d=1) => (n==null||isNaN(n))?'—':Number(n).toFixed(d);
 const fmtPct = (n) => ((n||0)*100).toFixed(1)+'%';
 const shortDate = (f) => (f&&f.length===8)?`${f.slice(6,8)}/${f.slice(4,6)}`:(f||'?');
+
+function escapeHtml(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
 
 function parseDateTime(fechaStr, horaStr) {
   if (!fechaStr || !horaStr) return null;
@@ -239,9 +277,16 @@ function filtrarPorFecha(rows, desde, hasta) {
   });
 }
 
-// ============================================================
-// CARGA
-// ============================================================
+function getAllLotes() {
+  const lotes = new Set();
+  for (const p of ['corte','revision','sanforizado']) {
+    for (const r of state.raw[p] || []) {
+      if (r.Lote && r.Lote !== '0' && String(r.Lote).trim() !== '') lotes.add(String(r.Lote).trim());
+    }
+  }
+  return [...lotes].sort();
+}
+
 function loadCSV(path){
   return new Promise((resolve,reject)=>{
     Papa.parse(path,{
@@ -266,10 +311,9 @@ async function loadManifest() {
   CALIDAD_MANIFEST.reporte       = pref(m.reporte_extraccion ? [m.reporte_extraccion] : []);
   PDF_MANIFEST.textos            = pref(m.todas_texto_lineas ? [m.todas_texto_lineas] : []);
   PDF_MANIFEST.tablas            = pref(m.todas_tablas_celdas ? [m.todas_tablas_celdas] : []);
-  const saved = localStorage.getItem('sisgo_objetivo');
-  if (saved) { const num = parseFloat(saved); if (!isNaN(num) && num > 0) state.objetivo = num; }
-  else if (m.objetivo_mensual) { const num = parseFloat(m.objetivo_mensual); if (!isNaN(num) && num > 0) state.objetivo = num; }
-  console.log('📋 Manifest cargado. Objetivo:', state.objetivo);
+  META_MANIFEST.config           = pref(m.config ? [m.config] : []);
+  META_MANIFEST.comentarios      = pref(m.comentarios ? [m.comentarios] : []);
+  console.log('📋 Manifest cargado');
 }
 
 async function loadAllData(){
@@ -278,9 +322,8 @@ async function loadAllData(){
     document.getElementById('app').innerHTML = `
       <section class="view"><h2>⚠️ No se encontró el manifest</h2>
       <div class="error-card">
-        <strong>Error:</strong> ${err.message}
+        <strong>Error:</strong> ${escapeHtml(err.message)}
         <p>Verifica que exista <code>data/manifest.json</code> junto a <code>index.html</code>.</p>
-        <p>Si estás en local, usa <code>python -m http.server 8000</code> y abre por <code>http://localhost:8000</code>.</p>
       </div></section>`;
     throw new Error('Falta manifest.json');
   }
@@ -306,27 +349,63 @@ async function loadAllData(){
     catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
   }
   for (const f of PDF_MANIFEST.textos) {
-    try { const rows = await loadCSV(f); state.pdfs.textos.push(...rows); console.log(`✅ textos: ${rows.length}`); }
+    try { const rows = await loadCSV(f); state.pdfs.textos.push(...rows); }
     catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
   }
   for (const f of PDF_MANIFEST.tablas) {
-    try { const rows = await loadCSV(f); state.pdfs.tablas.push(...rows); console.log(`✅ tablas: ${rows.length}`); }
+    try { const rows = await loadCSV(f); state.pdfs.tablas.push(...rows); }
     catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
   }
+
+  // CONFIG
+  for (const f of META_MANIFEST.config) {
+    try {
+      const rows = await loadCSV(f);
+      state.configRaw = rows.map(r => ({
+        clave: String(r.clave || '').trim(),
+        valor: String(r.valor || '').trim(),
+        unidad: String(r.unidad || '').trim(),
+        descripcion: String(r.descripcion || '').trim(),
+        actualizado: String(r.actualizado || '').trim(),
+      })).filter(r => r.clave);
+      state.config = {};
+      state.configRaw.forEach(r => { state.config[r.clave] = r.valor; });
+      console.log(`✅ Config: ${state.configRaw.length} variables`);
+    } catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+  }
+
+  // COMENTARIOS
+  for (const f of META_MANIFEST.comentarios) {
+    try {
+      const rows = await loadCSV(f);
+      state.comentarios = rows.filter(r => r.id && String(r.id).trim() !== '');
+      console.log(`✅ Comentarios: ${state.comentarios.length}`);
+    } catch(err){ console.warn(`⚠️ ${f}:`, err.message); }
+  }
+
+  // Nombre guardado
+  state.miNombre = localStorage.getItem('sisgo_nombre') || '';
+
+  // Objetivo: config > localStorage > default
+  if (state.config.objetivo_mensual) {
+    const n = parseFloat(state.config.objetivo_mensual);
+    if (!isNaN(n) && n > 0) state.objetivo = n;
+  } else {
+    const saved = localStorage.getItem('sisgo_objetivo');
+    if (saved) { const n = parseFloat(saved); if (!isNaN(n) && n > 0) state.objetivo = n; }
+  }
+
   if (errores.length) {
     document.getElementById('app').innerHTML = `
       <section class="view"><h2>⚠️ Diagnóstico</h2>
       <div class="error-card"><strong>${errores.length} archivo(s) con error:</strong>
       <ul style="margin-top:8px;line-height:1.7">
-      ${errores.map(e => `<li><b>${e.proceso}</b> → <code>${e.archivo}</code><br><small>${e.mensaje}</small></li>`).join('')}
+      ${errores.map(e => `<li><b>${e.proceso}</b> → <code>${escapeHtml(e.archivo)}</code><br><small>${escapeHtml(e.mensaje)}</small></li>`).join('')}
       </ul></div></section>`;
     throw new Error('Fallo de carga');
   }
 }
 
-// ============================================================
-// KPI POR PROCESO
-// ============================================================
 function computeProcessKPIs(rows, proceso){
   const cfg = CONFIG[proceso];
   let totalToMake=0, totalMade=0, totalHours=0;
@@ -335,7 +414,6 @@ function computeProcessKPIs(rows, proceso){
   const anomalies = [];
   const SHIFTS = ['Mañana','Tarde','Noche'];
   SHIFTS.forEach(s => byShift[s] = { made:0, toMake:0, orders:0, hours:0, operators:new Set(), machines:new Set() });
-
   for (const row of rows){
     const made = toNum(row[cfg.made]);
     const toMake = toNum(row[cfg.toMake]);
@@ -464,69 +542,39 @@ function computeRevision2KPIs(rows) {
     revisadores, telares, turnos, referencias };
 }
 
-// ============================================================
-// GLOBAL: cadena Sanforizado → Revisión → Corte
-// ============================================================
 function computeGlobalKPIs(kpis) {
-  const sanf = kpis.sanforizado;
-  const rev = kpis.revision;
-  const corte = kpis.corte;
-
+  const sanf = kpis.sanforizado, rev = kpis.revision, corte = kpis.corte;
   const objetivo = state.objetivo;
-  const sanforizadoM = sanf.totalMade;
-  const revisionM = rev.totalMade;
-  const corteM = corte.totalMade;
-
-  // Esperado por etapa (cadena secuencial)
-  const esperadoSanf = objetivo;        // Sanforizado se mide contra objetivo
-  const esperadoRev = sanforizadoM;     // Revisión se mide contra lo que salió de Sanforizado
-  const esperadoCorte = revisionM;      // Corte se mide contra lo que salió de Revisión
-
-  // Diferencia por procesar (inventario entre etapas)
-  const diffSanfRev = sanforizadoM - revisionM;
-  const diffRevCorte = revisionM - corteM;
-
-  // Cumplimiento vs objetivo (para las 3 etapas)
+  const sanforizadoM = sanf.totalMade, revisionM = rev.totalMade, corteM = corte.totalMade;
+  const esperadoSanf = objetivo, esperadoRev = sanforizadoM, esperadoCorte = revisionM;
+  const diffSanfRev = sanforizadoM - revisionM, diffRevCorte = revisionM - corteM;
   const cumplSanf = objetivo > 0 ? sanforizadoM / objetivo : 0;
   const cumplRev = objetivo > 0 ? revisionM / objetivo : 0;
   const cumplCorte = objetivo > 0 ? corteM / objetivo : 0;
-
-  // Eficiencia interna: qué % de lo que le llegó procesó
   const eficInternaSanf = esperadoSanf > 0 ? sanforizadoM / esperadoSanf : 0;
   const eficInternaRev = esperadoRev > 0 ? revisionM / esperadoRev : 0;
   const eficInternaCorte = esperadoCorte > 0 ? corteM / esperadoCorte : 0;
-
-  // Pendiente para llegar al objetivo (con la salida final de Corte)
   const pendienteObjetivo = objetivo - corteM;
-
   const refsSanf = new Set(Object.keys(sanf.byRef));
   const refsRev = new Set(Object.keys(rev.byRef));
   const refsCorte = new Set(Object.keys(corte.byRef));
   const enLas3 = [...refsSanf].filter(r => refsRev.has(r) && refsCorte.has(r)).length;
-
-  // Días con datos
   const allDays = new Set();
   for (const p of ['corte','revision','sanforizado']) {
     for (const row of state.filtered[p]) if (row.fecha) allDays.add(row.fecha);
   }
-
   return {
-    objetivo,
-    sanforizadoM, revisionM, corteM,
+    objetivo, sanforizadoM, revisionM, corteM,
     esperadoSanf, esperadoRev, esperadoCorte,
     diffSanfRev, diffRevCorte,
     cumplSanf, cumplRev, cumplCorte,
     eficInternaSanf, eficInternaRev, eficInternaCorte,
     pendienteObjetivo,
     refsSanf: refsSanf.size, refsRev: refsRev.size, refsCorte: refsCorte.size,
-    enLas3, diasConDatos: allDays.size,
-    sanf, rev, corte,
+    enLas3, diasConDatos: allDays.size, sanf, rev, corte,
   };
 }
 
-// ============================================================
-// TIEMPOS PERDIDOS + CALIDAD
-// ============================================================
 function parseTiemposPerdidos(textos) {
   const result = { corte:{}, revision:{}, sanforizado:{} };
   const relevant = textos.filter(t => t.tipo_informe === 'tiempos_perdidos');
@@ -606,9 +654,6 @@ function computeCalidadFromCSV(rows) {
   return result;
 }
 
-// ============================================================
-// CHARTS + SORTING
-// ============================================================
 const CHART_DEFAULTS = {
   responsive:true, maintainAspectRatio:true,
   plugins:{ legend:{ labels:{ color:'#8b9bb4', font:{size:11} } } },
@@ -647,14 +692,34 @@ function recomputeAllKPIs() {
   state.kpis.revision2 = computeRevision2KPIs(state.raw.revision2);
 }
 
-// ============================================================
-// RENDER: GLOBAL (cadena secuencial)
-// ============================================================
+async function callFunction(name, payload) {
+  const res = await fetch(`/.netlify/functions/${name}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) {
+    let msg = `HTTP ${res.status}`;
+    try { const data = await res.json(); if (data.error) msg = data.error; } catch(e) {}
+    throw new Error(msg);
+  }
+  return await res.json();
+}
+
+function downloadCSV(filename, content) {
+  const blob = new Blob(['\uFEFF' + content], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 function renderGlobal(app){
   const g = state.kpis.global;
-
   const colorCumpl = (v) => v >= 0.95 ? 'var(--success)' : v >= 0.75 ? 'var(--warning)' : 'var(--danger)';
-
+  const umbral = parseFloat(state.config.umbral_stock_alerta) || 30000;
+  const alertStock = (Math.abs(g.diffSanfRev) > umbral || Math.abs(g.diffRevCorte) > umbral);
   const filtroTxt = state.filters.desde || state.filters.hasta
     ? `Filtrado: ${state.filters.desde || '…'} → ${state.filters.hasta || '…'}`
     : 'Sin filtro · mes completo';
@@ -674,218 +739,134 @@ function renderGlobal(app){
         </div>
       </div>
 
-      <!-- KPI principales -->
+      ${alertStock ? `<div class="warn-card">⚠️ Stock entre etapas supera el umbral configurado (${fmtNum(umbral)} m). Revisar flujo de producción.</div>` : ''}
+
       <div class="kpi-grid">
-        <div class="kpi-card">
-          <div class="kpi-label">Objetivo mensual</div>
-          <div class="kpi-value">${fmtNum(g.objetivo)} <span style="font-size:14px;color:var(--muted)">m</span></div>
-          <div class="kpi-sub">Referencia para las 3 etapas</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-label">Producción final (Corte)</div>
-          <div class="kpi-value">${fmtNum(g.corteM)}</div>
-          <div class="kpi-sub">${fmtPct(g.cumplCorte)} del objetivo</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-label">Pendiente vs objetivo</div>
-          <div class="kpi-value" style="color:${g.pendienteObjetivo >= 0 ? 'var(--warning)' : 'var(--success)'}">${fmtNum(Math.abs(g.pendienteObjetivo))}</div>
-          <div class="kpi-sub">${g.pendienteObjetivo >= 0 ? 'm por producir' : 'm de superávit'}</div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-label">Referencias en las 3 etapas</div>
-          <div class="kpi-value">${g.enLas3}</div>
-          <div class="kpi-sub">${g.refsSanf} sanf · ${g.refsRev} rev · ${g.refsCorte} corte</div>
-        </div>
+        <div class="kpi-card"><div class="kpi-label">Objetivo mensual</div><div class="kpi-value">${fmtNum(g.objetivo)} <span style="font-size:14px;color:var(--muted)">m</span></div></div>
+        <div class="kpi-card"><div class="kpi-label">Producción final (Corte)</div><div class="kpi-value">${fmtNum(g.corteM)}</div><div class="kpi-sub">${fmtPct(g.cumplCorte)} del objetivo</div></div>
+        <div class="kpi-card"><div class="kpi-label">Pendiente vs objetivo</div><div class="kpi-value" style="color:${g.pendienteObjetivo >= 0 ? 'var(--warning)' : 'var(--success)'}">${fmtNum(Math.abs(g.pendienteObjetivo))}</div><div class="kpi-sub">${g.pendienteObjetivo >= 0 ? 'm por producir' : 'm de superávit'}</div></div>
+        <div class="kpi-card"><div class="kpi-label">Referencias en las 3 etapas</div><div class="kpi-value">${g.enLas3}</div><div class="kpi-sub">${g.refsSanf} sanf · ${g.refsRev} rev · ${g.refsCorte} corte</div></div>
       </div>
 
-      <!-- Cadena -->
       <div class="card">
         <h3>Cadena secuencial · Sanforizado → Revisión → Corte</h3>
         <p class="muted" style="margin:0 0 16px">Cada etapa procesa lo que sale de la anterior. El cumplimiento se mide siempre contra el objetivo. La diferencia es inventario pendiente de procesar (o stock previo si es negativo).</p>
-
         <div class="chain-flow">
-
-          <!-- 1. Sanforizado -->
           <div class="chain-stage" style="border-color:#34d399">
-            <div class="chain-header">
-              <span class="chain-step">1 · Entrada</span>
-              <span style="color:#34d399;font-weight:800;font-size:12px">Sanforizado</span>
-            </div>
+            <div class="chain-header"><span class="chain-step">1 · Entrada</span><span style="color:#34d399;font-weight:800;font-size:12px">Sanforizado</span></div>
             <div class="chain-producido" style="color:#34d399">${fmtNum(g.sanforizadoM)}<span class="chain-producido-unit">m</span></div>
             <div class="chain-row"><span>Esperado</span><span>${fmtNum(g.esperadoSanf)} m</span></div>
             <div class="chain-row"><span>Eficiencia interna</span><span>${fmtPct(g.eficInternaSanf)}</span></div>
             <div class="chain-row"><span>Cumplimiento objetivo</span><span class="chain-pct" style="color:${colorCumpl(g.cumplSanf)}">${fmtPct(g.cumplSanf)}</span></div>
             <div class="chain-progress"><div class="chain-progress-bar" style="width:${Math.min(100,g.cumplSanf*100)}%;background:${colorCumpl(g.cumplSanf)}"></div></div>
           </div>
-
-          <!-- Gap 1 -->
           <div class="chain-gap ${g.diffSanfRev < 0 ? 'negative' : ''}">
             <div class="chain-gap-label">Por procesar<br>en Revisión</div>
             <div class="chain-gap-value" style="color:${g.diffSanfRev >= 0 ? 'var(--warning)' : 'var(--success)'}">${g.diffSanfRev >= 0 ? '+' : ''}${fmtNum(g.diffSanfRev)}</div>
             <div class="chain-gap-sub">${g.diffSanfRev >= 0 ? 'pendiente' : 'usó stock'}</div>
           </div>
-
-          <!-- 2. Revisión -->
           <div class="chain-stage" style="border-color:#a78bfa">
-            <div class="chain-header">
-              <span class="chain-step">2 · Intermedio</span>
-              <span style="color:#a78bfa;font-weight:800;font-size:12px">Revisión</span>
-            </div>
+            <div class="chain-header"><span class="chain-step">2 · Intermedio</span><span style="color:#a78bfa;font-weight:800;font-size:12px">Revisión</span></div>
             <div class="chain-producido" style="color:#a78bfa">${fmtNum(g.revisionM)}<span class="chain-producido-unit">m</span></div>
             <div class="chain-row"><span>Esperado</span><span>${fmtNum(g.esperadoRev)} m</span></div>
             <div class="chain-row"><span>Eficiencia interna</span><span>${fmtPct(g.eficInternaRev)}</span></div>
             <div class="chain-row"><span>Cumplimiento objetivo</span><span class="chain-pct" style="color:${colorCumpl(g.cumplRev)}">${fmtPct(g.cumplRev)}</span></div>
             <div class="chain-progress"><div class="chain-progress-bar" style="width:${Math.min(100,g.cumplRev*100)}%;background:${colorCumpl(g.cumplRev)}"></div></div>
           </div>
-
-          <!-- Gap 2 -->
           <div class="chain-gap ${g.diffRevCorte < 0 ? 'negative' : ''}">
             <div class="chain-gap-label">Por procesar<br>en Corte</div>
             <div class="chain-gap-value" style="color:${g.diffRevCorte >= 0 ? 'var(--warning)' : 'var(--success)'}">${g.diffRevCorte >= 0 ? '+' : ''}${fmtNum(g.diffRevCorte)}</div>
             <div class="chain-gap-sub">${g.diffRevCorte >= 0 ? 'pendiente' : 'usó stock'}</div>
           </div>
-
-          <!-- 3. Corte -->
           <div class="chain-stage" style="border-color:#38bdf8">
-            <div class="chain-header">
-              <span class="chain-step">3 · Salida</span>
-              <span style="color:#38bdf8;font-weight:800;font-size:12px">Corte</span>
-            </div>
+            <div class="chain-header"><span class="chain-step">3 · Salida</span><span style="color:#38bdf8;font-weight:800;font-size:12px">Corte</span></div>
             <div class="chain-producido" style="color:#38bdf8">${fmtNum(g.corteM)}<span class="chain-producido-unit">m</span></div>
             <div class="chain-row"><span>Esperado</span><span>${fmtNum(g.esperadoCorte)} m</span></div>
             <div class="chain-row"><span>Eficiencia interna</span><span>${fmtPct(g.eficInternaCorte)}</span></div>
             <div class="chain-row"><span>Cumplimiento objetivo</span><span class="chain-pct" style="color:${colorCumpl(g.cumplCorte)}">${fmtPct(g.cumplCorte)}</span></div>
             <div class="chain-progress"><div class="chain-progress-bar" style="width:${Math.min(100,g.cumplCorte*100)}%;background:${colorCumpl(g.cumplCorte)}"></div></div>
           </div>
-
         </div>
       </div>
 
-      <!-- Gráficos -->
       <div class="chart-row">
-        <div class="card"><h3>Cumplimiento vs objetivo (493,379 m)</h3><canvas id="ch-cumpl"></canvas></div>
+        <div class="card"><h3>Cumplimiento vs objetivo</h3><canvas id="ch-cumpl"></canvas></div>
         <div class="card"><h3>Flujo acumulado por etapa</h3><canvas id="ch-flow"></canvas></div>
       </div>
 
-      <!-- Tabla detalle -->
       <div class="card">
         <h3>Detalle por etapa</h3>
         <div class="table-wrap">
           <table class="data-table">
-            <thead>
-              <tr>
-                <th>Etapa</th>
-                <th class="num">Producido</th>
-                <th class="num">Esperado</th>
-                <th class="num">Diferencia por procesar</th>
-                <th class="num">Eficiencia interna</th>
-                <th class="num">Cumplimiento vs objetivo</th>
-              </tr>
-            </thead>
+            <thead><tr>
+              <th>Etapa</th><th class="num">Producido</th><th class="num">Esperado</th>
+              <th class="num">Diferencia por procesar</th><th class="num">Eficiencia interna</th>
+              <th class="num">Cumplimiento vs objetivo</th>
+            </tr></thead>
             <tbody>
-              <tr>
-                <td><span style="color:#34d399;font-weight:bold">●</span> 1. Sanforizado</td>
-                <td class="num">${fmtNum(g.sanforizadoM)}</td>
-                <td class="num">${fmtNum(g.esperadoSanf)}</td>
-                <td class="num">—</td>
-                <td class="num">${fmtPct(g.eficInternaSanf)}</td>
-                <td class="num" style="color:${colorCumpl(g.cumplSanf)}">${fmtPct(g.cumplSanf)}</td>
-              </tr>
-              <tr>
-                <td><span style="color:#a78bfa;font-weight:bold">●</span> 2. Revisión</td>
-                <td class="num">${fmtNum(g.revisionM)}</td>
-                <td class="num">${fmtNum(g.esperadoRev)}</td>
+              <tr><td><span style="color:#34d399;font-weight:bold">●</span> 1. Sanforizado</td>
+                <td class="num">${fmtNum(g.sanforizadoM)}</td><td class="num">${fmtNum(g.esperadoSanf)}</td>
+                <td class="num">—</td><td class="num">${fmtPct(g.eficInternaSanf)}</td>
+                <td class="num" style="color:${colorCumpl(g.cumplSanf)}">${fmtPct(g.cumplSanf)}</td></tr>
+              <tr><td><span style="color:#a78bfa;font-weight:bold">●</span> 2. Revisión</td>
+                <td class="num">${fmtNum(g.revisionM)}</td><td class="num">${fmtNum(g.esperadoRev)}</td>
                 <td class="num" style="color:${g.diffSanfRev >= 0 ? 'var(--warning)' : 'var(--success)'}">${g.diffSanfRev >= 0 ? '+' : ''}${fmtNum(g.diffSanfRev)}</td>
                 <td class="num">${fmtPct(g.eficInternaRev)}</td>
-                <td class="num" style="color:${colorCumpl(g.cumplRev)}">${fmtPct(g.cumplRev)}</td>
-              </tr>
-              <tr>
-                <td><span style="color:#38bdf8;font-weight:bold">●</span> 3. Corte</td>
-                <td class="num">${fmtNum(g.corteM)}</td>
-                <td class="num">${fmtNum(g.esperadoCorte)}</td>
+                <td class="num" style="color:${colorCumpl(g.cumplRev)}">${fmtPct(g.cumplRev)}</td></tr>
+              <tr><td><span style="color:#38bdf8;font-weight:bold">●</span> 3. Corte</td>
+                <td class="num">${fmtNum(g.corteM)}</td><td class="num">${fmtNum(g.esperadoCorte)}</td>
                 <td class="num" style="color:${g.diffRevCorte >= 0 ? 'var(--warning)' : 'var(--success)'}">${g.diffRevCorte >= 0 ? '+' : ''}${fmtNum(g.diffRevCorte)}</td>
                 <td class="num">${fmtPct(g.eficInternaCorte)}</td>
-                <td class="num" style="color:${colorCumpl(g.cumplCorte)}">${fmtPct(g.cumplCorte)}</td>
-              </tr>
+                <td class="num" style="color:${colorCumpl(g.cumplCorte)}">${fmtPct(g.cumplCorte)}</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="muted" style="margin-top:12px">
-          <b>Eficiencia interna</b> = producido / esperado de esa etapa.
-          <b>Cumplimiento</b> = producido / objetivo mensual (493,379 m).
-        </p>
+        <p class="muted" style="margin-top:12px"><b>Eficiencia interna</b> = producido / esperado de esa etapa. <b>Cumplimiento</b> = producido / objetivo mensual.</p>
       </div>
     </section>`;
 
-  const objInput = document.getElementById('obj-input');
-  const objSave = document.getElementById('obj-save');
-  const guardar = () => {
-    const val = parseFloat(objInput.value);
-    if (!isNaN(val) && val > 0) {
-      state.objetivo = val;
-      localStorage.setItem('sisgo_objetivo', String(val));
-      recomputeAllKPIs();
-      render();
-    }
-  };
-  objSave.addEventListener('click', guardar);
-  objInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') guardar(); });
+  document.getElementById('obj-save').addEventListener('click', async () => {
+    const val = parseFloat(document.getElementById('obj-input').value);
+    if (isNaN(val) || val <= 0) return;
+    state.objetivo = val;
+    localStorage.setItem('sisgo_objetivo', String(val));
+    recomputeAllKPIs();
+    // Persistir en config.csv
+    try {
+      const hoy = new Date().toISOString().slice(0, 10);
+      const updated = state.configRaw.map(r => r.clave === 'objetivo_mensual'
+        ? { ...r, valor: String(Math.round(val)), actualizado: hoy } : r);
+      if (!updated.some(r => r.clave === 'objetivo_mensual')) {
+        updated.push({ clave:'objetivo_mensual', valor:String(Math.round(val)), unidad:'m', descripcion:'Objetivo de metros por mes', actualizado: hoy });
+      }
+      await callFunction('guardar-config', { config: updated });
+      state.configRaw = updated;
+      state.config.objetivo_mensual = String(Math.round(val));
+    } catch (err) { console.warn('Objetivo guardado solo localmente:', err.message); }
+    render();
+  });
 
   setTimeout(() => {
-    // Chart: cumplimiento por etapa
     state.charts.cumpl = new Chart(document.getElementById('ch-cumpl'), {
       type: 'bar',
-      data: {
-        labels: ['Sanforizado', 'Revisión', 'Corte'],
-        datasets: [
-          {
-            label: 'Producido (m)',
-            data: [g.sanforizadoM, g.revisionM, g.corteM],
-            backgroundColor: ['#34d399', '#a78bfa', '#38bdf8'],
-            borderRadius: 6,
-          },
-          {
-            label: 'Objetivo',
-            data: [g.objetivo, g.objetivo, g.objetivo],
-            backgroundColor: 'rgba(139,155,180,.25)',
-            borderRadius: 6,
-          },
-        ],
-      },
-      options: {
-        ...CHART_DEFAULTS,
-        scales: { ...CHART_DEFAULTS.scales, y: { ...CHART_DEFAULTS.scales.y, beginAtZero: true } },
-      },
+      data: { labels: ['Sanforizado','Revisión','Corte'], datasets: [
+        { label:'Producido (m)', data:[g.sanforizadoM,g.revisionM,g.corteM], backgroundColor:['#34d399','#a78bfa','#38bdf8'], borderRadius:6 },
+        { label:'Objetivo', data:[g.objetivo,g.objetivo,g.objetivo], backgroundColor:'rgba(139,155,180,.25)', borderRadius:6 },
+      ]},
+      options: { ...CHART_DEFAULTS, scales:{ ...CHART_DEFAULTS.scales, y:{ ...CHART_DEFAULTS.scales.y, beginAtZero:true }}},
     });
-
-    // Chart: flujo acumulado
     state.charts.flow = new Chart(document.getElementById('ch-flow'), {
       type: 'line',
-      data: {
-        labels: ['Objetivo', 'Sanforizado', 'Revisión', 'Corte'],
-        datasets: [{
-          label: 'Metros',
-          data: [g.objetivo, g.sanforizadoM, g.revisionM, g.corteM],
-          borderColor: '#38bdf8',
-          backgroundColor: 'rgba(56,189,248,.15)',
-          fill: true,
-          tension: 0.35,
-          pointRadius: 6,
-          pointBackgroundColor: ['#8b9bb4', '#34d399', '#a78bfa', '#38bdf8'],
-        }],
-      },
-      options: {
-        ...CHART_DEFAULTS,
-        plugins: { ...CHART_DEFAULTS.plugins, legend: { display: false } },
-        scales: { ...CHART_DEFAULTS.scales, y: { ...CHART_DEFAULTS.scales.y, beginAtZero: true } },
-      },
+      data: { labels:['Objetivo','Sanforizado','Revisión','Corte'], datasets: [{
+        label:'Metros', data:[g.objetivo,g.sanforizadoM,g.revisionM,g.corteM],
+        borderColor:'#38bdf8', backgroundColor:'rgba(56,189,248,.15)', fill:true, tension:.35, pointRadius:6,
+        pointBackgroundColor:['#8b9bb4','#34d399','#a78bfa','#38bdf8'],
+      }]},
+      options: { ...CHART_DEFAULTS, plugins:{ ...CHART_DEFAULTS.plugins, legend:{display:false} }, scales:{ ...CHART_DEFAULTS.scales, y:{ ...CHART_DEFAULTS.scales.y, beginAtZero:true }}},
     });
   }, 0);
 }
 
-// ============================================================
-// RENDER: PROCESS
-// ============================================================
 function renderProcess(app, proceso){
   const cfg = CONFIG[proceso];
   const available = SUBVIEWS.filter(s => s.processes.includes(proceso));
@@ -987,8 +968,8 @@ function renderOperarios(app, proceso){
             <th class="num" data-sort="perDay" data-type="num">Mts/día</th>
           </tr></thead>
           <tbody>
-            ${ops.map(o => `<tr data-name="${o.name.split(',')[0].trim()}" data-turno="${o.predominantShift}" data-made="${o.made}" data-orders="${o.orders}" data-hours="${o.hours}" data-rate="${o.rate||0}" data-efficiency="${o.efficiency||0}" data-days="${o.daysCount}" data-perDay="${o.madePerDay}">
-              <td>${o.name}</td><td>${o.predominantShift}</td>
+            ${ops.map(o => `<tr data-name="${escapeHtml(o.name.split(',')[0].trim())}" data-turno="${escapeHtml(o.predominantShift)}" data-made="${o.made}" data-orders="${o.orders}" data-hours="${o.hours}" data-rate="${o.rate||0}" data-efficiency="${o.efficiency||0}" data-days="${o.daysCount}" data-perDay="${o.madePerDay}">
+              <td>${escapeHtml(o.name)}</td><td>${escapeHtml(o.predominantShift)}</td>
               <td class="num">${fmtNum(o.made)}</td><td class="num">${o.orders}</td>
               <td class="num">${fmtDec(o.hours)}</td>
               <td class="num">${o.rate!=null?fmtNum(o.rate):'—'}</td>
@@ -1084,8 +1065,8 @@ function renderMaquinas(app, proceso){
             <th class="num" data-sort="ops" data-type="num">Operarios</th>
           </tr></thead>
           <tbody>
-            ${machines.map(m => `<tr data-name="${m.name}" data-made="${m.made}" data-orders="${m.orders}" data-hours="${m.hours}" data-days="${m.days.size}" data-util="${m.utilization}" data-rate="${m.rate||0}" data-effic="${m.efficiency||0}" data-ops="${m.operators.size}">
-              <td>${m.name}</td><td class="num">${fmtNum(m.made)}</td><td class="num">${m.orders}</td>
+            ${machines.map(m => `<tr data-name="${escapeHtml(m.name)}" data-made="${m.made}" data-orders="${m.orders}" data-hours="${m.hours}" data-days="${m.days.size}" data-util="${m.utilization}" data-rate="${m.rate||0}" data-effic="${m.efficiency||0}" data-ops="${m.operators.size}">
+              <td>${escapeHtml(m.name)}</td><td class="num">${fmtNum(m.made)}</td><td class="num">${m.orders}</td>
               <td class="num">${fmtDec(m.hours)}</td><td class="num">${m.days.size}</td>
               <td class="num">${fmtPct(m.utilization)}</td>
               <td class="num">${m.rate!=null?fmtNum(m.rate):'—'}</td>
@@ -1133,8 +1114,8 @@ function renderReferencias(app, proceso){
           <tbody>
             ${refs.slice(0, 20).map(r => {
               const eff = r.toMake>0 ? r.made/r.toMake : null;
-              return `<tr data-ref="${r.name}" data-styles="${[...r.styles].join(', ')}" data-made="${r.made}" data-orders="${r.orders}" data-hours="${r.hours}" data-effic="${eff||0}">
-                <td>${r.name}</td><td class="muted">${[...r.styles].join(', ')}</td>
+              return `<tr data-ref="${escapeHtml(r.name)}" data-styles="${escapeHtml([...r.styles].join(', '))}" data-made="${r.made}" data-orders="${r.orders}" data-hours="${r.hours}" data-effic="${eff||0}">
+                <td>${escapeHtml(r.name)}</td><td class="muted">${escapeHtml([...r.styles].join(', '))}</td>
                 <td class="num">${fmtNum(r.made)}</td><td class="num">${r.orders}</td>
                 <td class="num">${fmtDec(r.hours)}</td>
                 <td class="num">${eff!=null?fmtPct(eff):'—'}</td>
@@ -1147,7 +1128,7 @@ function renderReferencias(app, proceso){
     <div class="card">
       <h3>⚠️ Anomalías (${anomalies.length})</h3>
       ${anomalies.length === 0 ? '<p class="muted">No se detectaron anomalías.</p>' :
-        `<div class="anomaly-list">${anomalies.map(a => `<div class="anomaly-item ${a.severidad==='danger'?'danger':''}"><b>${a.tipo}</b> · <span class="muted">${a.detalle}</span></div>`).join('')}</div>`}
+        `<div class="anomaly-list">${anomalies.map(a => `<div class="anomaly-item ${a.severidad==='danger'?'danger':''}"><b>${escapeHtml(a.tipo)}</b> · <span class="muted">${escapeHtml(a.detalle)}</span></div>`).join('')}</div>`}
     </div>`;
   setTimeout(()=>attachSorting(app), 0);
 }
@@ -1164,8 +1145,7 @@ function renderPerdidas(app, proceso){
   fechas.forEach(f => data[f].causas.forEach(c => { if (!causas[c.causa]) causas[c.causa] = { causa:c.causa, horas:0, ap:0 }; causas[c.causa].horas += c.horas; causas[c.causa].ap += 1; }));
   const cs = Object.values(causas).sort((a,b)=>b.horas-a.horas);
   if (fechas.length === 0) {
-    app.innerHTML = `<div class="warn-card"><strong>Sin datos de tiempos perdidos para el rango seleccionado.</strong>
-      <p>Los PDFs de <code>tiempos_perdidos_*.pdf</code> no están disponibles o están ilegibles.</p></div>`;
+    app.innerHTML = `<div class="warn-card"><strong>Sin datos de tiempos perdidos para el rango seleccionado.</strong><p>Los PDFs de <code>tiempos_perdidos_*.pdf</code> no están disponibles o están ilegibles.</p></div>`;
     return;
   }
   app.innerHTML = `
@@ -1181,7 +1161,7 @@ function renderPerdidas(app, proceso){
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th>Causa</th><th class="num">Horas totales</th><th class="num">Apariciones</th><th class="num">Promedio</th></tr></thead>
-          <tbody>${cs.map(c => `<tr><td><span class="causa-tag">${c.causa}</span></td><td class="num">${fmtDec(c.horas, 2)}</td><td class="num">${c.ap}</td><td class="num">${fmtDec(c.horas / c.ap, 2)}</td></tr>`).join('')}</tbody>
+          <tbody>${cs.map(c => `<tr><td><span class="causa-tag">${escapeHtml(c.causa)}</span></td><td class="num">${fmtDec(c.horas, 2)}</td><td class="num">${c.ap}</td><td class="num">${fmtDec(c.horas / c.ap, 2)}</td></tr>`).join('')}</tbody>
         </table>
       </div>
     </div>
@@ -1201,7 +1181,7 @@ function renderPerdidas(app, proceso){
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th>Fecha</th><th>Máquina</th><th>Causa</th><th class="num">Horas</th><th class="num">% Tiempo</th></tr></thead>
-          <tbody>${fechas.flatMap(f => data[f].causas.map(c => `<tr><td>${shortDate(f)}</td><td>${c.maquina || '—'}</td><td><span class="causa-tag">${c.causa}</span></td><td class="num">${fmtDec(c.horas, 2)}</td><td class="num">${fmtDec(c.porcentaje, 2)}%</td></tr>`)).join('')}</tbody>
+          <tbody>${fechas.flatMap(f => data[f].causas.map(c => `<tr><td>${shortDate(f)}</td><td>${escapeHtml(c.maquina || '—')}</td><td><span class="causa-tag">${escapeHtml(c.causa)}</span></td><td class="num">${fmtDec(c.horas, 2)}</td><td class="num">${fmtDec(c.porcentaje, 2)}%</td></tr>`)).join('')}</tbody>
         </table>
       </div>
     </div>`;
@@ -1211,8 +1191,7 @@ function renderRevisores(app, proceso) {
   if (proceso !== 'revision') return;
   const k = state.kpis.revision2;
   if (!k || k.totalPiezas === 0) {
-    app.innerHTML = `<div class="warn-card"><strong>Sin datos del extractor revision2.</strong>
-      <p>Verifica que el archivo esté listado en <code>data/manifest.json</code> bajo <code>revision2</code>.</p></div>`;
+    app.innerHTML = `<div class="warn-card"><strong>Sin datos del extractor revision2.</strong><p>Verifica que el archivo esté listado en <code>data/manifest.json</code> bajo <code>revision2</code>.</p></div>`;
     return;
   }
   const revs = Object.values(k.revisadores).sort((a,b)=>b.mts-a.mts);
@@ -1243,8 +1222,8 @@ function renderRevisores(app, proceso) {
             <th class="num" data-sort="mpp" data-type="num">Mts/pieza</th>
             <th class="num" data-sort="hpp" data-type="num">Horas/pieza</th>
           </tr></thead>
-          <tbody>${revs.map(r => `<tr data-name="${r.name}" data-turno="${r.predominantShift}" data-piezas="${r.piezas}" data-mts="${r.mts}" data-horas="${r.horas}" data-rate="${r.rate||0}" data-mpp="${r.mtsPerPieza}" data-hpp="${r.horasPerPieza}">
-            <td>${r.name}</td><td>${r.predominantShift}</td>
+          <tbody>${revs.map(r => `<tr data-name="${escapeHtml(r.name)}" data-turno="${escapeHtml(r.predominantShift)}" data-piezas="${r.piezas}" data-mts="${r.mts}" data-horas="${r.horas}" data-rate="${r.rate||0}" data-mpp="${r.mtsPerPieza}" data-hpp="${r.horasPerPieza}">
+            <td>${escapeHtml(r.name)}</td><td>${escapeHtml(r.predominantShift)}</td>
             <td class="num">${r.piezas}</td><td class="num">${fmtNum(r.mts)}</td>
             <td class="num">${fmtDec(r.horas)}</td>
             <td class="num">${r.rate!=null?fmtNum(r.rate):'—'}</td>
@@ -1255,18 +1234,14 @@ function renderRevisores(app, proceso) {
       </div>
     </div>
     <div class="chart-row">
-      <div class="card"><h3>Telares</h3>
-        <div class="table-wrap"><table class="data-table">
-          <thead><tr><th>Telar</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Horas insp.</th></tr></thead>
-          <tbody>${tels.slice(0, 15).map(t => `<tr><td>${t.name}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtDec(t.horas, 1)}</td></tr>`).join('')}</tbody>
-        </table></div>
-      </div>
-      <div class="card"><h3>Turnos</h3>
-        <div class="table-wrap"><table class="data-table">
-          <thead><tr><th>Turno</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Rend. (m/h)</th></tr></thead>
-          <tbody>${turns.map(t => { const rate = t.horas>=0.1 ? t.mts/t.horas : 0; return `<tr><td>${t.name}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtNum(rate)}</td></tr>`; }).join('')}</tbody>
-        </table></div>
-      </div>
+      <div class="card"><h3>Telares</h3><div class="table-wrap"><table class="data-table">
+        <thead><tr><th>Telar</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Horas insp.</th></tr></thead>
+        <tbody>${tels.slice(0, 15).map(t => `<tr><td>${escapeHtml(t.name)}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtDec(t.horas, 1)}</td></tr>`).join('')}</tbody>
+      </table></div></div>
+      <div class="card"><h3>Turnos</h3><div class="table-wrap"><table class="data-table">
+        <thead><tr><th>Turno</th><th class="num">Piezas</th><th class="num">Metros</th><th class="num">Rend. (m/h)</th></tr></thead>
+        <tbody>${turns.map(t => { const rate = t.horas>=0.1 ? t.mts/t.horas : 0; return `<tr><td>${escapeHtml(t.name)}</td><td class="num">${t.piezas}</td><td class="num">${fmtNum(t.mts)}</td><td class="num">${fmtNum(rate)}</td></tr>`; }).join('')}</tbody>
+      </table></div></div>
     </div>`;
   setTimeout(()=>{
     const c = CONFIG.revision.color;
@@ -1292,6 +1267,7 @@ function renderCalidad(app, proceso){
   const data = (state.kpis.calidad && state.kpis.calidad.revision) || {};
   const { desde, hasta } = state.filters;
   const fechas = Object.keys(data).filter(f => { if (desde && f < desde) return false; if (hasta && f > hasta) return false; return true; }).sort();
+  const metaCalidad = parseFloat(state.config.meta_1ra_calidad) || 90;
 
   if (fechas.length === 0) {
     const rep = state.calidad.reporte || [];
@@ -1309,7 +1285,6 @@ Fechas en CSV: ${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha
     </div>`;
     return;
   }
-
   const agg = {};
   let t1 = 0, t2 = 0, tg = 0, t6 = 0, tt = 0;
   for (const f of fechas) {
@@ -1336,9 +1311,9 @@ Fechas en CSV: ${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha
   const pct = tt>0 ? t1/tt : 0;
   const defectos = tt>0 ? (tg + t2 + t6)/tt : 0;
   app.innerHTML = `
-    <div class="info-card">Datos de calidad desde <code>data/calidad_por_referencia.csv</code>. ${fechas.length} fecha(s): ${fechas.map(shortDate).join(', ')}.</div>
+    <div class="info-card">Datos de calidad desde <code>data/calidad_por_referencia.csv</code>. Meta: <b>${metaCalidad}%</b> 1ra. ${fechas.length} fecha(s): ${fechas.map(shortDate).join(', ')}.</div>
     <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">% 1ra calidad</div><div class="kpi-value" style="color:var(--success)">${fmtPct(pct)}</div><div class="progress"><div class="progress-bar" style="width:${pct*100}%;background:var(--success)"></div></div></div>
+      <div class="kpi-card"><div class="kpi-label">% 1ra calidad</div><div class="kpi-value" style="color:${pct*100 >= metaCalidad ? 'var(--success)' : 'var(--warning)'}">${fmtPct(pct)}</div><div class="progress"><div class="progress-bar" style="width:${pct*100}%;background:${pct*100 >= metaCalidad ? 'var(--success)' : 'var(--warning)'}"></div></div></div>
       <div class="kpi-card"><div class="kpi-label">Tasa de defectos</div><div class="kpi-value" style="color:var(--danger)">${fmtPct(defectos)}</div><div class="kpi-sub">2da + 6ta + GTM</div></div>
       <div class="kpi-card"><div class="kpi-label">Metros 1ra</div><div class="kpi-value">${fmtNum(t1)}</div></div>
       <div class="kpi-card"><div class="kpi-label">Total revisado</div><div class="kpi-value">${fmtNum(tt)}</div><div class="kpi-sub">${list.length} referencias</div></div>
@@ -1371,10 +1346,10 @@ Fechas en CSV: ${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha
             <th class="num" data-sort="fechas" data-type="num">Días</th>
           </tr></thead>
           <tbody>${list.map(r => {
-            const cls = r.pct1ra >= 0.90 ? 'good' : (r.pct1ra < 0.60 ? 'bad' : 'warn');
-            return `<tr data-ref="${r.referencia}" data-estilo="${r.estilo}" data-lotes="${r.lotes.join(', ')}" data-primera="${r.primera}" data-segunda="${r.segunda}" data-gtm="${r.gtm}" data-sexta="${r.sexta}" data-total="${r.total}" data-pct1ra="${r.pct1ra}" data-fechas="${r.fechasCount}">
-              <td>${r.referencia}</td><td>${r.estilo}</td>
-              <td class="muted" style="max-width:220px;font-size:11px">${r.lotes.join(', ') || '—'}</td>
+            const cls = r.pct1ra >= (metaCalidad/100) ? 'good' : (r.pct1ra < 0.60 ? 'bad' : 'warn');
+            return `<tr data-ref="${escapeHtml(r.referencia)}" data-estilo="${escapeHtml(r.estilo)}" data-lotes="${escapeHtml(r.lotes.join(', '))}" data-primera="${r.primera}" data-segunda="${r.segunda}" data-gtm="${r.gtm}" data-sexta="${r.sexta}" data-total="${r.total}" data-pct1ra="${r.pct1ra}" data-fechas="${r.fechasCount}">
+              <td>${escapeHtml(r.referencia)}</td><td>${escapeHtml(r.estilo)}</td>
+              <td class="muted" style="max-width:220px;font-size:11px">${escapeHtml(r.lotes.join(', ')) || '—'}</td>
               <td class="num">${fmtNum(r.primera)}</td><td class="num">${fmtNum(r.segunda)}</td>
               <td class="num">${fmtNum(r.gtm)}</td><td class="num">${fmtNum(r.sexta)}</td>
               <td class="num">${fmtNum(r.total)}</td>
@@ -1397,14 +1372,10 @@ Fechas en CSV: ${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha
     const dias = Object.keys(byDay).sort();
     state.charts.calEvol = new Chart(document.getElementById('ch-cal-evol'), {
       type: 'line',
-      data: {
-        labels: dias.map(shortDate),
-        datasets: [
-          { label: '% 1ra', data: dias.map(d => byDay[d].total>0 ? (byDay[d].primera/byDay[d].total)*100 : 0),
-            borderColor:'#4ade80', backgroundColor:'rgba(74,222,128,.15)', fill:true, tension:0.3, pointRadius:4 },
-          { label:'Meta 90%', data: dias.map(()=>90), borderColor:'rgba(139,155,180,.4)', borderDash:[5,5], pointRadius:0, fill:false },
-        ],
-      },
+      data: { labels: dias.map(shortDate), datasets: [
+        { label: '% 1ra', data: dias.map(d => byDay[d].total>0 ? (byDay[d].primera/byDay[d].total)*100 : 0), borderColor:'#4ade80', backgroundColor:'rgba(74,222,128,.15)', fill:true, tension:.3, pointRadius:4 },
+        { label: `Meta ${metaCalidad}%`, data: dias.map(()=>metaCalidad), borderColor:'rgba(139,155,180,.4)', borderDash:[5,5], pointRadius:0, fill:false },
+      ]},
       options: {...CHART_DEFAULTS, scales:{...CHART_DEFAULTS.scales, y:{...CHART_DEFAULTS.scales.y, min:0, max:100, ticks:{...CHART_DEFAULTS.scales.y.ticks, callback:v=>v+'%'}}}},
     });
     state.charts.calDist = new Chart(document.getElementById('ch-cal-dist'), {
@@ -1416,6 +1387,288 @@ Fechas en CSV: ${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha
 }
 
 // ============================================================
+// CONFIGURACIÓN
+// ============================================================
+function renderConfiguracion(app) {
+  const rows = state.configRaw || [];
+  const hoy = new Date().toISOString().slice(0, 10);
+  app.innerHTML = `
+    <section class="view">
+      <div class="view-header">
+        <div>
+          <h2>Configuración</h2>
+          <p class="muted" style="margin:4px 0 0">Variables de referencia usadas por los KPIs · ${rows.length} variables</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn-secondary" id="cfg-add-btn">+ Agregar variable</button>
+          <button class="btn-primary" id="cfg-save-btn">Guardar cambios</button>
+        </div>
+      </div>
+      <div class="info-card">
+        Los cambios se envían a GitHub y quedan en <code>data/config.csv</code>. Netlify redeploya en ~15s.
+        Si falla, puedes descargar el CSV y subirlo manualmente.
+      </div>
+      <div id="cfg-msg"></div>
+      <div class="card">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th>Clave</th><th>Valor</th><th>Unidad</th><th>Descripción</th><th>Actualizado</th>
+            </tr></thead>
+            <tbody id="cfg-tbody">
+              ${rows.length === 0 ? '<tr><td colspan="5" class="muted">Sin variables. Haz clic en "Agregar variable".</td></tr>' :
+                rows.map((r, i) => `
+                  <tr data-idx="${i}">
+                    <td><code style="font-size:11px">${escapeHtml(r.clave)}</code></td>
+                    <td><input type="text" class="cfg-input" data-idx="${i}" data-field="valor" value="${escapeHtml(r.valor)}" style="width:120px"></td>
+                    <td><input type="text" class="cfg-input" data-idx="${i}" data-field="unidad" value="${escapeHtml(r.unidad)}" style="width:70px"></td>
+                    <td><input type="text" class="cfg-input" data-idx="${i}" data-field="descripcion" value="${escapeHtml(r.descripcion)}" style="width:100%"></td>
+                    <td class="muted" style="font-size:11px">${escapeHtml(r.actualizado) || '—'}</td>
+                  </tr>
+                `).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" id="cfg-new-card" style="display:none">
+        <h3>Nueva variable</h3>
+        <div class="form-row">
+          <div><label class="form-label">Clave</label><input type="text" id="cfg-new-clave" class="form-input" placeholder="ej. nuevo_parametro"></div>
+          <div><label class="form-label">Valor</label><input type="text" id="cfg-new-valor" class="form-input" placeholder="ej. 100"></div>
+          <div><label class="form-label">Unidad</label><input type="text" id="cfg-new-unidad" class="form-input" placeholder="ej. m, %, h"></div>
+          <div><label class="form-label">Descripción</label><input type="text" id="cfg-new-desc" class="form-input" placeholder="Para qué sirve"></div>
+        </div>
+        <button class="btn-primary" id="cfg-new-confirm">Agregar a la lista</button>
+        <button class="btn-secondary" id="cfg-new-cancel">Cancelar</button>
+      </div>
+    </section>`;
+
+  document.getElementById('cfg-add-btn').addEventListener('click', () => {
+    document.getElementById('cfg-new-card').style.display = 'block';
+  });
+  document.getElementById('cfg-new-cancel').addEventListener('click', () => {
+    document.getElementById('cfg-new-card').style.display = 'none';
+  });
+  document.getElementById('cfg-new-confirm').addEventListener('click', () => {
+    const clave = document.getElementById('cfg-new-clave').value.trim();
+    const valor = document.getElementById('cfg-new-valor').value.trim();
+    const unidad = document.getElementById('cfg-new-unidad').value.trim();
+    const desc = document.getElementById('cfg-new-desc').value.trim();
+    if (!clave) { alert('La clave es obligatoria'); return; }
+    if (state.configRaw.some(r => r.clave === clave)) { alert('Ya existe una variable con esa clave'); return; }
+    state.configRaw.push({ clave, valor, unidad, descripcion: desc, actualizado: hoy });
+    renderConfiguracion(app);
+  });
+  document.getElementById('cfg-save-btn').addEventListener('click', async () => {
+    const msg = document.getElementById('cfg-msg');
+    const tbody = document.getElementById('cfg-tbody');
+    const inputs = tbody.querySelectorAll('.cfg-input');
+    const updates = {};
+    inputs.forEach(inp => {
+      const idx = parseInt(inp.dataset.idx);
+      if (!updates[idx]) updates[idx] = {};
+      updates[idx][inp.dataset.field] = inp.value;
+    });
+    const config = state.configRaw.map((r, i) => ({
+      clave: r.clave,
+      valor: (updates[i] && updates[i].valor != null) ? updates[i].valor : r.valor,
+      unidad: (updates[i] && updates[i].unidad != null) ? updates[i].unidad : r.unidad,
+      descripcion: (updates[i] && updates[i].descripcion != null) ? updates[i].descripcion : r.descripcion,
+      actualizado: hoy,
+    }));
+    msg.innerHTML = '<div class="info-card">Guardando en GitHub…</div>';
+    try {
+      await callFunction('guardar-config', { config });
+      msg.innerHTML = '<div class="info-card" style="border-color:var(--success);background:rgba(74,222,128,.08)">✅ Guardado. Recarga la página en ~15s para ver los valores aplicados.</div>';
+      state.configRaw = config;
+      state.config = {};
+      config.forEach(c => { state.config[c.clave] = String(c.valor||'').trim(); });
+      if (state.config.objetivo_mensual) {
+        const n = parseFloat(state.config.objetivo_mensual);
+        if (!isNaN(n) && n > 0) state.objetivo = n;
+      }
+    } catch(err) {
+      msg.innerHTML = `<div class="error-card">
+        <strong>Error al guardar:</strong> ${escapeHtml(err.message)}
+        <p>Descarga el CSV y súbelo manualmente a <code>data/config.csv</code> en GitHub:</p>
+        <button class="btn-secondary" id="cfg-dl">📥 Descargar config.csv</button>
+      </div>`;
+      const dl = document.getElementById('cfg-dl');
+      if (dl) dl.addEventListener('click', () => {
+        const csv = ['clave,valor,unidad,descripcion,actualizado',
+          ...config.map(c => [c.clave, c.valor, c.unidad, c.descripcion, c.actualizado]
+            .map(v => { const s = String(v == null ? '' : v); return (s.includes(',') || s.includes('"') || s.includes('\n')) ? '"' + s.replace(/"/g,'""') + '"' : s; })
+            .join(','))
+        ].join('\n') + '\n';
+        downloadCSV('config.csv', csv);
+      });
+    }
+  });
+}
+
+// ============================================================
+// COMENTARIOS
+// ============================================================
+function renderComentarios(app) {
+  const comentarios = state.comentarios || [];
+  const procesos = ['sanforizado', 'revision', 'corte', 'general'];
+  const categorias = ['mantenimiento', 'calidad', 'material', 'personal', 'método', 'producción', 'seguridad', 'otro'];
+  const prioridades = ['baja', 'media', 'alta', 'critica'];
+  const estados = ['abierto', 'en_proceso', 'cerrado'];
+  const lotes = getAllLotes();
+
+  const { desde, hasta } = state.filters;
+  const filtered = comentarios.filter(c => {
+    const f = String(c.fecha || '').replace(/-/g, '').trim();
+    if (desde && f < desde) return false;
+    if (hasta && f > hasta) return false;
+    return true;
+  });
+
+  app.innerHTML = `
+    <section class="view">
+      <div class="view-header">
+        <div>
+          <h2>Comentarios y Novedades</h2>
+          <p class="muted" style="margin:4px 0 0">${filtered.length} de ${comentarios.length} registros${(desde || hasta) ? ' (filtrado por fecha)' : ''}</p>
+        </div>
+        <button class="btn-primary" id="com-new-btn">+ Nuevo comentario</button>
+      </div>
+
+      <div class="card" id="com-form-card" style="display:none">
+        <h3>Nuevo comentario</h3>
+        <div class="form-row">
+          <div><label class="form-label">Proceso *</label>
+            <select id="com-proceso" class="form-select">${procesos.map(p => `<option value="${p}">${p}</option>`).join('')}</select>
+          </div>
+          <div><label class="form-label">Categoría *</label>
+            <select id="com-categoria" class="form-select">${categorias.map(c => `<option value="${c}">${c}</option>`).join('')}</select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div><label class="form-label">Prioridad</label>
+            <select id="com-prioridad" class="form-select">${prioridades.map(p => `<option value="${p}" ${p==='media'?'selected':''}>${p}</option>`).join('')}</select>
+          </div>
+          <div><label class="form-label">Estado</label>
+            <select id="com-estado" class="form-select">${estados.map(e => `<option value="${e}">${e}</option>`).join('')}</select>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <label class="form-label">Título *</label>
+          <input type="text" id="com-titulo" class="form-input" placeholder="Resumen del evento">
+        </div>
+        <div style="margin-bottom:12px">
+          <label class="form-label">Descripción</label>
+          <textarea id="com-desc" class="form-textarea" placeholder="Detalle del evento o novedad"></textarea>
+        </div>
+        <div class="form-row">
+          <div>
+            <label class="form-label">Lote</label>
+            <input type="text" id="com-lote" list="lotes-list" class="form-input" placeholder="ej. 201204">
+            <datalist id="lotes-list">${lotes.map(l => `<option value="${escapeHtml(l)}">`).join('')}</datalist>
+          </div>
+          <div><label class="form-label">Responsable</label>
+            <input type="text" id="com-resp" class="form-input" placeholder="A quién se asigna">
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <label class="form-label">Tu nombre (para el registro) *</label>
+          <input type="text" id="com-quien" class="form-input" value="${escapeHtml(state.miNombre)}" placeholder="Ej. Javier F.">
+        </div>
+        <button class="btn-primary" id="com-save">Guardar comentario</button>
+        <button class="btn-secondary" id="com-cancel">Cancelar</button>
+      </div>
+
+      <div id="com-msg"></div>
+
+      <div id="com-list">
+        ${filtered.length === 0 ?
+          '<div class="info-card">No hay comentarios en el rango seleccionado.</div>' :
+          [...filtered].reverse().map(c => {
+            const prio = ['baja','media','alta','critica'].includes(c.prioridad) ? c.prioridad : 'baja';
+            const est = ['abierto','en_proceso','cerrado'].includes(c.estado) ? c.estado : 'abierto';
+            return `
+              <div class="comment-card prio-${prio}">
+                <div class="comment-header">
+                  <div>
+                    <div class="comment-title">${escapeHtml(c.titulo || '(sin título)')}</div>
+                    <div class="comment-meta">
+                      ${escapeHtml(c.fecha || '')} · ${escapeHtml(c.creado_por || '')}
+                      ${c.lote ? ` · Lote ${escapeHtml(c.lote)}` : ''}
+                      ${c.responsable ? ` · Resp: ${escapeHtml(c.responsable)}` : ''}
+                    </div>
+                  </div>
+                  <span style="font-size:11px;color:var(--muted)">#${escapeHtml(c.id)}</span>
+                </div>
+                ${c.descripcion ? `<div class="comment-body">${escapeHtml(c.descripcion)}</div>` : ''}
+                <div class="comment-tags">
+                  <span class="tag tag-proceso">${escapeHtml(c.proceso || '')}</span>
+                  <span class="tag tag-proceso">${escapeHtml(c.categoria || '')}</span>
+                  <span class="tag tag-prioridad-${prio}">${escapeHtml(c.prioridad || '')}</span>
+                  <span class="tag tag-estado-${est}">${escapeHtml((c.estado || '').replace('_',' '))}</span>
+                </div>
+              </div>`;
+          }).join('')
+        }
+      </div>
+    </section>`;
+
+  document.getElementById('com-new-btn').addEventListener('click', () => {
+    const card = document.getElementById('com-form-card');
+    card.style.display = card.style.display === 'none' ? 'block' : 'none';
+  });
+  document.getElementById('com-cancel').addEventListener('click', () => {
+    document.getElementById('com-form-card').style.display = 'none';
+  });
+  document.getElementById('com-save').addEventListener('click', async () => {
+    const msg = document.getElementById('com-msg');
+    const proceso = document.getElementById('com-proceso').value;
+    const categoria = document.getElementById('com-categoria').value;
+    const prioridad = document.getElementById('com-prioridad').value;
+    const estado = document.getElementById('com-estado').value;
+    const titulo = document.getElementById('com-titulo').value.trim();
+    const descripcion = document.getElementById('com-desc').value.trim();
+    const lote = document.getElementById('com-lote').value.trim();
+    const responsable = document.getElementById('com-resp').value.trim();
+    const creadoPor = document.getElementById('com-quien').value.trim();
+
+    if (!titulo) { msg.innerHTML = '<div class="error-card">El título es obligatorio.</div>'; return; }
+    if (!creadoPor) { msg.innerHTML = '<div class="error-card">Tu nombre es obligatorio para el registro.</div>'; return; }
+
+    state.miNombre = creadoPor;
+    localStorage.setItem('sisgo_nombre', creadoPor);
+
+    const comentario = { proceso, categoria, prioridad, estado, titulo, descripcion, lote, responsable, creado_por: creadoPor };
+    msg.innerHTML = '<div class="info-card">Enviando a GitHub…</div>';
+    try {
+      const result = await callFunction('agregar-comentario', { comentario });
+      msg.innerHTML = `<div class="info-card" style="border-color:var(--success);background:rgba(74,222,128,.08)">✅ Guardado como #${result.id}. Recarga la página en ~15s para verlo.</div>`;
+      document.getElementById('com-form-card').style.display = 'none';
+    } catch(err) {
+      msg.innerHTML = `<div class="error-card">
+        <strong>Error:</strong> ${escapeHtml(err.message)}
+        <p>Descarga el comentario como CSV y súbelo manualmente a <code>data/comentarios.csv</code>:</p>
+        <button class="btn-secondary" id="com-dl">📥 Descargar comentario</button>
+      </div>`;
+      const dl = document.getElementById('com-dl');
+      if (dl) dl.addEventListener('click', () => {
+        const header = 'id,fecha,proceso,categoria,titulo,descripcion,lote,responsable,estado,prioridad,creado_por,creado_en';
+        const hoy = new Date().toISOString().slice(0,10);
+        const ahora = new Date().toISOString().replace('T',' ').slice(0,16);
+        let maxId = 0;
+        (state.comentarios||[]).forEach(c => { const n = parseInt(c.id); if (!isNaN(n) && n > maxId) maxId = n; });
+        const row = [String(maxId+1), hoy, proceso, categoria, titulo, descripcion, lote, responsable, estado, prioridad, creadoPor, ahora];
+        const csv = header + '\n' + row.map(v => {
+          const s = String(v == null ? '' : v);
+          return (s.includes(',') || s.includes('"') || s.includes('\n')) ? '"' + s.replace(/"/g,'""') + '"' : s;
+        }).join(',') + '\n';
+        downloadCSV('comentario_nuevo.csv', csv);
+      });
+    }
+  });
+}
+
+// ============================================================
 // ROUTING + FILTROS + BOOT
 // ============================================================
 function render(){
@@ -1423,11 +1676,15 @@ function render(){
   state.charts = {};
   const app = document.getElementById('app');
   if (state.view === 'global') renderGlobal(app);
+  else if (state.view === 'configuracion') renderConfiguracion(app);
+  else if (state.view === 'comentarios') renderComentarios(app);
   else renderProcess(app, state.view);
 }
 function setView(view){
   state.view = view;
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  const fb = document.getElementById('filter-bar');
+  if (fb) fb.style.display = (view === 'configuracion') ? 'none' : 'flex';
   render();
 }
 function applyFilterAndRender() {
@@ -1448,6 +1705,10 @@ function setupFilterBar() {
   }
   for (const row of state.raw.revision2) if (row.fecha_filtro) fechas.add(row.fecha_filtro);
   for (const row of state.calidad.porReferencia) if (row.fecha) fechas.add(String(row.fecha).trim());
+  for (const c of state.comentarios) {
+    const f = String(c.fecha || '').replace(/-/g, '').trim();
+    if (f && f.length === 8) fechas.add(f);
+  }
   const sorted = [...fechas].sort();
   if (sorted.length > 0) {
     fd.min = fh.min = yyyymmddToInput(sorted[0]);
@@ -1474,7 +1735,7 @@ async function init(){
     await loadAllData();
     recomputeAllKPIs();
     const total = Object.values(state.raw).reduce((s,r)=>s+r.length,0);
-    status.textContent = `${fmtNum(total)} registros · ${state.calidad.porReferencia.length} calidad`;
+    status.textContent = `${fmtNum(total)} registros · ${state.calidad.porReferencia.length} calidad · ${state.comentarios.length} comentarios`;
   } catch(err) { console.error(err); status.textContent = '❌ Error de carga'; return; }
   document.getElementById('main-nav').addEventListener('click', (e)=>{
     const btn = e.target.closest('.nav-btn');
