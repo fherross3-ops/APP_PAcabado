@@ -1,1 +1,10 @@
 
+clave,valor,unidad,descripcion,actualizado
+objetivo_mensual,493379,m,Objetivo de metros por mes,2026-10-23
+meta_1ra_calidad,90,%,Meta de primera calidad,2026-10-23
+meta_eficiencia_sanforizado,85,%,Eficiencia interna meta Sanforizado,2026-10-23
+meta_eficiencia_revision,95,%,Eficiencia interna meta Revisión,2026-10-23
+meta_eficiencia_corte,98,%,Eficiencia interna meta Corte,2026-10-23
+umbral_stock_alerta,30000,m,Alerta si stock entre etapas supera,2026-10-23
+horas_por_turno,8,h,Duración de turno,2026-10-23
+dias_productivos_mes,26,días,Días hábiles esperados,2026-10-23
