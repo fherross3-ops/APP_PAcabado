@@ -2484,6 +2484,435 @@ corte,inventario,20261022,inventario_20261022.pdf,1,1,1,col_1,Item
 corte,inventario,20261022,inventario_20261022.pdf,1,1,1,col_2,Referencia
 corte,inventario,20261022,inventario_20261022.pdf,1,1,1,col_3,Estilo
 corte,inventario,20261022,inventario_20261022.pdf,1,1,1,col_4,Mts.:
+corte,produccion,20261021,produccion_20261021.pdf,1,1,1,col_1,0105-49470 - ARANDANO DARK
+corte,produccion,20261021,produccion_20261021.pdf,1,1,1,col_3,1er Turno
+corte,produccion,20261021,produccion_20261021.pdf,1,1,1,col_4,2do Turno
+corte,produccion,20261021,produccion_20261021.pdf,1,1,1,col_5,3er Turno
+corte,produccion,20261021,produccion_20261021.pdf,1,1,1,col_6,Total
+corte,produccion,20261021,produccion_20261021.pdf,1,1,1,col_7,% Total
+corte,produccion,20261021,produccion_20261021.pdf,1,1,2,col_1,1ra
+corte,produccion,20261021,produccion_20261021.pdf,1,1,2,col_3,4997
+corte,produccion,20261021,produccion_20261021.pdf,1,1,2,col_4,1479
+corte,produccion,20261021,produccion_20261021.pdf,1,1,2,col_6,6476
+corte,produccion,20261021,produccion_20261021.pdf,1,1,2,col_7,88.8
+corte,produccion,20261021,produccion_20261021.pdf,1,1,3,col_1,GTM
+corte,produccion,20261021,produccion_20261021.pdf,1,1,3,col_3,0
+corte,produccion,20261021,produccion_20261021.pdf,1,1,3,col_4,0
+corte,produccion,20261021,produccion_20261021.pdf,1,1,3,col_6,0
+corte,produccion,20261021,produccion_20261021.pdf,1,1,3,col_7,0
+corte,produccion,20261021,produccion_20261021.pdf,1,1,4,col_1,2da
+corte,produccion,20261021,produccion_20261021.pdf,1,1,4,col_3,299
+corte,produccion,20261021,produccion_20261021.pdf,1,1,4,col_4,111
+corte,produccion,20261021,produccion_20261021.pdf,1,1,4,col_6,410
+corte,produccion,20261021,produccion_20261021.pdf,1,1,4,col_7,5.6
+corte,produccion,20261021,produccion_20261021.pdf,1,1,5,col_1,6ta
+corte,produccion,20261021,produccion_20261021.pdf,1,1,5,col_3,254
+corte,produccion,20261021,produccion_20261021.pdf,1,1,5,col_4,154
+corte,produccion,20261021,produccion_20261021.pdf,1,1,5,col_6,408
+corte,produccion,20261021,produccion_20261021.pdf,1,1,5,col_7,5.6
+corte,produccion,20261021,produccion_20261021.pdf,1,1,6,col_2,Totales
+corte,produccion,20261021,produccion_20261021.pdf,1,1,6,col_3,5550
+corte,produccion,20261021,produccion_20261021.pdf,1,1,6,col_4,1744
+corte,produccion,20261021,produccion_20261021.pdf,1,1,6,col_5,0
+corte,produccion,20261021,produccion_20261021.pdf,1,1,6,col_6,7294
+corte,produccion,20261021,produccion_20261021.pdf,1,2,1,col_1,0105-43656 - ALEXA
+corte,produccion,20261021,produccion_20261021.pdf,1,2,1,col_3,1er Turno
+corte,produccion,20261021,produccion_20261021.pdf,1,2,1,col_4,2do Turno
+corte,produccion,20261021,produccion_20261021.pdf,1,2,1,col_5,3er Turno
+corte,produccion,20261021,produccion_20261021.pdf,1,2,1,col_6,Total
+corte,produccion,20261021,produccion_20261021.pdf,1,2,1,col_7,% Total
+corte,produccion,20261021,produccion_20261021.pdf,1,2,2,col_1,1ra
+corte,produccion,20261021,produccion_20261021.pdf,1,2,2,col_5,780
+corte,produccion,20261021,produccion_20261021.pdf,1,2,2,col_6,780
+corte,produccion,20261021,produccion_20261021.pdf,1,2,2,col_7,44.6
+corte,produccion,20261021,produccion_20261021.pdf,1,2,3,col_1,GTM
+corte,produccion,20261021,produccion_20261021.pdf,1,2,3,col_5,399
+corte,produccion,20261021,produccion_20261021.pdf,1,2,3,col_6,399
+corte,produccion,20261021,produccion_20261021.pdf,1,2,3,col_7,22.8
+corte,produccion,20261021,produccion_20261021.pdf,1,2,4,col_1,2da
+corte,produccion,20261021,produccion_20261021.pdf,1,2,4,col_5,571
+corte,produccion,20261021,produccion_20261021.pdf,1,2,4,col_6,571
+corte,produccion,20261021,produccion_20261021.pdf,1,2,4,col_7,32.6
+corte,produccion,20261021,produccion_20261021.pdf,1,2,5,col_1,6ta
+corte,produccion,20261021,produccion_20261021.pdf,1,2,5,col_5,0
+corte,produccion,20261021,produccion_20261021.pdf,1,2,5,col_6,0
+corte,produccion,20261021,produccion_20261021.pdf,1,2,5,col_7,0
+corte,produccion,20261021,produccion_20261021.pdf,1,2,6,col_2,Totales
+corte,produccion,20261021,produccion_20261021.pdf,1,2,6,col_3,0
+corte,produccion,20261021,produccion_20261021.pdf,1,2,6,col_4,0
+corte,produccion,20261021,produccion_20261021.pdf,1,2,6,col_5,1750
+corte,produccion,20261021,produccion_20261021.pdf,1,2,6,col_6,1750
+corte,produccion,20261021,produccion_20261021.pdf,1,3,1,col_1,0105-43621 - ARANDANO NEGRO
+corte,produccion,20261021,produccion_20261021.pdf,1,3,1,col_3,1er Turno
+corte,produccion,20261021,produccion_20261021.pdf,1,3,1,col_4,2do Turno
+corte,produccion,20261021,produccion_20261021.pdf,1,3,1,col_5,3er Turno
+corte,produccion,20261021,produccion_20261021.pdf,1,3,1,col_6,Total
+corte,produccion,20261021,produccion_20261021.pdf,1,3,1,col_7,% Total
+corte,produccion,20261021,produccion_20261021.pdf,1,3,2,col_1,1ra
+corte,produccion,20261021,produccion_20261021.pdf,1,3,2,col_4,8263
+corte,produccion,20261021,produccion_20261021.pdf,1,3,2,col_5,4533
+corte,produccion,20261021,produccion_20261021.pdf,1,3,2,col_6,12796
+corte,produccion,20261021,produccion_20261021.pdf,1,3,2,col_7,88.7
+corte,produccion,20261021,produccion_20261021.pdf,1,3,3,col_1,GTM
+corte,produccion,20261021,produccion_20261021.pdf,1,3,3,col_4,0
+corte,produccion,20261021,produccion_20261021.pdf,1,3,3,col_5,68
+corte,produccion,20261021,produccion_20261021.pdf,1,3,3,col_6,68
+corte,produccion,20261021,produccion_20261021.pdf,1,3,3,col_7,0.5
+corte,produccion,20261021,produccion_20261021.pdf,1,3,4,col_1,2da
+corte,produccion,20261021,produccion_20261021.pdf,1,3,4,col_4,468
+corte,produccion,20261021,produccion_20261021.pdf,1,3,4,col_5,874
+corte,produccion,20261021,produccion_20261021.pdf,1,3,4,col_6,1342
+corte,produccion,20261021,produccion_20261021.pdf,1,3,4,col_7,9.3
+corte,produccion,20261021,produccion_20261021.pdf,1,3,5,col_1,6ta
+corte,produccion,20261021,produccion_20261021.pdf,1,3,5,col_4,74
+corte,produccion,20261021,produccion_20261021.pdf,1,3,5,col_5,143
+corte,produccion,20261021,produccion_20261021.pdf,1,3,5,col_6,217
+corte,produccion,20261021,produccion_20261021.pdf,1,3,5,col_7,1.5
+corte,produccion,20261021,produccion_20261021.pdf,1,3,6,col_2,Totales
+corte,produccion,20261021,produccion_20261021.pdf,1,3,6,col_3,0
+corte,produccion,20261021,produccion_20261021.pdf,1,3,6,col_4,8805
+corte,produccion,20261021,produccion_20261021.pdf,1,3,6,col_5,5618
+corte,produccion,20261021,produccion_20261021.pdf,1,3,6,col_6,14423
+corte,produccion,20261021,produccion_20261021.pdf,1,4,1,col_1,Total General
+corte,produccion,20261021,produccion_20261021.pdf,1,4,1,col_2,5550
+corte,produccion,20261021,produccion_20261021.pdf,1,4,1,col_3,10549
+corte,produccion,20261021,produccion_20261021.pdf,1,4,1,col_4,7368
+corte,produccion,20261022,produccion_20261022.pdf,1,1,1,col_1,0115-42405 - FASHION OSCURO
+corte,produccion,20261022,produccion_20261022.pdf,1,1,1,col_3,1er Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,1,1,col_4,2do Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,1,1,col_5,3er Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,1,1,col_6,Total
+corte,produccion,20261022,produccion_20261022.pdf,1,1,1,col_7,% Total
+corte,produccion,20261022,produccion_20261022.pdf,1,1,2,col_1,1ra
+corte,produccion,20261022,produccion_20261022.pdf,1,1,2,col_4,3209
+corte,produccion,20261022,produccion_20261022.pdf,1,1,2,col_5,8904
+corte,produccion,20261022,produccion_20261022.pdf,1,1,2,col_6,12113
+corte,produccion,20261022,produccion_20261022.pdf,1,1,2,col_7,91
+corte,produccion,20261022,produccion_20261022.pdf,1,1,3,col_1,GTM
+corte,produccion,20261022,produccion_20261022.pdf,1,1,3,col_4,0
+corte,produccion,20261022,produccion_20261022.pdf,1,1,3,col_5,99
+corte,produccion,20261022,produccion_20261022.pdf,1,1,3,col_6,99
+corte,produccion,20261022,produccion_20261022.pdf,1,1,3,col_7,0.7
+corte,produccion,20261022,produccion_20261022.pdf,1,1,4,col_1,2da
+corte,produccion,20261022,produccion_20261022.pdf,1,1,4,col_4,83
+corte,produccion,20261022,produccion_20261022.pdf,1,1,4,col_5,886
+corte,produccion,20261022,produccion_20261022.pdf,1,1,4,col_6,969
+corte,produccion,20261022,produccion_20261022.pdf,1,1,4,col_7,7.3
+corte,produccion,20261022,produccion_20261022.pdf,1,1,5,col_1,6ta
+corte,produccion,20261022,produccion_20261022.pdf,1,1,5,col_4,0
+corte,produccion,20261022,produccion_20261022.pdf,1,1,5,col_5,132
+corte,produccion,20261022,produccion_20261022.pdf,1,1,5,col_6,132
+corte,produccion,20261022,produccion_20261022.pdf,1,1,5,col_7,1
+corte,produccion,20261022,produccion_20261022.pdf,1,1,6,col_2,Totales
+corte,produccion,20261022,produccion_20261022.pdf,1,1,6,col_3,0
+corte,produccion,20261022,produccion_20261022.pdf,1,1,6,col_4,3292
+corte,produccion,20261022,produccion_20261022.pdf,1,1,6,col_5,10021
+corte,produccion,20261022,produccion_20261022.pdf,1,1,6,col_6,13313
+corte,produccion,20261022,produccion_20261022.pdf,1,2,1,col_1,0105-43656 - ALEXA
+corte,produccion,20261022,produccion_20261022.pdf,1,2,1,col_3,1er Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,2,1,col_4,2do Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,2,1,col_5,3er Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,2,1,col_6,Total
+corte,produccion,20261022,produccion_20261022.pdf,1,2,1,col_7,% Total
+corte,produccion,20261022,produccion_20261022.pdf,1,2,2,col_1,1ra
+corte,produccion,20261022,produccion_20261022.pdf,1,2,2,col_3,2861
+corte,produccion,20261022,produccion_20261022.pdf,1,2,2,col_6,2861
+corte,produccion,20261022,produccion_20261022.pdf,1,2,2,col_7,80
+corte,produccion,20261022,produccion_20261022.pdf,1,2,3,col_1,GTM
+corte,produccion,20261022,produccion_20261022.pdf,1,2,3,col_3,62
+corte,produccion,20261022,produccion_20261022.pdf,1,2,3,col_6,62
+corte,produccion,20261022,produccion_20261022.pdf,1,2,3,col_7,1.7
+corte,produccion,20261022,produccion_20261022.pdf,1,2,4,col_1,2da
+corte,produccion,20261022,produccion_20261022.pdf,1,2,4,col_3,485
+corte,produccion,20261022,produccion_20261022.pdf,1,2,4,col_6,485
+corte,produccion,20261022,produccion_20261022.pdf,1,2,4,col_7,13.6
+corte,produccion,20261022,produccion_20261022.pdf,1,2,5,col_1,6ta
+corte,produccion,20261022,produccion_20261022.pdf,1,2,5,col_3,167
+corte,produccion,20261022,produccion_20261022.pdf,1,2,5,col_6,167
+corte,produccion,20261022,produccion_20261022.pdf,1,2,5,col_7,4.7
+corte,produccion,20261022,produccion_20261022.pdf,1,2,6,col_2,Totales
+corte,produccion,20261022,produccion_20261022.pdf,1,2,6,col_3,3575
+corte,produccion,20261022,produccion_20261022.pdf,1,2,6,col_4,0
+corte,produccion,20261022,produccion_20261022.pdf,1,2,6,col_5,0
+corte,produccion,20261022,produccion_20261022.pdf,1,2,6,col_6,3575
+corte,produccion,20261022,produccion_20261022.pdf,1,3,1,col_1,0105-43665 - FARINA
+corte,produccion,20261022,produccion_20261022.pdf,1,3,1,col_3,1er Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,3,1,col_4,2do Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,3,1,col_5,3er Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,3,1,col_6,Total
+corte,produccion,20261022,produccion_20261022.pdf,1,3,1,col_7,% Total
+corte,produccion,20261022,produccion_20261022.pdf,1,3,2,col_1,1ra
+corte,produccion,20261022,produccion_20261022.pdf,1,3,2,col_3,1866
+corte,produccion,20261022,produccion_20261022.pdf,1,3,2,col_5,1833
+corte,produccion,20261022,produccion_20261022.pdf,1,3,2,col_6,3699
+corte,produccion,20261022,produccion_20261022.pdf,1,3,2,col_7,93.7
+corte,produccion,20261022,produccion_20261022.pdf,1,3,3,col_1,GTM
+corte,produccion,20261022,produccion_20261022.pdf,1,3,3,col_3,0
+corte,produccion,20261022,produccion_20261022.pdf,1,3,3,col_5,0
+corte,produccion,20261022,produccion_20261022.pdf,1,3,3,col_6,0
+corte,produccion,20261022,produccion_20261022.pdf,1,3,3,col_7,0
+corte,produccion,20261022,produccion_20261022.pdf,1,3,4,col_1,2da
+corte,produccion,20261022,produccion_20261022.pdf,1,3,4,col_3,76
+corte,produccion,20261022,produccion_20261022.pdf,1,3,4,col_5,69
+corte,produccion,20261022,produccion_20261022.pdf,1,3,4,col_6,145
+corte,produccion,20261022,produccion_20261022.pdf,1,3,4,col_7,3.7
+corte,produccion,20261022,produccion_20261022.pdf,1,3,5,col_1,6ta
+corte,produccion,20261022,produccion_20261022.pdf,1,3,5,col_3,66
+corte,produccion,20261022,produccion_20261022.pdf,1,3,5,col_5,36
+corte,produccion,20261022,produccion_20261022.pdf,1,3,5,col_6,102
+corte,produccion,20261022,produccion_20261022.pdf,1,3,5,col_7,2.6
+corte,produccion,20261022,produccion_20261022.pdf,1,3,6,col_2,Totales
+corte,produccion,20261022,produccion_20261022.pdf,1,3,6,col_3,2008
+corte,produccion,20261022,produccion_20261022.pdf,1,3,6,col_4,0
+corte,produccion,20261022,produccion_20261022.pdf,1,3,6,col_5,1938
+corte,produccion,20261022,produccion_20261022.pdf,1,3,6,col_6,3946
+corte,produccion,20261022,produccion_20261022.pdf,1,4,1,col_1,0105-43696 - AURORA BLACK
+corte,produccion,20261022,produccion_20261022.pdf,1,4,1,col_3,1er Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,4,1,col_4,2do Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,4,1,col_5,3er Turno
+corte,produccion,20261022,produccion_20261022.pdf,1,4,1,col_6,Total
+corte,produccion,20261022,produccion_20261022.pdf,1,4,1,col_7,% Total
+corte,produccion,20261022,produccion_20261022.pdf,1,4,2,col_1,1ra
+corte,produccion,20261022,produccion_20261022.pdf,1,4,2,col_4,3851
+corte,produccion,20261022,produccion_20261022.pdf,1,4,2,col_6,3851
+corte,produccion,20261022,produccion_20261022.pdf,1,4,2,col_7,77.9
+corte,produccion,20261022,produccion_20261022.pdf,1,4,3,col_1,GTM
+corte,produccion,20261022,produccion_20261022.pdf,1,4,3,col_4,0
+corte,produccion,20261022,produccion_20261022.pdf,1,4,3,col_6,0
+corte,produccion,20261022,produccion_20261022.pdf,1,4,3,col_7,0
+corte,produccion,20261022,produccion_20261022.pdf,1,4,4,col_1,2da
+corte,produccion,20261022,produccion_20261022.pdf,1,4,4,col_4,781
+corte,produccion,20261022,produccion_20261022.pdf,1,4,4,col_6,781
+corte,produccion,20261022,produccion_20261022.pdf,1,4,4,col_7,15.8
+corte,produccion,20261022,produccion_20261022.pdf,1,4,5,col_1,6ta
+corte,produccion,20261022,produccion_20261022.pdf,1,4,5,col_4,310
+corte,produccion,20261022,produccion_20261022.pdf,1,4,5,col_6,310
+corte,produccion,20261022,produccion_20261022.pdf,1,4,5,col_7,6.3
+corte,produccion,20261022,produccion_20261022.pdf,1,4,6,col_2,Totales
+corte,produccion,20261022,produccion_20261022.pdf,1,4,6,col_3,0
+corte,produccion,20261022,produccion_20261022.pdf,1,4,6,col_4,4942
+corte,produccion,20261022,produccion_20261022.pdf,1,4,6,col_5,0
+corte,produccion,20261022,produccion_20261022.pdf,1,4,6,col_6,4942
+corte,produccion,20261022,produccion_20261022.pdf,1,5,1,col_1,Total General
+corte,produccion,20261022,produccion_20261022.pdf,1,5,1,col_2,5583
+corte,produccion,20261022,produccion_20261022.pdf,1,5,1,col_3,8234
+corte,produccion,20261022,produccion_20261022.pdf,1,5,1,col_4,11959
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_1,1
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_2,49
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_4,3.00
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_5,37.50
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,1,col_1,Resumen por Causa:
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_1,Item
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_2,Codigo
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_3,Causa
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_4,Horas Perdidas
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_5,% Tiempo Perdido
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_1,1
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_2,49
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_4,3.00
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_5,37.50
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,1,col_1,Resumen Produccion del dia:
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,2,col_1,Total produccion esperada:
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,2,col_2,28800 mts
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,3,col_1,Total produccion Real:
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,3,col_2,24406 mts
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,4,col_1,Total Tiempos perdidos:
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,4,col_2,3.00 hrs.
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,5,col_1,Total Produccion Perdida:
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,5,col_2,5400 mts.
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,6,col_1,Diferencia:
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,6,col_2,1006 mts.
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,7,col_1,tiempo perdido por justificar:
+corte,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,7,col_2,-23.44 hrs.
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_1,1
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_2,49
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_4,6.00
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_5,75.00
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,1,col_1,Resumen por Causa:
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_1,Item
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_2,Codigo
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_3,Causa
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_4,Horas Perdidas
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_5,% Tiempo Perdido
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_1,1
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_2,49
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_4,6.00
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_5,18.75
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,1,col_1,Resumen Produccion del dia:
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,2,col_1,Total produccion esperada:
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,2,col_2,28800 mts
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,3,col_1,Total produccion Real:
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,3,col_2,23467 mts
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,4,col_1,Total Tiempos perdidos:
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,4,col_2,6.00 hrs.
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,5,col_1,Total Produccion Perdida:
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,5,col_2,10800 mts.
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,6,col_1,Diferencia:
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,6,col_2,5467 mts.
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,7,col_1,tiempo perdido por justificar:
+corte,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,7,col_2,-20.96 hrs.
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_1,1
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_2,49
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_4,4.00
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_5,50.00
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,1,col_1,Resumen por Causa:
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_1,Item
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_2,Codigo
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_3,Causa
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_4,Horas Perdidas
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_5,% Tiempo Perdido
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_1,1
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_2,49
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_4,4.00
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_5,50.00
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,1,col_1,Resumen Produccion del dia:
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,2,col_1,Total produccion esperada:
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,2,col_2,28800 mts
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,3,col_1,Total produccion Real:
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,3,col_2,25776 mts
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,4,col_1,Total Tiempos perdidos:
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,4,col_2,4.00 hrs.
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,5,col_1,Total Produccion Perdida:
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,5,col_2,7200 mts.
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,6,col_1,Diferencia:
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,6,col_2,4176 mts.
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,7,col_1,tiempo perdido por justificar:
+corte,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,7,col_2,-21.68 hrs.
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_1,1
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_2,49
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_4,13.33
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_5,166.63
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,1,col_1,Resumen por Causa:
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_1,Item
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_2,Codigo
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_3,Causa
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_4,Horas Perdidas
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_5,% Tiempo Perdido
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_1,1
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_2,49
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_4,13.33
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_5,10.41
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,1,col_1,Resumen Produccion del dia:
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,2,col_1,Total produccion esperada:
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,2,col_2,28800 mts
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,3,col_1,Total produccion Real:
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,3,col_2,18035 mts
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,4,col_1,Total Tiempos perdidos:
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,4,col_2,13.33 hrs.
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,5,col_1,Total Produccion Perdida:
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,5,col_2,23994 mts.
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,6,col_1,Diferencia:
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,6,col_2,13229 mts.
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,7,col_1,tiempo perdido por justificar:
+corte,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,7,col_2,-16.65 hrs.
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,1,col_1,Resumen por Causa:
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_1,Item
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_2,Codigo
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_3,Causa
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_4,Horas Perdidas
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_5,% Tiempo Perdido
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,1,col_1,Resumen Produccion del dia:
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,2,col_1,Total produccion esperada:
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,2,col_2,28800 mts
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,3,col_1,Total produccion Real:
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,3,col_2,mts
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,4,col_1,Total Tiempos perdidos:
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,4,col_2,0 hrs.
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,5,col_1,Total Produccion Perdida:
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,5,col_2,0 mts.
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,6,col_1,Diferencia:
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,6,col_2,-28800 mts.
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,7,col_1,tiempo perdido por justificar:
+corte,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,7,col_2,-40 hrs.
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,1,col_1,Resumen por Causa:
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_1,Item
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_2,Codigo
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_3,Causa
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_4,Horas Perdidas
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_5,% Tiempo Perdido
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,1,col_1,Resumen Produccion del dia:
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,2,col_1,Total produccion esperada:
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,2,col_2,28800 mts
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,3,col_1,Total produccion Real:
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,3,col_2,mts
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,4,col_1,Total Tiempos perdidos:
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,4,col_2,0 hrs.
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,5,col_1,Total Produccion Perdida:
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,5,col_2,0 mts.
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,6,col_1,Diferencia:
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,6,col_2,-28800 mts.
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,7,col_1,tiempo perdido por justificar:
+corte,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,7,col_2,-40 hrs.
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_1,1
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_2,49
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_4,7.00
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_5,87.50
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,1,col_1,Resumen por Causa:
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_1,Item
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_2,Codigo
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_3,Causa
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_4,Horas Perdidas
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_5,% Tiempo Perdido
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_1,1
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_2,49
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_3,FALTA DE TELA REVISADA
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_4,7.00
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_5,5.47
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,1,col_1,Resumen Produccion del dia:
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,2,col_1,Total produccion esperada:
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,2,col_2,28800 mts
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,3,col_1,Total produccion Real:
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,3,col_2,20359 mts
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,4,col_1,Total Tiempos perdidos:
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,4,col_2,7.00 hrs.
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,5,col_1,Total Produccion Perdida:
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,5,col_2,12600 mts.
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,6,col_1,Diferencia:
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,6,col_2,4159 mts.
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,7,col_1,tiempo perdido por justificar:
+corte,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,7,col_2,-21.69 hrs.
+corte,inventario,20261020,inventario_20261020.pdf,1,1,1,col_1,Item
+corte,inventario,20261020,inventario_20261020.pdf,1,1,1,col_2,Referencia
+corte,inventario,20261020,inventario_20261020.pdf,1,1,1,col_3,Estilo
+corte,inventario,20261020,inventario_20261020.pdf,1,1,1,col_4,Mts.:
+corte,inventario,20261021,inventario_20261021.pdf,1,1,1,col_1,Item
+corte,inventario,20261021,inventario_20261021.pdf,1,1,1,col_2,Referencia
+corte,inventario,20261021,inventario_20261021.pdf,1,1,1,col_3,Estilo
+corte,inventario,20261021,inventario_20261021.pdf,1,1,1,col_4,Mts.:
+corte,inventario,20261022,inventario_20261022.pdf,1,1,1,col_1,Item
+corte,inventario,20261022,inventario_20261022.pdf,1,1,1,col_2,Referencia
+corte,inventario,20261022,inventario_20261022.pdf,1,1,1,col_3,Estilo
+corte,inventario,20261022,inventario_20261022.pdf,1,1,1,col_4,Mts.:
+corte,inventario,20261023,inventario_20261023.pdf,1,1,1,col_1,Item
+corte,inventario,20261023,inventario_20261023.pdf,1,1,1,col_2,Referencia
+corte,inventario,20261023,inventario_20261023.pdf,1,1,1,col_3,Estilo
+corte,inventario,20261023,inventario_20261023.pdf,1,1,1,col_4,Mts.:
+corte,inventario,20261024,inventario_20261024.pdf,1,1,1,col_1,Item
+corte,inventario,20261024,inventario_20261024.pdf,1,1,1,col_2,Referencia
+corte,inventario,20261024,inventario_20261024.pdf,1,1,1,col_3,Estilo
+corte,inventario,20261024,inventario_20261024.pdf,1,1,1,col_4,Mts.:
+corte,inventario,20261025,inventario_20261025.pdf,1,1,1,col_1,Item
+corte,inventario,20261025,inventario_20261025.pdf,1,1,1,col_2,Referencia
+corte,inventario,20261025,inventario_20261025.pdf,1,1,1,col_3,Estilo
+corte,inventario,20261025,inventario_20261025.pdf,1,1,1,col_4,Mts.:
+corte,inventario,20261026,inventario_20261026.pdf,1,1,1,col_1,Item
+corte,inventario,20261026,inventario_20261026.pdf,1,1,1,col_2,Referencia
+corte,inventario,20261026,inventario_20261026.pdf,1,1,1,col_3,Estilo
+corte,inventario,20261026,inventario_20261026.pdf,1,1,1,col_4,Mts.:
 revision,produccion,20261001,produccion_20261001.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
 revision,produccion,20261001,produccion_20261001.pdf,1,1,2,col_1,1
 revision,produccion,20261001,produccion_20261001.pdf,1,1,2,col_2,527693
@@ -4805,6 +5234,743 @@ revision,inventario,20261022,inventario_20261022.pdf,1,1,1,col_1,Item
 revision,inventario,20261022,inventario_20261022.pdf,1,1,1,col_2,Referencia
 revision,inventario,20261022,inventario_20261022.pdf,1,1,1,col_3,Estilo
 revision,inventario,20261022,inventario_20261022.pdf,1,1,1,col_4,Mts.:
+revision,produccion,20261020,produccion_20261020.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+revision,produccion,20261020,produccion_20261020.pdf,1,1,2,col_1,1
+revision,produccion,20261020,produccion_20261020.pdf,1,1,2,col_2,534553
+revision,produccion,20261020,produccion_20261020.pdf,1,1,2,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261020,produccion_20261020.pdf,1,1,2,col_4,0115-42405
+revision,produccion,20261020,produccion_20261020.pdf,1,1,2,col_5,FASHION OSCURO
+revision,produccion,20261020,produccion_20261020.pdf,1,1,2,col_6,401205
+revision,produccion,20261020,produccion_20261020.pdf,1,1,2,col_7,4958
+revision,produccion,20261020,produccion_20261020.pdf,1,1,3,col_1,2
+revision,produccion,20261020,produccion_20261020.pdf,1,1,3,col_2,534554
+revision,produccion,20261020,produccion_20261020.pdf,1,1,3,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261020,produccion_20261020.pdf,1,1,3,col_4,0115-43647
+revision,produccion,20261020,produccion_20261020.pdf,1,1,3,col_5,Victoria 250.
+revision,produccion,20261020,produccion_20261020.pdf,1,1,3,col_6,102197
+revision,produccion,20261020,produccion_20261020.pdf,1,1,3,col_7,1000
+revision,produccion,20261020,produccion_20261020.pdf,1,2,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+revision,produccion,20261020,produccion_20261020.pdf,1,2,2,col_1,1
+revision,produccion,20261020,produccion_20261020.pdf,1,2,2,col_2,534752
+revision,produccion,20261020,produccion_20261020.pdf,1,2,2,col_3,"RAMON, VASQUEZ"
+revision,produccion,20261020,produccion_20261020.pdf,1,2,2,col_4,0115-43777
+revision,produccion,20261020,produccion_20261020.pdf,1,2,2,col_5,SATIN IRIS BLACK
+revision,produccion,20261020,produccion_20261020.pdf,1,2,2,col_6,101200
+revision,produccion,20261020,produccion_20261020.pdf,1,2,2,col_7,1646
+revision,produccion,20261020,produccion_20261020.pdf,1,2,3,col_1,2
+revision,produccion,20261020,produccion_20261020.pdf,1,2,3,col_2,534752
+revision,produccion,20261020,produccion_20261020.pdf,1,2,3,col_3,"RAMON, VASQUEZ"
+revision,produccion,20261020,produccion_20261020.pdf,1,2,3,col_4,0105-49470
+revision,produccion,20261020,produccion_20261020.pdf,1,2,3,col_5,ARANDANO DARK
+revision,produccion,20261020,produccion_20261020.pdf,1,2,3,col_6,101200
+revision,produccion,20261020,produccion_20261020.pdf,1,2,3,col_7,6886
+revision,produccion,20261020,produccion_20261020.pdf,1,2,4,col_1,3
+revision,produccion,20261020,produccion_20261020.pdf,1,2,4,col_2,534752
+revision,produccion,20261020,produccion_20261020.pdf,1,2,4,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261020,produccion_20261020.pdf,1,2,4,col_4,0115-43647
+revision,produccion,20261020,produccion_20261020.pdf,1,2,4,col_5,Victoria 250.
+revision,produccion,20261020,produccion_20261020.pdf,1,2,4,col_6,102197
+revision,produccion,20261020,produccion_20261020.pdf,1,2,4,col_7,4247
+revision,produccion,20261020,produccion_20261020.pdf,1,2,5,col_1,4
+revision,produccion,20261020,produccion_20261020.pdf,1,2,5,col_2,534752
+revision,produccion,20261020,produccion_20261020.pdf,1,2,5,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261020,produccion_20261020.pdf,1,2,5,col_4,0115-43831
+revision,produccion,20261020,produccion_20261020.pdf,1,2,5,col_5,ECLIPSE
+revision,produccion,20261020,produccion_20261020.pdf,1,2,5,col_6,102197
+revision,produccion,20261020,produccion_20261020.pdf,1,2,5,col_7,1574
+revision,produccion,20261020,produccion_20261020.pdf,1,2,6,col_1,5
+revision,produccion,20261020,produccion_20261020.pdf,1,2,6,col_2,534752
+revision,produccion,20261020,produccion_20261020.pdf,1,2,6,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261020,produccion_20261020.pdf,1,2,6,col_4,0115-43777
+revision,produccion,20261020,produccion_20261020.pdf,1,2,6,col_5,SATIN IRIS BLACK
+revision,produccion,20261020,produccion_20261020.pdf,1,2,6,col_6,101200
+revision,produccion,20261020,produccion_20261020.pdf,1,2,6,col_7,1794
+revision,produccion,20261020,produccion_20261020.pdf,1,3,1,col_1,Resumen por Maquina:
+revision,produccion,20261020,produccion_20261020.pdf,1,3,2,col_1,Item
+revision,produccion,20261020,produccion_20261020.pdf,1,3,2,col_2,Codigo
+revision,produccion,20261020,produccion_20261020.pdf,1,3,2,col_3,Maquina
+revision,produccion,20261020,produccion_20261020.pdf,1,3,2,col_4,Produccion Mts.
+revision,produccion,20261020,produccion_20261020.pdf,1,3,2,col_5,Esperado en Mts
+revision,produccion,20261020,produccion_20261020.pdf,1,3,2,col_6,% Efectividad
+revision,produccion,20261020,produccion_20261020.pdf,1,3,3,col_1,1
+revision,produccion,20261020,produccion_20261020.pdf,1,3,3,col_2,149
+revision,produccion,20261020,produccion_20261020.pdf,1,3,3,col_3,REVISADORA # 01
+revision,produccion,20261020,produccion_20261020.pdf,1,3,3,col_4,5958
+revision,produccion,20261020,produccion_20261020.pdf,1,3,3,col_5,36000
+revision,produccion,20261020,produccion_20261020.pdf,1,3,3,col_6,16.55
+revision,produccion,20261020,produccion_20261020.pdf,1,3,4,col_1,1
+revision,produccion,20261020,produccion_20261020.pdf,1,3,4,col_2,150
+revision,produccion,20261020,produccion_20261020.pdf,1,3,4,col_3,REVISADORA # 02
+revision,produccion,20261020,produccion_20261020.pdf,1,3,4,col_4,16147
+revision,produccion,20261020,produccion_20261020.pdf,1,3,4,col_5,36000
+revision,produccion,20261020,produccion_20261020.pdf,1,3,4,col_6,44.85
+revision,produccion,20261020,produccion_20261020.pdf,1,4,1,col_1,Total ======>
+revision,produccion,20261020,produccion_20261020.pdf,1,4,1,col_2,22105
+revision,produccion,20261020,produccion_20261020.pdf,1,4,1,col_3,36000
+revision,produccion,20261020,produccion_20261020.pdf,1,4,1,col_4,61.40
+revision,produccion,20261020,produccion_20261020.pdf,1,5,1,col_1,Resumen por Operario:
+revision,produccion,20261020,produccion_20261020.pdf,1,5,2,col_1,Item
+revision,produccion,20261020,produccion_20261020.pdf,1,5,2,col_2,Nombres
+revision,produccion,20261020,produccion_20261020.pdf,1,5,2,col_3,Apellidos
+revision,produccion,20261020,produccion_20261020.pdf,1,5,2,col_4,Produccion Mts.
+revision,produccion,20261020,produccion_20261020.pdf,1,5,2,col_5,Esperado en Mts
+revision,produccion,20261020,produccion_20261020.pdf,1,5,2,col_6,% Efectividad
+revision,produccion,20261020,produccion_20261020.pdf,1,5,3,col_1,1
+revision,produccion,20261020,produccion_20261020.pdf,1,5,3,col_2,CARLA
+revision,produccion,20261020,produccion_20261020.pdf,1,5,3,col_3,GUTIERREZ
+revision,produccion,20261020,produccion_20261020.pdf,1,5,3,col_4,5958
+revision,produccion,20261020,produccion_20261020.pdf,1,5,3,col_5,12000
+revision,produccion,20261020,produccion_20261020.pdf,1,5,3,col_6,49.65
+revision,produccion,20261020,produccion_20261020.pdf,1,5,4,col_1,2
+revision,produccion,20261020,produccion_20261020.pdf,1,5,4,col_2,SABINO
+revision,produccion,20261020,produccion_20261020.pdf,1,5,4,col_3,RODRIGUEZ
+revision,produccion,20261020,produccion_20261020.pdf,1,5,4,col_4,7615
+revision,produccion,20261020,produccion_20261020.pdf,1,5,4,col_5,12000
+revision,produccion,20261020,produccion_20261020.pdf,1,5,4,col_6,63.46
+revision,produccion,20261020,produccion_20261020.pdf,1,5,5,col_1,3
+revision,produccion,20261020,produccion_20261020.pdf,1,5,5,col_2,RAMON
+revision,produccion,20261020,produccion_20261020.pdf,1,5,5,col_3,VASQUEZ
+revision,produccion,20261020,produccion_20261020.pdf,1,5,5,col_4,8532
+revision,produccion,20261020,produccion_20261020.pdf,1,5,5,col_5,12000
+revision,produccion,20261020,produccion_20261020.pdf,1,5,5,col_6,71.10
+revision,produccion,20261021,produccion_20261021.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+revision,produccion,20261021,produccion_20261021.pdf,1,1,2,col_1,1
+revision,produccion,20261021,produccion_20261021.pdf,1,1,2,col_2,535267
+revision,produccion,20261021,produccion_20261021.pdf,1,1,2,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261021,produccion_20261021.pdf,1,1,2,col_4,0105-49470
+revision,produccion,20261021,produccion_20261021.pdf,1,1,2,col_5,ARANDANO DARK
+revision,produccion,20261021,produccion_20261021.pdf,1,1,2,col_6,201209
+revision,produccion,20261021,produccion_20261021.pdf,1,1,2,col_7,5576
+revision,produccion,20261021,produccion_20261021.pdf,1,1,3,col_1,2
+revision,produccion,20261021,produccion_20261021.pdf,1,1,3,col_2,535268
+revision,produccion,20261021,produccion_20261021.pdf,1,1,3,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261021,produccion_20261021.pdf,1,1,3,col_4,0105-43621
+revision,produccion,20261021,produccion_20261021.pdf,1,1,3,col_5,ARANDANO NEGRO
+revision,produccion,20261021,produccion_20261021.pdf,1,1,3,col_6,301212
+revision,produccion,20261021,produccion_20261021.pdf,1,1,3,col_7,2368
+revision,produccion,20261021,produccion_20261021.pdf,1,1,4,col_1,3
+revision,produccion,20261021,produccion_20261021.pdf,1,1,4,col_2,535270
+revision,produccion,20261021,produccion_20261021.pdf,1,1,4,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261021,produccion_20261021.pdf,1,1,4,col_4,0105-43621
+revision,produccion,20261021,produccion_20261021.pdf,1,1,4,col_5,ARANDANO NEGRO
+revision,produccion,20261021,produccion_20261021.pdf,1,1,4,col_6,301212
+revision,produccion,20261021,produccion_20261021.pdf,1,1,4,col_7,8213
+revision,produccion,20261021,produccion_20261021.pdf,1,1,5,col_1,4
+revision,produccion,20261021,produccion_20261021.pdf,1,1,5,col_2,535270
+revision,produccion,20261021,produccion_20261021.pdf,1,1,5,col_3,"RAMON, VASQUEZ"
+revision,produccion,20261021,produccion_20261021.pdf,1,1,5,col_4,0105-43621
+revision,produccion,20261021,produccion_20261021.pdf,1,1,5,col_5,ARANDANO NEGRO
+revision,produccion,20261021,produccion_20261021.pdf,1,1,5,col_6,301212
+revision,produccion,20261021,produccion_20261021.pdf,1,1,5,col_7,3907
+revision,produccion,20261021,produccion_20261021.pdf,1,1,6,col_1,5
+revision,produccion,20261021,produccion_20261021.pdf,1,1,6,col_2,535270
+revision,produccion,20261021,produccion_20261021.pdf,1,1,6,col_3,"RAMON, VASQUEZ"
+revision,produccion,20261021,produccion_20261021.pdf,1,1,6,col_4,0105-43656
+revision,produccion,20261021,produccion_20261021.pdf,1,1,6,col_5,ALEXA
+revision,produccion,20261021,produccion_20261021.pdf,1,1,6,col_6,201208
+revision,produccion,20261021,produccion_20261021.pdf,1,1,6,col_7,4837
+revision,produccion,20261021,produccion_20261021.pdf,1,2,1,col_1,Resumen por Maquina:
+revision,produccion,20261021,produccion_20261021.pdf,1,2,2,col_1,Item
+revision,produccion,20261021,produccion_20261021.pdf,1,2,2,col_2,Codigo
+revision,produccion,20261021,produccion_20261021.pdf,1,2,2,col_3,Maquina
+revision,produccion,20261021,produccion_20261021.pdf,1,2,2,col_4,Produccion Mts.
+revision,produccion,20261021,produccion_20261021.pdf,1,2,2,col_5,Esperado en Mts
+revision,produccion,20261021,produccion_20261021.pdf,1,2,2,col_6,% Efectividad
+revision,produccion,20261021,produccion_20261021.pdf,1,2,3,col_1,1
+revision,produccion,20261021,produccion_20261021.pdf,1,2,3,col_2,149
+revision,produccion,20261021,produccion_20261021.pdf,1,2,3,col_3,REVISADORA # 01
+revision,produccion,20261021,produccion_20261021.pdf,1,2,3,col_4,0
+revision,produccion,20261021,produccion_20261021.pdf,1,2,3,col_5,36000
+revision,produccion,20261021,produccion_20261021.pdf,1,2,3,col_6,0.00
+revision,produccion,20261021,produccion_20261021.pdf,1,2,4,col_1,1
+revision,produccion,20261021,produccion_20261021.pdf,1,2,4,col_2,150
+revision,produccion,20261021,produccion_20261021.pdf,1,2,4,col_3,REVISADORA # 02
+revision,produccion,20261021,produccion_20261021.pdf,1,2,4,col_4,24901
+revision,produccion,20261021,produccion_20261021.pdf,1,2,4,col_5,36000
+revision,produccion,20261021,produccion_20261021.pdf,1,2,4,col_6,69.17
+revision,produccion,20261021,produccion_20261021.pdf,1,3,1,col_1,Total ======>
+revision,produccion,20261021,produccion_20261021.pdf,1,3,1,col_2,24901
+revision,produccion,20261021,produccion_20261021.pdf,1,3,1,col_3,36000
+revision,produccion,20261021,produccion_20261021.pdf,1,3,1,col_4,69.17
+revision,produccion,20261021,produccion_20261021.pdf,1,4,1,col_1,Resumen por Operario:
+revision,produccion,20261021,produccion_20261021.pdf,1,4,2,col_1,Item
+revision,produccion,20261021,produccion_20261021.pdf,1,4,2,col_2,Nombres
+revision,produccion,20261021,produccion_20261021.pdf,1,4,2,col_3,Apellidos
+revision,produccion,20261021,produccion_20261021.pdf,1,4,2,col_4,Produccion Mts.
+revision,produccion,20261021,produccion_20261021.pdf,1,4,2,col_5,Esperado en Mts
+revision,produccion,20261021,produccion_20261021.pdf,1,4,2,col_6,% Efectividad
+revision,produccion,20261021,produccion_20261021.pdf,1,4,3,col_1,1
+revision,produccion,20261021,produccion_20261021.pdf,1,4,3,col_2,CARLA
+revision,produccion,20261021,produccion_20261021.pdf,1,4,3,col_3,GUTIERREZ
+revision,produccion,20261021,produccion_20261021.pdf,1,4,3,col_4,7944
+revision,produccion,20261021,produccion_20261021.pdf,1,4,3,col_5,12000
+revision,produccion,20261021,produccion_20261021.pdf,1,4,3,col_6,66.20
+revision,produccion,20261021,produccion_20261021.pdf,1,4,4,col_1,2
+revision,produccion,20261021,produccion_20261021.pdf,1,4,4,col_2,RAMON
+revision,produccion,20261021,produccion_20261021.pdf,1,4,4,col_3,VASQUEZ
+revision,produccion,20261021,produccion_20261021.pdf,1,4,4,col_4,8744
+revision,produccion,20261021,produccion_20261021.pdf,1,4,4,col_5,12000
+revision,produccion,20261021,produccion_20261021.pdf,1,4,4,col_6,72.87
+revision,produccion,20261021,produccion_20261021.pdf,1,4,5,col_1,3
+revision,produccion,20261021,produccion_20261021.pdf,1,4,5,col_2,SABINO
+revision,produccion,20261021,produccion_20261021.pdf,1,4,5,col_3,RODRIGUEZ
+revision,produccion,20261021,produccion_20261021.pdf,1,4,5,col_4,8213
+revision,produccion,20261021,produccion_20261021.pdf,1,4,5,col_5,12000
+revision,produccion,20261021,produccion_20261021.pdf,1,4,5,col_6,68.44
+revision,produccion,20261022,produccion_20261022.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+revision,produccion,20261022,produccion_20261022.pdf,1,1,2,col_1,1
+revision,produccion,20261022,produccion_20261022.pdf,1,1,2,col_2,535693
+revision,produccion,20261022,produccion_20261022.pdf,1,1,2,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261022,produccion_20261022.pdf,1,1,2,col_4,0105-43656
+revision,produccion,20261022,produccion_20261022.pdf,1,1,2,col_5,ALEXA
+revision,produccion,20261022,produccion_20261022.pdf,1,1,2,col_6,202195
+revision,produccion,20261022,produccion_20261022.pdf,1,1,2,col_7,903
+revision,produccion,20261022,produccion_20261022.pdf,1,1,3,col_1,2
+revision,produccion,20261022,produccion_20261022.pdf,1,1,3,col_2,535694
+revision,produccion,20261022,produccion_20261022.pdf,1,1,3,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261022,produccion_20261022.pdf,1,1,3,col_4,0105-43665
+revision,produccion,20261022,produccion_20261022.pdf,1,1,3,col_5,FARINA
+revision,produccion,20261022,produccion_20261022.pdf,1,1,3,col_6,301203
+revision,produccion,20261022,produccion_20261022.pdf,1,1,3,col_7,1964
+revision,produccion,20261022,produccion_20261022.pdf,1,1,4,col_1,3
+revision,produccion,20261022,produccion_20261022.pdf,1,1,4,col_2,535695
+revision,produccion,20261022,produccion_20261022.pdf,1,1,4,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261022,produccion_20261022.pdf,1,1,4,col_4,0105-43696
+revision,produccion,20261022,produccion_20261022.pdf,1,1,4,col_5,AURORA BLACK
+revision,produccion,20261022,produccion_20261022.pdf,1,1,4,col_6,201213
+revision,produccion,20261022,produccion_20261022.pdf,1,1,4,col_7,4508
+revision,produccion,20261022,produccion_20261022.pdf,1,1,5,col_1,4
+revision,produccion,20261022,produccion_20261022.pdf,1,1,5,col_2,535704
+revision,produccion,20261022,produccion_20261022.pdf,1,1,5,col_3,"RAMON, VASQUEZ"
+revision,produccion,20261022,produccion_20261022.pdf,1,1,5,col_4,0115-42405
+revision,produccion,20261022,produccion_20261022.pdf,1,1,5,col_5,FASHION OSCURO
+revision,produccion,20261022,produccion_20261022.pdf,1,1,5,col_6,401205
+revision,produccion,20261022,produccion_20261022.pdf,1,1,5,col_7,5572
+revision,produccion,20261022,produccion_20261022.pdf,1,1,6,col_1,5
+revision,produccion,20261022,produccion_20261022.pdf,1,1,6,col_2,535704
+revision,produccion,20261022,produccion_20261022.pdf,1,1,6,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261022,produccion_20261022.pdf,1,1,6,col_4,0105-43696
+revision,produccion,20261022,produccion_20261022.pdf,1,1,6,col_5,AURORA BLACK
+revision,produccion,20261022,produccion_20261022.pdf,1,1,6,col_6,201213
+revision,produccion,20261022,produccion_20261022.pdf,1,1,6,col_7,342
+revision,produccion,20261022,produccion_20261022.pdf,1,1,7,col_1,6
+revision,produccion,20261022,produccion_20261022.pdf,1,1,7,col_2,535704
+revision,produccion,20261022,produccion_20261022.pdf,1,1,7,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261022,produccion_20261022.pdf,1,1,7,col_4,0115-42405
+revision,produccion,20261022,produccion_20261022.pdf,1,1,7,col_5,FASHION OSCURO
+revision,produccion,20261022,produccion_20261022.pdf,1,1,7,col_6,401205
+revision,produccion,20261022,produccion_20261022.pdf,1,1,7,col_7,7683
+revision,produccion,20261022,produccion_20261022.pdf,1,1,8,col_1,7
+revision,produccion,20261022,produccion_20261022.pdf,1,1,8,col_2,535704
+revision,produccion,20261022,produccion_20261022.pdf,1,1,8,col_3,"RAMON, VASQUEZ"
+revision,produccion,20261022,produccion_20261022.pdf,1,1,8,col_4,0105-43665
+revision,produccion,20261022,produccion_20261022.pdf,1,1,8,col_5,FARINA
+revision,produccion,20261022,produccion_20261022.pdf,1,1,8,col_6,301203
+revision,produccion,20261022,produccion_20261022.pdf,1,1,8,col_7,1942
+revision,produccion,20261022,produccion_20261022.pdf,1,1,9,col_1,8
+revision,produccion,20261022,produccion_20261022.pdf,1,1,9,col_2,535704
+revision,produccion,20261022,produccion_20261022.pdf,1,1,9,col_3,"RAMON, VASQUEZ"
+revision,produccion,20261022,produccion_20261022.pdf,1,1,9,col_4,0120-41905
+revision,produccion,20261022,produccion_20261022.pdf,1,1,9,col_5,INDIGO OSCURO DARK BLUE
+revision,produccion,20261022,produccion_20261022.pdf,1,1,9,col_6,301203
+revision,produccion,20261022,produccion_20261022.pdf,1,1,9,col_7,1609
+revision,produccion,20261022,produccion_20261022.pdf,1,2,1,col_1,Resumen por Maquina:
+revision,produccion,20261022,produccion_20261022.pdf,1,2,2,col_1,Item
+revision,produccion,20261022,produccion_20261022.pdf,1,2,2,col_2,Codigo
+revision,produccion,20261022,produccion_20261022.pdf,1,2,2,col_3,Maquina
+revision,produccion,20261022,produccion_20261022.pdf,1,2,2,col_4,Produccion Mts.
+revision,produccion,20261022,produccion_20261022.pdf,1,2,2,col_5,Esperado en Mts
+revision,produccion,20261022,produccion_20261022.pdf,1,2,2,col_6,% Efectividad
+revision,produccion,20261022,produccion_20261022.pdf,1,2,3,col_1,1
+revision,produccion,20261022,produccion_20261022.pdf,1,2,3,col_2,149
+revision,produccion,20261022,produccion_20261022.pdf,1,2,3,col_3,REVISADORA # 01
+revision,produccion,20261022,produccion_20261022.pdf,1,2,3,col_4,0
+revision,produccion,20261022,produccion_20261022.pdf,1,2,3,col_5,36000
+revision,produccion,20261022,produccion_20261022.pdf,1,2,3,col_6,0.00
+revision,produccion,20261022,produccion_20261022.pdf,1,2,4,col_1,1
+revision,produccion,20261022,produccion_20261022.pdf,1,2,4,col_2,150
+revision,produccion,20261022,produccion_20261022.pdf,1,2,4,col_3,REVISADORA # 02
+revision,produccion,20261022,produccion_20261022.pdf,1,2,4,col_4,24523
+revision,produccion,20261022,produccion_20261022.pdf,1,2,4,col_5,36000
+revision,produccion,20261022,produccion_20261022.pdf,1,2,4,col_6,68.12
+revision,produccion,20261022,produccion_20261022.pdf,1,3,1,col_1,Total ======>
+revision,produccion,20261022,produccion_20261022.pdf,1,3,1,col_2,24523
+revision,produccion,20261022,produccion_20261022.pdf,1,3,1,col_3,36000
+revision,produccion,20261022,produccion_20261022.pdf,1,3,1,col_4,68.12
+revision,produccion,20261022,produccion_20261022.pdf,1,4,1,col_1,Resumen por Operario:
+revision,produccion,20261022,produccion_20261022.pdf,1,4,2,col_1,Item
+revision,produccion,20261022,produccion_20261022.pdf,1,4,2,col_2,Nombres
+revision,produccion,20261022,produccion_20261022.pdf,1,4,2,col_3,Apellidos
+revision,produccion,20261022,produccion_20261022.pdf,1,4,2,col_4,Produccion Mts.
+revision,produccion,20261022,produccion_20261022.pdf,1,4,2,col_5,Esperado en Mts
+revision,produccion,20261022,produccion_20261022.pdf,1,4,2,col_6,% Efectividad
+revision,produccion,20261022,produccion_20261022.pdf,1,4,3,col_1,1
+revision,produccion,20261022,produccion_20261022.pdf,1,4,3,col_2,CARLA
+revision,produccion,20261022,produccion_20261022.pdf,1,4,3,col_3,GUTIERREZ
+revision,produccion,20261022,produccion_20261022.pdf,1,4,3,col_4,7375
+revision,produccion,20261022,produccion_20261022.pdf,1,4,3,col_5,12000
+revision,produccion,20261022,produccion_20261022.pdf,1,4,3,col_6,61.46
+revision,produccion,20261022,produccion_20261022.pdf,1,4,4,col_1,2
+revision,produccion,20261022,produccion_20261022.pdf,1,4,4,col_2,SABINO
+revision,produccion,20261022,produccion_20261022.pdf,1,4,4,col_3,RODRIGUEZ
+revision,produccion,20261022,produccion_20261022.pdf,1,4,4,col_4,8025
+revision,produccion,20261022,produccion_20261022.pdf,1,4,4,col_5,12000
+revision,produccion,20261022,produccion_20261022.pdf,1,4,4,col_6,66.88
+revision,produccion,20261022,produccion_20261022.pdf,1,4,5,col_1,3
+revision,produccion,20261022,produccion_20261022.pdf,1,4,5,col_2,RAMON
+revision,produccion,20261022,produccion_20261022.pdf,1,4,5,col_3,VASQUEZ
+revision,produccion,20261022,produccion_20261022.pdf,1,4,5,col_4,9123
+revision,produccion,20261022,produccion_20261022.pdf,1,4,5,col_5,12000
+revision,produccion,20261022,produccion_20261022.pdf,1,4,5,col_6,76.02
+revision,produccion,20261023,produccion_20261023.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+revision,produccion,20261023,produccion_20261023.pdf,1,1,2,col_1,1
+revision,produccion,20261023,produccion_20261023.pdf,1,1,2,col_2,536146
+revision,produccion,20261023,produccion_20261023.pdf,1,1,2,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261023,produccion_20261023.pdf,1,1,2,col_4,0105-43621
+revision,produccion,20261023,produccion_20261023.pdf,1,1,2,col_5,ARANDANO NEGRO
+revision,produccion,20261023,produccion_20261023.pdf,1,1,2,col_6,301215
+revision,produccion,20261023,produccion_20261023.pdf,1,1,2,col_7,3127
+revision,produccion,20261023,produccion_20261023.pdf,1,1,3,col_1,2
+revision,produccion,20261023,produccion_20261023.pdf,1,1,3,col_2,536147
+revision,produccion,20261023,produccion_20261023.pdf,1,1,3,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261023,produccion_20261023.pdf,1,1,3,col_4,0105-43667
+revision,produccion,20261023,produccion_20261023.pdf,1,1,3,col_5,BULLDENIM L
+revision,produccion,20261023,produccion_20261023.pdf,1,1,3,col_6,100063
+revision,produccion,20261023,produccion_20261023.pdf,1,1,3,col_7,4433
+revision,produccion,20261023,produccion_20261023.pdf,1,1,4,col_1,3
+revision,produccion,20261023,produccion_20261023.pdf,1,1,4,col_2,536317
+revision,produccion,20261023,produccion_20261023.pdf,1,1,4,col_3,"RAMON, VASQUEZ"
+revision,produccion,20261023,produccion_20261023.pdf,1,1,4,col_4,0105-43667
+revision,produccion,20261023,produccion_20261023.pdf,1,1,4,col_5,BULLDENIM L
+revision,produccion,20261023,produccion_20261023.pdf,1,1,4,col_6,100063
+revision,produccion,20261023,produccion_20261023.pdf,1,1,4,col_7,6458
+revision,produccion,20261023,produccion_20261023.pdf,1,1,5,col_1,4
+revision,produccion,20261023,produccion_20261023.pdf,1,1,5,col_2,536317
+revision,produccion,20261023,produccion_20261023.pdf,1,1,5,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261023,produccion_20261023.pdf,1,1,5,col_4,0105-43667
+revision,produccion,20261023,produccion_20261023.pdf,1,1,5,col_5,BULLDENIM L
+revision,produccion,20261023,produccion_20261023.pdf,1,1,5,col_6,100063
+revision,produccion,20261023,produccion_20261023.pdf,1,1,5,col_7,5658
+revision,produccion,20261023,produccion_20261023.pdf,1,2,1,col_1,Resumen por Maquina:
+revision,produccion,20261023,produccion_20261023.pdf,1,2,2,col_1,Item
+revision,produccion,20261023,produccion_20261023.pdf,1,2,2,col_2,Codigo
+revision,produccion,20261023,produccion_20261023.pdf,1,2,2,col_3,Maquina
+revision,produccion,20261023,produccion_20261023.pdf,1,2,2,col_4,Produccion Mts.
+revision,produccion,20261023,produccion_20261023.pdf,1,2,2,col_5,Esperado en Mts
+revision,produccion,20261023,produccion_20261023.pdf,1,2,2,col_6,% Efectividad
+revision,produccion,20261023,produccion_20261023.pdf,1,2,3,col_1,1
+revision,produccion,20261023,produccion_20261023.pdf,1,2,3,col_2,149
+revision,produccion,20261023,produccion_20261023.pdf,1,2,3,col_3,REVISADORA # 01
+revision,produccion,20261023,produccion_20261023.pdf,1,2,3,col_4,0
+revision,produccion,20261023,produccion_20261023.pdf,1,2,3,col_5,36000
+revision,produccion,20261023,produccion_20261023.pdf,1,2,3,col_6,0.00
+revision,produccion,20261023,produccion_20261023.pdf,1,2,4,col_1,1
+revision,produccion,20261023,produccion_20261023.pdf,1,2,4,col_2,150
+revision,produccion,20261023,produccion_20261023.pdf,1,2,4,col_3,REVISADORA # 02
+revision,produccion,20261023,produccion_20261023.pdf,1,2,4,col_4,19676
+revision,produccion,20261023,produccion_20261023.pdf,1,2,4,col_5,36000
+revision,produccion,20261023,produccion_20261023.pdf,1,2,4,col_6,54.66
+revision,produccion,20261023,produccion_20261023.pdf,1,3,1,col_1,Total ======>
+revision,produccion,20261023,produccion_20261023.pdf,1,3,1,col_2,19676
+revision,produccion,20261023,produccion_20261023.pdf,1,3,1,col_3,36000
+revision,produccion,20261023,produccion_20261023.pdf,1,3,1,col_4,54.66
+revision,produccion,20261023,produccion_20261023.pdf,1,4,1,col_1,Resumen por Operario:
+revision,produccion,20261023,produccion_20261023.pdf,1,4,2,col_1,Item
+revision,produccion,20261023,produccion_20261023.pdf,1,4,2,col_2,Nombres
+revision,produccion,20261023,produccion_20261023.pdf,1,4,2,col_3,Apellidos
+revision,produccion,20261023,produccion_20261023.pdf,1,4,2,col_4,Produccion Mts.
+revision,produccion,20261023,produccion_20261023.pdf,1,4,2,col_5,Esperado en Mts
+revision,produccion,20261023,produccion_20261023.pdf,1,4,2,col_6,% Efectividad
+revision,produccion,20261023,produccion_20261023.pdf,1,4,3,col_1,1
+revision,produccion,20261023,produccion_20261023.pdf,1,4,3,col_2,CARLA
+revision,produccion,20261023,produccion_20261023.pdf,1,4,3,col_3,GUTIERREZ
+revision,produccion,20261023,produccion_20261023.pdf,1,4,3,col_4,7560
+revision,produccion,20261023,produccion_20261023.pdf,1,4,3,col_5,12000
+revision,produccion,20261023,produccion_20261023.pdf,1,4,3,col_6,63.00
+revision,produccion,20261023,produccion_20261023.pdf,1,4,4,col_1,2
+revision,produccion,20261023,produccion_20261023.pdf,1,4,4,col_2,SABINO
+revision,produccion,20261023,produccion_20261023.pdf,1,4,4,col_3,RODRIGUEZ
+revision,produccion,20261023,produccion_20261023.pdf,1,4,4,col_4,5658
+revision,produccion,20261023,produccion_20261023.pdf,1,4,4,col_5,12000
+revision,produccion,20261023,produccion_20261023.pdf,1,4,4,col_6,47.15
+revision,produccion,20261023,produccion_20261023.pdf,1,4,5,col_1,3
+revision,produccion,20261023,produccion_20261023.pdf,1,4,5,col_2,RAMON
+revision,produccion,20261023,produccion_20261023.pdf,1,4,5,col_3,VASQUEZ
+revision,produccion,20261023,produccion_20261023.pdf,1,4,5,col_4,6458
+revision,produccion,20261023,produccion_20261023.pdf,1,4,5,col_5,12000
+revision,produccion,20261023,produccion_20261023.pdf,1,4,5,col_6,53.82
+revision,produccion,20261024,produccion_20261024.pdf,1,1,1,col_1,Resumen por Maquina:
+revision,produccion,20261024,produccion_20261024.pdf,1,1,2,col_1,Item
+revision,produccion,20261024,produccion_20261024.pdf,1,1,2,col_2,Codigo
+revision,produccion,20261024,produccion_20261024.pdf,1,1,2,col_3,Maquina
+revision,produccion,20261024,produccion_20261024.pdf,1,1,2,col_4,Produccion Mts.
+revision,produccion,20261024,produccion_20261024.pdf,1,1,2,col_5,Esperado en Mts
+revision,produccion,20261024,produccion_20261024.pdf,1,1,2,col_6,% Efectividad
+revision,produccion,20261024,produccion_20261024.pdf,1,1,3,col_1,1
+revision,produccion,20261024,produccion_20261024.pdf,1,1,3,col_2,149
+revision,produccion,20261024,produccion_20261024.pdf,1,1,3,col_3,REVISADORA # 01
+revision,produccion,20261024,produccion_20261024.pdf,1,1,3,col_4,0
+revision,produccion,20261024,produccion_20261024.pdf,1,1,3,col_6,0.00
+revision,produccion,20261024,produccion_20261024.pdf,1,1,4,col_1,1
+revision,produccion,20261024,produccion_20261024.pdf,1,1,4,col_2,150
+revision,produccion,20261024,produccion_20261024.pdf,1,1,4,col_3,REVISADORA # 02
+revision,produccion,20261024,produccion_20261024.pdf,1,1,4,col_4,0
+revision,produccion,20261024,produccion_20261024.pdf,1,1,4,col_6,0.00
+revision,produccion,20261024,produccion_20261024.pdf,1,2,1,col_1,Total ======>
+revision,produccion,20261024,produccion_20261024.pdf,1,2,1,col_2,0
+revision,produccion,20261024,produccion_20261024.pdf,1,2,1,col_4,0.00
+revision,produccion,20261024,produccion_20261024.pdf,1,3,1,col_1,Resumen por Operario:
+revision,produccion,20261024,produccion_20261024.pdf,1,3,2,col_1,Item
+revision,produccion,20261024,produccion_20261024.pdf,1,3,2,col_2,Nombres
+revision,produccion,20261024,produccion_20261024.pdf,1,3,2,col_3,Apellidos
+revision,produccion,20261024,produccion_20261024.pdf,1,3,2,col_4,Produccion Mts.
+revision,produccion,20261024,produccion_20261024.pdf,1,3,2,col_5,Esperado en Mts
+revision,produccion,20261024,produccion_20261024.pdf,1,3,2,col_6,% Efectividad
+revision,produccion,20261025,produccion_20261025.pdf,1,1,1,col_1,Resumen por Maquina:
+revision,produccion,20261025,produccion_20261025.pdf,1,1,2,col_1,Item
+revision,produccion,20261025,produccion_20261025.pdf,1,1,2,col_2,Codigo
+revision,produccion,20261025,produccion_20261025.pdf,1,1,2,col_3,Maquina
+revision,produccion,20261025,produccion_20261025.pdf,1,1,2,col_4,Produccion Mts.
+revision,produccion,20261025,produccion_20261025.pdf,1,1,2,col_5,Esperado en Mts
+revision,produccion,20261025,produccion_20261025.pdf,1,1,2,col_6,% Efectividad
+revision,produccion,20261025,produccion_20261025.pdf,1,1,3,col_1,1
+revision,produccion,20261025,produccion_20261025.pdf,1,1,3,col_2,149
+revision,produccion,20261025,produccion_20261025.pdf,1,1,3,col_3,REVISADORA # 01
+revision,produccion,20261025,produccion_20261025.pdf,1,1,3,col_4,0
+revision,produccion,20261025,produccion_20261025.pdf,1,1,3,col_6,0.00
+revision,produccion,20261025,produccion_20261025.pdf,1,1,4,col_1,1
+revision,produccion,20261025,produccion_20261025.pdf,1,1,4,col_2,150
+revision,produccion,20261025,produccion_20261025.pdf,1,1,4,col_3,REVISADORA # 02
+revision,produccion,20261025,produccion_20261025.pdf,1,1,4,col_4,0
+revision,produccion,20261025,produccion_20261025.pdf,1,1,4,col_6,0.00
+revision,produccion,20261025,produccion_20261025.pdf,1,2,1,col_1,Total ======>
+revision,produccion,20261025,produccion_20261025.pdf,1,2,1,col_2,0
+revision,produccion,20261025,produccion_20261025.pdf,1,2,1,col_4,0.00
+revision,produccion,20261025,produccion_20261025.pdf,1,3,1,col_1,Resumen por Operario:
+revision,produccion,20261025,produccion_20261025.pdf,1,3,2,col_1,Item
+revision,produccion,20261025,produccion_20261025.pdf,1,3,2,col_2,Nombres
+revision,produccion,20261025,produccion_20261025.pdf,1,3,2,col_3,Apellidos
+revision,produccion,20261025,produccion_20261025.pdf,1,3,2,col_4,Produccion Mts.
+revision,produccion,20261025,produccion_20261025.pdf,1,3,2,col_5,Esperado en Mts
+revision,produccion,20261025,produccion_20261025.pdf,1,3,2,col_6,% Efectividad
+revision,produccion,20261026,produccion_20261026.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+revision,produccion,20261026,produccion_20261026.pdf,1,1,2,col_1,1
+revision,produccion,20261026,produccion_20261026.pdf,1,1,2,col_2,538450
+revision,produccion,20261026,produccion_20261026.pdf,1,1,2,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261026,produccion_20261026.pdf,1,1,2,col_4,0105-43667
+revision,produccion,20261026,produccion_20261026.pdf,1,1,2,col_5,BULLDENIM L
+revision,produccion,20261026,produccion_20261026.pdf,1,1,2,col_6,100063
+revision,produccion,20261026,produccion_20261026.pdf,1,1,2,col_7,271
+revision,produccion,20261026,produccion_20261026.pdf,1,1,3,col_1,2
+revision,produccion,20261026,produccion_20261026.pdf,1,1,3,col_2,538450
+revision,produccion,20261026,produccion_20261026.pdf,1,1,3,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261026,produccion_20261026.pdf,1,1,3,col_4,0115-43797
+revision,produccion,20261026,produccion_20261026.pdf,1,1,3,col_5,FASHION NATURAL L APT
+revision,produccion,20261026,produccion_20261026.pdf,1,1,3,col_6,0
+revision,produccion,20261026,produccion_20261026.pdf,1,1,3,col_7,2056
+revision,produccion,20261026,produccion_20261026.pdf,1,1,4,col_1,3
+revision,produccion,20261026,produccion_20261026.pdf,1,1,4,col_2,538450
+revision,produccion,20261026,produccion_20261026.pdf,1,1,4,col_3,"SABINO, RODRIGUEZ"
+revision,produccion,20261026,produccion_20261026.pdf,1,1,4,col_4,0105-43696
+revision,produccion,20261026,produccion_20261026.pdf,1,1,4,col_5,AURORA BLACK
+revision,produccion,20261026,produccion_20261026.pdf,1,1,4,col_6,201213
+revision,produccion,20261026,produccion_20261026.pdf,1,1,4,col_7,3380
+revision,produccion,20261026,produccion_20261026.pdf,1,2,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+revision,produccion,20261026,produccion_20261026.pdf,1,2,2,col_1,1
+revision,produccion,20261026,produccion_20261026.pdf,1,2,2,col_2,538475
+revision,produccion,20261026,produccion_20261026.pdf,1,2,2,col_3,"RAMON, VASQUEZ"
+revision,produccion,20261026,produccion_20261026.pdf,1,2,2,col_4,0105-43696
+revision,produccion,20261026,produccion_20261026.pdf,1,2,2,col_5,AURORA BLACK
+revision,produccion,20261026,produccion_20261026.pdf,1,2,2,col_6,201213
+revision,produccion,20261026,produccion_20261026.pdf,1,2,2,col_7,7422
+revision,produccion,20261026,produccion_20261026.pdf,1,2,3,col_1,2
+revision,produccion,20261026,produccion_20261026.pdf,1,2,3,col_2,538521
+revision,produccion,20261026,produccion_20261026.pdf,1,2,3,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261026,produccion_20261026.pdf,1,2,3,col_4,0105-43696
+revision,produccion,20261026,produccion_20261026.pdf,1,2,3,col_5,AURORA BLACK
+revision,produccion,20261026,produccion_20261026.pdf,1,2,3,col_6,201221
+revision,produccion,20261026,produccion_20261026.pdf,1,2,3,col_7,1741
+revision,produccion,20261026,produccion_20261026.pdf,1,2,4,col_1,3
+revision,produccion,20261026,produccion_20261026.pdf,1,2,4,col_2,538522
+revision,produccion,20261026,produccion_20261026.pdf,1,2,4,col_3,"CARLA , GUTIERREZ"
+revision,produccion,20261026,produccion_20261026.pdf,1,2,4,col_4,0105-43621
+revision,produccion,20261026,produccion_20261026.pdf,1,2,4,col_5,ARANDANO NEGRO
+revision,produccion,20261026,produccion_20261026.pdf,1,2,4,col_6,301215
+revision,produccion,20261026,produccion_20261026.pdf,1,2,4,col_7,7020
+revision,produccion,20261026,produccion_20261026.pdf,1,3,1,col_1,Resumen por Maquina:
+revision,produccion,20261026,produccion_20261026.pdf,1,3,2,col_1,Item
+revision,produccion,20261026,produccion_20261026.pdf,1,3,2,col_2,Codigo
+revision,produccion,20261026,produccion_20261026.pdf,1,3,2,col_3,Maquina
+revision,produccion,20261026,produccion_20261026.pdf,1,3,2,col_4,Produccion Mts.
+revision,produccion,20261026,produccion_20261026.pdf,1,3,2,col_5,Esperado en Mts
+revision,produccion,20261026,produccion_20261026.pdf,1,3,2,col_6,% Efectividad
+revision,produccion,20261026,produccion_20261026.pdf,1,3,3,col_1,1
+revision,produccion,20261026,produccion_20261026.pdf,1,3,3,col_2,149
+revision,produccion,20261026,produccion_20261026.pdf,1,3,3,col_3,REVISADORA # 01
+revision,produccion,20261026,produccion_20261026.pdf,1,3,3,col_4,5707
+revision,produccion,20261026,produccion_20261026.pdf,1,3,3,col_5,36000
+revision,produccion,20261026,produccion_20261026.pdf,1,3,3,col_6,15.85
+revision,produccion,20261026,produccion_20261026.pdf,1,3,4,col_1,1
+revision,produccion,20261026,produccion_20261026.pdf,1,3,4,col_2,150
+revision,produccion,20261026,produccion_20261026.pdf,1,3,4,col_3,REVISADORA # 02
+revision,produccion,20261026,produccion_20261026.pdf,1,3,4,col_4,16183
+revision,produccion,20261026,produccion_20261026.pdf,1,3,4,col_5,36000
+revision,produccion,20261026,produccion_20261026.pdf,1,3,4,col_6,44.95
+revision,produccion,20261026,produccion_20261026.pdf,1,4,1,col_1,Total ======>
+revision,produccion,20261026,produccion_20261026.pdf,1,4,1,col_2,21890
+revision,produccion,20261026,produccion_20261026.pdf,1,4,1,col_3,36000
+revision,produccion,20261026,produccion_20261026.pdf,1,4,1,col_4,60.81
+revision,produccion,20261026,produccion_20261026.pdf,1,5,1,col_1,Resumen por Operario:
+revision,produccion,20261026,produccion_20261026.pdf,1,5,2,col_1,Item
+revision,produccion,20261026,produccion_20261026.pdf,1,5,2,col_2,Nombres
+revision,produccion,20261026,produccion_20261026.pdf,1,5,2,col_3,Apellidos
+revision,produccion,20261026,produccion_20261026.pdf,1,5,2,col_4,Produccion Mts.
+revision,produccion,20261026,produccion_20261026.pdf,1,5,2,col_5,Esperado en Mts
+revision,produccion,20261026,produccion_20261026.pdf,1,5,2,col_6,% Efectividad
+revision,produccion,20261026,produccion_20261026.pdf,1,5,3,col_1,1
+revision,produccion,20261026,produccion_20261026.pdf,1,5,3,col_2,SABINO
+revision,produccion,20261026,produccion_20261026.pdf,1,5,3,col_3,RODRIGUEZ
+revision,produccion,20261026,produccion_20261026.pdf,1,5,3,col_4,5707
+revision,produccion,20261026,produccion_20261026.pdf,1,5,3,col_5,12000
+revision,produccion,20261026,produccion_20261026.pdf,1,5,3,col_6,47.56
+revision,produccion,20261026,produccion_20261026.pdf,1,5,4,col_1,2
+revision,produccion,20261026,produccion_20261026.pdf,1,5,4,col_2,RAMON
+revision,produccion,20261026,produccion_20261026.pdf,1,5,4,col_3,VASQUEZ
+revision,produccion,20261026,produccion_20261026.pdf,1,5,4,col_4,7422
+revision,produccion,20261026,produccion_20261026.pdf,1,5,4,col_5,12000
+revision,produccion,20261026,produccion_20261026.pdf,1,5,4,col_6,61.85
+revision,produccion,20261026,produccion_20261026.pdf,1,5,5,col_1,3
+revision,produccion,20261026,produccion_20261026.pdf,1,5,5,col_2,CARLA
+revision,produccion,20261026,produccion_20261026.pdf,1,5,5,col_3,GUTIERREZ
+revision,produccion,20261026,produccion_20261026.pdf,1,5,5,col_4,8761
+revision,produccion,20261026,produccion_20261026.pdf,1,5,5,col_5,12000
+revision,produccion,20261026,produccion_20261026.pdf,1,5,5,col_6,73.01
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_1,1
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_2,61
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_3,SERVICIO MEDICO
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_4,1.50
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_5,18.75
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,1,col_1,Resumen por Causa:
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_1,Item
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_2,Codigo
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_3,Causa
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_4,Horas Perdidas
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_5,% Tiempo Perdido
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_1,1
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_2,61
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_3,SERVICIO MEDICO
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_4,1.50
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_5,18.75
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,1,col_1,Resumen Produccion del dia:
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,2,col_1,Total produccion esperada:
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,2,col_2,28800 mts
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,3,col_1,Total produccion Real:
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,3,col_2,22105 mts
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,4,col_1,Total Tiempos perdidos:
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,4,col_2,1.50 hrs.
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,5,col_1,Total Produccion Perdida:
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,5,col_2,2700 mts.
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,6,col_1,Diferencia:
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,6,col_2,-3995 mts.
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,7,col_1,tiempo perdido por justificar:
+revision,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,7,col_2,-26.22 hrs.
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_1,1
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_2,24
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_3,CALIDAD
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_4,1.00
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_5,12.50
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,1,col_1,Resumen por Causa:
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_1,Item
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_2,Codigo
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_3,Causa
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_4,Horas Perdidas
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_5,% Tiempo Perdido
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_1,1
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_2,24
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_3,CALIDAD
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_4,1.00
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_5,12.50
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,1,col_1,Resumen Produccion del dia:
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,2,col_1,Total produccion esperada:
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,2,col_2,28800 mts
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,3,col_1,Total produccion Real:
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,3,col_2,24901 mts
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,4,col_1,Total Tiempos perdidos:
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,4,col_2,1.00 hrs.
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,5,col_1,Total Produccion Perdida:
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,5,col_2,1800 mts.
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,6,col_1,Diferencia:
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,6,col_2,-2099 mts.
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,7,col_1,tiempo perdido por justificar:
+revision,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,7,col_2,-25.17 hrs.
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_1,1
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_2,24
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_3,CALIDAD
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_4,1.00
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_5,12.50
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,1,col_1,Resumen por Causa:
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_1,Item
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_2,Codigo
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_3,Causa
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_4,Horas Perdidas
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_5,% Tiempo Perdido
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_1,1
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_2,24
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_3,CALIDAD
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_4,1.00
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_5,12.50
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,1,col_1,Resumen Produccion del dia:
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,2,col_1,Total produccion esperada:
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,2,col_2,28800 mts
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,3,col_1,Total produccion Real:
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,3,col_2,24523 mts
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,4,col_1,Total Tiempos perdidos:
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,4,col_2,1.00 hrs.
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,5,col_1,Total Produccion Perdida:
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,5,col_2,1800 mts.
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,6,col_1,Diferencia:
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,6,col_2,-2477 mts.
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,7,col_1,tiempo perdido por justificar:
+revision,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,7,col_2,-25.38 hrs.
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_1,1
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_2,24
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_3,CALIDAD
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_4,1.00
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_5,12.50
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,3,col_1,2
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,3,col_2,16
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,3,col_3,FALLA MECANICA.
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,3,col_4,1.00
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,3,col_5,12.50
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,1,col_1,Resumen por Causa:
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_1,Item
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_2,Codigo
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_3,Causa
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_4,Horas Perdidas
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_5,% Tiempo Perdido
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_1,1
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_2,24
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_3,CALIDAD
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_4,1.00
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_5,12.50
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,4,col_1,2
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,4,col_2,16
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,4,col_3,FALLA MECANICA.
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,4,col_4,1.00
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,4,col_5,12.50
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,1,col_1,Resumen Produccion del dia:
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,2,col_1,Total produccion esperada:
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,2,col_2,28800 mts
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,3,col_1,Total produccion Real:
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,3,col_2,19676 mts
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,4,col_1,Total Tiempos perdidos:
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,4,col_2,2.00 hrs.
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,5,col_1,Total Produccion Perdida:
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,5,col_2,3600 mts.
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,6,col_1,Diferencia:
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,6,col_2,-5524 mts.
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,7,col_1,tiempo perdido por justificar:
+revision,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,3,7,col_2,-27.07 hrs.
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,1,col_1,Resumen por Causa:
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_1,Item
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_2,Codigo
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_3,Causa
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_4,Horas Perdidas
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_5,% Tiempo Perdido
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,1,col_1,Resumen Produccion del dia:
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,2,col_1,Total produccion esperada:
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,2,col_2,28800 mts
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,3,col_1,Total produccion Real:
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,3,col_2,mts
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,4,col_1,Total Tiempos perdidos:
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,4,col_2,0 hrs.
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,5,col_1,Total Produccion Perdida:
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,5,col_2,0 mts.
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,6,col_1,Diferencia:
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,6,col_2,-28800 mts.
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,7,col_1,tiempo perdido por justificar:
+revision,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,7,col_2,-40 hrs.
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,1,col_1,Resumen por Causa:
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_1,Item
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_2,Codigo
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_3,Causa
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_4,Horas Perdidas
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_5,% Tiempo Perdido
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,1,col_1,Resumen Produccion del dia:
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,2,col_1,Total produccion esperada:
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,2,col_2,28800 mts
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,3,col_1,Total produccion Real:
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,3,col_2,mts
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,4,col_1,Total Tiempos perdidos:
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,4,col_2,0 hrs.
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,5,col_1,Total Produccion Perdida:
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,5,col_2,0 mts.
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,6,col_1,Diferencia:
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,6,col_2,-28800 mts.
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,7,col_1,tiempo perdido por justificar:
+revision,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,7,col_2,-40 hrs.
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_1,1
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_2,61
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_3,SERVICIO MEDICO
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_4,1.00
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_5,12.50
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,1,col_1,Resumen por Causa:
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_1,Item
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_2,Codigo
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_3,Causa
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_4,Horas Perdidas
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_5,% Tiempo Perdido
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_1,1
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_2,61
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_3,SERVICIO MEDICO
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_4,1.00
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_5,12.50
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,1,col_1,Resumen Produccion del dia:
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,2,col_1,Total produccion esperada:
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,2,col_2,28800 mts
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,3,col_1,Total produccion Real:
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,3,col_2,21890 mts
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,4,col_1,Total Tiempos perdidos:
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,4,col_2,1.00 hrs.
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,5,col_1,Total Produccion Perdida:
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,5,col_2,1800 mts.
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,6,col_1,Diferencia:
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,6,col_2,-5110 mts.
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,7,col_1,tiempo perdido por justificar:
+revision,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,7,col_2,-26.84 hrs.
+revision,inventario,20261020,inventario_20261020.pdf,1,1,1,col_1,Item
+revision,inventario,20261020,inventario_20261020.pdf,1,1,1,col_2,Referencia
+revision,inventario,20261020,inventario_20261020.pdf,1,1,1,col_3,Estilo
+revision,inventario,20261020,inventario_20261020.pdf,1,1,1,col_4,Mts.:
+revision,inventario,20261021,inventario_20261021.pdf,1,1,1,col_1,Item
+revision,inventario,20261021,inventario_20261021.pdf,1,1,1,col_2,Referencia
+revision,inventario,20261021,inventario_20261021.pdf,1,1,1,col_3,Estilo
+revision,inventario,20261021,inventario_20261021.pdf,1,1,1,col_4,Mts.:
+revision,inventario,20261022,inventario_20261022.pdf,1,1,1,col_1,Item
+revision,inventario,20261022,inventario_20261022.pdf,1,1,1,col_2,Referencia
+revision,inventario,20261022,inventario_20261022.pdf,1,1,1,col_3,Estilo
+revision,inventario,20261022,inventario_20261022.pdf,1,1,1,col_4,Mts.:
+revision,inventario,20261023,inventario_20261023.pdf,1,1,1,col_1,Item
+revision,inventario,20261023,inventario_20261023.pdf,1,1,1,col_2,Referencia
+revision,inventario,20261023,inventario_20261023.pdf,1,1,1,col_3,Estilo
+revision,inventario,20261023,inventario_20261023.pdf,1,1,1,col_4,Mts.:
+revision,inventario,20261024,inventario_20261024.pdf,1,1,1,col_1,Item
+revision,inventario,20261024,inventario_20261024.pdf,1,1,1,col_2,Referencia
+revision,inventario,20261024,inventario_20261024.pdf,1,1,1,col_3,Estilo
+revision,inventario,20261024,inventario_20261024.pdf,1,1,1,col_4,Mts.:
+revision,inventario,20261025,inventario_20261025.pdf,1,1,1,col_1,Item
+revision,inventario,20261025,inventario_20261025.pdf,1,1,1,col_2,Referencia
+revision,inventario,20261025,inventario_20261025.pdf,1,1,1,col_3,Estilo
+revision,inventario,20261025,inventario_20261025.pdf,1,1,1,col_4,Mts.:
+revision,inventario,20261026,inventario_20261026.pdf,1,1,1,col_1,Item
+revision,inventario,20261026,inventario_20261026.pdf,1,1,1,col_2,Referencia
+revision,inventario,20261026,inventario_20261026.pdf,1,1,1,col_3,Estilo
+revision,inventario,20261026,inventario_20261026.pdf,1,1,1,col_4,Mts.:
 sanforizado,produccion,20261001,produccion_20261001.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
 sanforizado,produccion,20261001,produccion_20261001.pdf,1,1,2,col_1,1
 sanforizado,produccion,20261001,produccion_20261001.pdf,1,1,2,col_2,527695
@@ -7056,3 +8222,713 @@ sanforizado,inventario,20261022,inventario_20261022.pdf,1,1,1,col_1,Item
 sanforizado,inventario,20261022,inventario_20261022.pdf,1,1,1,col_2,Referencia
 sanforizado,inventario,20261022,inventario_20261022.pdf,1,1,1,col_3,Estilo
 sanforizado,inventario,20261022,inventario_20261022.pdf,1,1,1,col_4,Mts.:
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,2,col_1,1
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,2,col_2,534552
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,2,col_3,"HUGO, BOYER"
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,2,col_4,0105-49470
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,2,col_5,ARANDANO DARK
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,2,col_6,201209
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,2,col_7,5726
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,3,col_1,2
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,3,col_2,534756
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,3,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,3,col_4,0105-49470
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,3,col_5,ARANDANO DARK
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,3,col_6,201209
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,3,col_7,5435
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,4,col_1,3
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,4,col_2,534756
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,4,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,4,col_4,0105-43621
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,4,col_5,ARANDANO NEGRO
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,4,col_6,301212
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,4,col_7,4820
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,5,col_1,4
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,5,col_2,534758
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,5,col_3,"VICTOR, FARFAN"
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,5,col_4,0105-43621
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,5,col_5,ARANDANO NEGRO
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,5,col_6,301212
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,5,col_7,10495
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,6,col_1,5
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,6,col_2,534759
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,6,col_3,"VICTOR, FARFAN"
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,6,col_4,0105-43656
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,6,col_5,ALEXA
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,6,col_6,201205
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,1,6,col_7,1000
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,1,col_1,Resumen por Maquina:
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,2,col_1,Item
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,2,col_2,Codigo
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,2,col_3,Maquina
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,2,col_4,Produccion Mts.
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,2,col_5,Esperado en Mts
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,2,col_6,% Efectividad
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,3,col_1,1
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,3,col_2,148
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,3,col_3,SANFORIZADO CIBITEX # 1
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,3,col_4,27476
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,3,col_5,36720
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,3,col_6,74.83
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,4,col_3,Total ======>
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,4,col_4,27476
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,4,col_5,36720
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,2,4,col_6,74.83
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,1,col_1,Resumen por Operario:
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,2,col_1,Item
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,2,col_2,Nombres
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,2,col_3,Apellidos
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,2,col_4,Produccion Mts.
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,2,col_5,Esperado en Mts
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,2,col_6,% Efectividad
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,3,col_1,1
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,3,col_2,HUGO
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,3,col_3,BOYER
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,3,col_4,5726
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,3,col_5,12420
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,3,col_6,46.10
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,4,col_1,2
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,4,col_2,ALEXANDER
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,4,col_3,MEJIAS
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,4,col_4,10255
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,4,col_5,12420
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,4,col_6,82.57
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,5,col_1,3
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,5,col_2,VICTOR
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,5,col_3,FARFAN
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,5,col_4,11495
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,5,col_5,12420
+sanforizado,produccion,20261020,produccion_20261020.pdf,1,3,5,col_6,92.55
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,2,col_1,1
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,2,col_2,535265
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,2,col_3,"HUGO, BOYER"
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,2,col_4,0105-43656
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,2,col_5,ALEXA
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,2,col_6,201208
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,2,col_7,4555
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,3,col_1,2
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,3,col_2,535266
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,3,col_3,"HUGO, BOYER"
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,3,col_4,0105-43665
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,3,col_5,FARINA
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,3,col_6,301203
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,3,col_7,4043
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,4,col_1,3
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,4,col_2,535272
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,4,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,4,col_4,0105-43696
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,4,col_5,AURORA BLACK
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,4,col_6,201213
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,4,col_7,4950
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,5,col_1,4
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,5,col_2,535272
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,5,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,5,col_4,0115-42405
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,5,col_5,FASHION OSCURO
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,5,col_6,402192
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,5,col_7,5640
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,6,col_1,5
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,6,col_2,535288
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,6,col_3,"VICTOR, FARFAN"
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,6,col_4,0105-43621
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,6,col_5,ARANDANO NEGRO
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,6,col_6,301215
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,6,col_7,1780
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,7,col_1,6
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,7,col_2,535288
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,7,col_3,"VICTOR, FARFAN"
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,7,col_4,0120-41905
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,7,col_5,INDIGO OSCURO DARK BLUE
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,7,col_6,401211
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,7,col_7,1685
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,8,col_1,7
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,8,col_2,535288
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,8,col_3,"VICTOR, FARFAN"
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,8,col_4,0115-42405
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,8,col_5,FASHION OSCURO
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,8,col_6,401205
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,1,8,col_7,8265
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,1,col_1,Resumen por Maquina:
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,2,col_1,Item
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,2,col_2,Codigo
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,2,col_3,Maquina
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,2,col_4,Produccion Mts.
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,2,col_5,Esperado en Mts
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,2,col_6,% Efectividad
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,3,col_1,1
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,3,col_2,148
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,3,col_3,SANFORIZADO CIBITEX # 1
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,3,col_4,30918
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,3,col_5,36720
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,3,col_6,84.20
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,4,col_3,Total ======>
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,4,col_4,30918
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,4,col_5,36720
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,2,4,col_6,84.20
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,1,col_1,Resumen por Operario:
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,2,col_1,Item
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,2,col_2,Nombres
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,2,col_3,Apellidos
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,2,col_4,Produccion Mts.
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,2,col_5,Esperado en Mts
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,2,col_6,% Efectividad
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,3,col_1,1
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,3,col_2,HUGO
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,3,col_3,BOYER
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,3,col_4,8598
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,3,col_5,12420
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,3,col_6,69.23
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,4,col_1,2
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,4,col_2,ALEXANDER
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,4,col_3,MEJIAS
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,4,col_4,10590
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,4,col_5,12420
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,4,col_6,85.27
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,5,col_1,3
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,5,col_2,VICTOR
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,5,col_3,FARFAN
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,5,col_4,11730
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,5,col_5,12420
+sanforizado,produccion,20261021,produccion_20261021.pdf,1,3,5,col_6,94.44
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,2,col_1,1
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,2,col_2,535691
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,2,col_3,"HUGO, BOYER"
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,2,col_4,0105-43621
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,2,col_5,ARANDANO NEGRO
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,2,col_6,301215
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,2,col_7,1441
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,3,col_1,2
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,3,col_2,535692
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,3,col_3,"HUGO, BOYER"
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,3,col_4,0105-43665
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,3,col_5,FARINA
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,3,col_6,301203
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,3,col_7,2022
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,4,col_1,3
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,4,col_2,535707
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,4,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,4,col_4,0105-28502
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,4,col_5,OXIGENO
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,4,col_6,200091
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,4,col_7,8980
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,5,col_1,4
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,5,col_2,535707
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,5,col_3,"VICTOR, FARFAN"
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,5,col_4,0105-28502
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,5,col_5,OXIGENO
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,5,col_6,200091
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,5,col_7,4500
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,6,col_1,5
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,6,col_2,535707
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,6,col_3,"VICTOR, FARFAN"
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,6,col_4,0105-43667
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,6,col_5,BULLDENIM L
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,6,col_6,100063
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,1,6,col_7,5790
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,1,col_1,Resumen por Maquina:
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,2,col_1,Item
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,2,col_2,Codigo
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,2,col_3,Maquina
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,2,col_4,Produccion Mts.
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,2,col_5,Esperado en Mts
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,2,col_6,% Efectividad
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,3,col_1,1
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,3,col_2,148
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,3,col_3,SANFORIZADO CIBITEX # 1
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,3,col_4,22733
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,3,col_5,36720
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,3,col_6,61.91
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,4,col_3,Total ======>
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,4,col_4,22733
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,4,col_5,36720
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,2,4,col_6,61.91
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,1,col_1,Resumen por Operario:
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,2,col_1,Item
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,2,col_2,Nombres
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,2,col_3,Apellidos
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,2,col_4,Produccion Mts.
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,2,col_5,Esperado en Mts
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,2,col_6,% Efectividad
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,3,col_1,1
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,3,col_2,HUGO
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,3,col_3,BOYER
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,3,col_4,3463
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,3,col_5,12420
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,3,col_6,27.88
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,4,col_1,2
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,4,col_2,ALEXANDER
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,4,col_3,MEJIAS
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,4,col_4,8980
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,4,col_5,12420
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,4,col_6,72.30
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,5,col_1,3
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,5,col_2,VICTOR
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,5,col_3,FARFAN
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,5,col_4,10290
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,5,col_5,12420
+sanforizado,produccion,20261022,produccion_20261022.pdf,1,3,5,col_6,82.85
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,2,col_1,1
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,2,col_2,536145
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,2,col_3,"HUGO, BOYER"
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,2,col_4,0105-43667
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,2,col_5,BULLDENIM L
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,2,col_6,100063
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,2,col_7,9672
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,3,col_1,2
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,3,col_2,536312
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,3,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,3,col_4,0105-43667
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,3,col_5,BULLDENIM L
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,3,col_6,100063
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,3,col_7,4960
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,4,col_1,3
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,4,col_2,536312
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,4,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,4,col_4,0115-43797
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,4,col_5,FASHION NATURAL L APT
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,4,col_6,0
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,4,col_7,2140
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,5,col_1,4
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,5,col_2,536312
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,5,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,5,col_4,0110-43752
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,5,col_5,DRILL 422
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,5,col_6,0
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,5,col_7,960
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,6,col_1,5
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,6,col_2,536312
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,6,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,6,col_4,0105-43696
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,6,col_5,AURORA BLACK
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,6,col_6,201213
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,6,col_7,600
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,7,col_1,6
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,7,col_2,536312
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,7,col_3,"VICTOR, FARFAN"
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,7,col_4,0105-43696
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,7,col_5,AURORA BLACK
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,7,col_6,201213
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,1,7,col_7,12185
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,1,col_1,Resumen por Maquina:
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,2,col_1,Item
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,2,col_2,Codigo
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,2,col_3,Maquina
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,2,col_4,Produccion Mts.
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,2,col_5,Esperado en Mts
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,2,col_6,% Efectividad
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,3,col_1,1
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,3,col_2,148
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,3,col_3,SANFORIZADO CIBITEX # 1
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,3,col_4,30517
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,3,col_5,36720
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,3,col_6,83.11
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,4,col_3,Total ======>
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,4,col_4,30517
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,4,col_5,36720
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,2,4,col_6,83.11
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,1,col_1,Resumen por Operario:
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,2,col_1,Item
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,2,col_2,Nombres
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,2,col_3,Apellidos
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,2,col_4,Produccion Mts.
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,2,col_5,Esperado en Mts
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,2,col_6,% Efectividad
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,3,col_1,1
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,3,col_2,HUGO
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,3,col_3,BOYER
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,3,col_4,9672
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,3,col_5,12420
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,3,col_6,77.87
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,4,col_1,2
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,4,col_2,VICTOR
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,4,col_3,FARFAN
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,4,col_4,12185
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,4,col_5,12420
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,4,col_6,98.11
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,5,col_1,3
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,5,col_2,ALEXANDER
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,5,col_3,MEJIAS
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,5,col_4,8660
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,5,col_5,12420
+sanforizado,produccion,20261023,produccion_20261023.pdf,1,3,5,col_6,69.73
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,1,col_1,Resumen por Maquina:
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,2,col_1,Item
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,2,col_2,Codigo
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,2,col_3,Maquina
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,2,col_4,Produccion Mts.
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,2,col_5,Esperado en Mts
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,2,col_6,% Efectividad
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,3,col_1,1
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,3,col_2,148
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,3,col_3,SANFORIZADO CIBITEX # 1
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,3,col_4,0
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,3,col_5,0
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,3,col_6,0.00
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,4,col_3,Total ======>
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,4,col_4,0
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,4,col_5,0
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,1,4,col_6,0.00
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,2,1,col_1,Resumen por Operario:
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,2,2,col_1,Item
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,2,2,col_2,Nombres
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,2,2,col_3,Apellidos
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,2,2,col_4,Produccion Mts.
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,2,2,col_5,Esperado en Mts
+sanforizado,produccion,20261024,produccion_20261024.pdf,1,2,2,col_6,% Efectividad
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,1,col_1,Resumen por Maquina:
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,2,col_1,Item
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,2,col_2,Codigo
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,2,col_3,Maquina
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,2,col_4,Produccion Mts.
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,2,col_5,Esperado en Mts
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,2,col_6,% Efectividad
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,3,col_1,1
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,3,col_2,148
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,3,col_3,SANFORIZADO CIBITEX # 1
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,3,col_4,0
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,3,col_5,0
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,3,col_6,0.00
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,4,col_3,Total ======>
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,4,col_4,0
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,4,col_5,0
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,1,4,col_6,0.00
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,2,1,col_1,Resumen por Operario:
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,2,2,col_1,Item
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,2,2,col_2,Nombres
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,2,2,col_3,Apellidos
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,2,2,col_4,Produccion Mts.
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,2,2,col_5,Esperado en Mts
+sanforizado,produccion,20261025,produccion_20261025.pdf,1,2,2,col_6,% Efectividad
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,1,col_1,Item Codigo Nombre Operador Referencia Estilo Lote Produccion Mt
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,2,col_1,1
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,2,col_2,538449
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,2,col_3,"ALEXANDER, MEJIAS"
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,2,col_4,0105-43696
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,2,col_5,AURORA BLACK
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,2,col_6,201215
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,2,col_7,11115
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,3,col_1,2
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,3,col_2,538474
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,3,col_3,"VICTOR, FARFAN"
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,3,col_4,0105-43621
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,3,col_5,ARANDANO NEGRO
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,3,col_6,301215
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,3,col_7,8147
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,4,col_1,3
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,4,col_2,538520
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,4,col_3,"HUGO, BOYER"
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,4,col_4,0105-43662
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,4,col_5,BULLDENIM 11
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,4,col_6,200041
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,1,4,col_7,3530
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,1,col_1,Resumen por Maquina:
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,2,col_1,Item
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,2,col_2,Codigo
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,2,col_3,Maquina
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,2,col_4,Produccion Mts.
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,2,col_5,Esperado en Mts
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,2,col_6,% Efectividad
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,3,col_1,1
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,3,col_2,148
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,3,col_3,SANFORIZADO CIBITEX # 1
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,3,col_4,22792
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,3,col_5,36720
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,3,col_6,62.07
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,4,col_3,Total ======>
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,4,col_4,22792
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,4,col_5,36720
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,2,4,col_6,62.07
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,1,col_1,Resumen por Operario:
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,2,col_1,Item
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,2,col_2,Nombres
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,2,col_3,Apellidos
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,2,col_4,Produccion Mts.
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,2,col_5,Esperado en Mts
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,2,col_6,% Efectividad
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,3,col_1,1
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,3,col_2,ALEXANDER
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,3,col_3,MEJIAS
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,3,col_4,11115
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,3,col_5,12420
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,3,col_6,89.49
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,4,col_1,2
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,4,col_2,VICTOR
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,4,col_3,FARFAN
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,4,col_4,8147
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,4,col_5,12420
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,4,col_6,65.60
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,5,col_1,3
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,5,col_2,HUGO
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,5,col_3,BOYER
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,5,col_4,3530
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,5,col_5,12420
+sanforizado,produccion,20261026,produccion_20261026.pdf,1,3,5,col_6,28.42
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_1,1
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_2,11
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_3,FALLA ELECTRICA.
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_4,3.58
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,2,col_5,44.75
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,3,col_1,2
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,3,col_2,31
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,3,col_3,LLUVIAS - GOTERAS.
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,3,col_4,1.00
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,1,3,col_5,12.50
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,1,col_1,Resumen por Causa:
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_1,Item
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_2,Codigo
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_3,Causa
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_4,Horas Perdidas
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,2,col_5,% Tiempo Perdido
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_1,1
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_2,11
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_3,FALLA ELECTRICA.
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_4,3.58
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,3,col_5,44.75
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,4,col_1,2
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,4,col_2,31
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,4,col_3,LLUVIAS - GOTERAS.
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,4,col_4,1.00
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,2,4,col_5,3.13
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,1,col_1,Resumen Produccion del dia:
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,2,col_1,Total produccion esperada:
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,2,col_2,28800 mts
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,3,col_1,Total produccion Real:
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,3,col_2,27476 mts
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,4,col_1,Total Tiempos perdidos:
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,4,col_2,4.58 hrs.
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,5,col_1,Total Produccion Perdida:
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,5,col_2,8244 mts.
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,6,col_1,Diferencia:
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,6,col_2,6920 mts.
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,7,col_1,tiempo perdido por justificar:
+sanforizado,tiempos_perdidos,20261020,tiempos_perdidos_20261020.pdf,1,3,7,col_2,-20.16 hrs.
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_1,1
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_2,11
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_3,FALLA ELECTRICA.
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_4,1.00
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,1,2,col_5,12.50
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,1,col_1,Resumen por Causa:
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_1,Item
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_2,Codigo
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_3,Causa
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_4,Horas Perdidas
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,2,col_5,% Tiempo Perdido
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_1,1
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_2,11
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_3,FALLA ELECTRICA.
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_4,1.00
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,2,3,col_5,12.50
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,1,col_1,Resumen Produccion del dia:
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,2,col_1,Total produccion esperada:
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,2,col_2,28800 mts
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,3,col_1,Total produccion Real:
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,3,col_2,30918 mts
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,4,col_1,Total Tiempos perdidos:
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,4,col_2,1.00 hrs.
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,5,col_1,Total Produccion Perdida:
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,5,col_2,1800 mts.
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,6,col_1,Diferencia:
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,6,col_2,3918 mts.
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,7,col_1,tiempo perdido por justificar:
+sanforizado,tiempos_perdidos,20261021,tiempos_perdidos_20261021.pdf,1,3,7,col_2,-21.82 hrs.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_1,1
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_2,12
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_3,SOPLAR - LIMPIAR MAQ.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_4,3.75
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,2,col_5,46.88
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,3,col_1,2
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,3,col_2,4
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,3,col_3,MANTENIMIENTO PREVENTIVO.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,3,col_4,3.17
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,3,col_5,39.63
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,4,col_1,3
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,4,col_2,14
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,4,col_3,FALLA OPERATIVA.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,4,col_4,1.00
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,4,col_5,12.50
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,5,col_1,4
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,5,col_2,20
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,5,col_3,CAMBIO DE TITULO-CAMBIO ESTILO-ENSARTE
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,5,col_4,0.83
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,1,5,col_5,10.38
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,1,col_1,Resumen por Causa:
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_1,Item
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_2,Codigo
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_3,Causa
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_4,Horas Perdidas
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,2,col_5,% Tiempo Perdido
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_1,1
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_2,12
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_3,SOPLAR - LIMPIAR MAQ.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_4,3.75
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,3,col_5,46.88
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,4,col_1,2
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,4,col_2,4
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,4,col_3,MANTENIMIENTO PREVENTIVO.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,4,col_4,3.17
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,4,col_5,39.63
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,5,col_1,3
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,5,col_2,14
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,5,col_3,FALLA OPERATIVA.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,5,col_4,1.00
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,5,col_5,12.50
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,6,col_1,4
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,6,col_2,20
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,6,col_3,CAMBIO DE TITULO-CAMBIO ESTILO-ENSARTE
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,6,col_4,0.83
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,2,6,col_5,10.38
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,1,col_1,Resumen Produccion del dia:
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,2,col_1,Total produccion esperada:
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,2,col_2,28800 mts
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,3,col_1,Total produccion Real:
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,3,col_2,22733 mts
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,4,col_1,Total Tiempos perdidos:
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,4,col_2,8.75 hrs.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,5,col_1,Total Produccion Perdida:
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,5,col_2,15750 mts.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,6,col_1,Diferencia:
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,6,col_2,9683 mts.
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,7,col_1,tiempo perdido por justificar:
+sanforizado,tiempos_perdidos,20261022,tiempos_perdidos_20261022.pdf,1,3,7,col_2,-18.62 hrs.
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,1,col_1,Resumen por Causa:
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_1,Item
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_2,Codigo
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_3,Causa
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_4,Horas Perdidas
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,1,2,col_5,% Tiempo Perdido
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,1,col_1,Resumen Produccion del dia:
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_1,Total produccion esperada:
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,2,col_2,28800 mts
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_1,Total produccion Real:
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,3,col_2,30517 mts
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,4,col_1,Total Tiempos perdidos:
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,4,col_2,0 hrs.
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,5,col_1,Total Produccion Perdida:
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,5,col_2,0 mts.
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,6,col_1,Diferencia:
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,6,col_2,1717 mts.
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,7,col_1,tiempo perdido por justificar:
+sanforizado,tiempos_perdidos,20261023,tiempos_perdidos_20261023.pdf,1,2,7,col_2,-23.05 hrs.
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,1,col_1,Resumen por Causa:
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_1,Item
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_2,Codigo
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_3,Causa
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_4,Horas Perdidas
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,1,2,col_5,% Tiempo Perdido
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,1,col_1,Resumen Produccion del dia:
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,2,col_1,Total produccion esperada:
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,2,col_2,28800 mts
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,3,col_1,Total produccion Real:
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,3,col_2,mts
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,4,col_1,Total Tiempos perdidos:
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,4,col_2,0 hrs.
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,5,col_1,Total Produccion Perdida:
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,5,col_2,0 mts.
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,6,col_1,Diferencia:
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,6,col_2,-28800 mts.
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,7,col_1,tiempo perdido por justificar:
+sanforizado,tiempos_perdidos,20261024,tiempos_perdidos_20261024.pdf,1,2,7,col_2,-40 hrs.
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,1,col_1,Resumen por Causa:
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_1,Item
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_2,Codigo
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_3,Causa
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_4,Horas Perdidas
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,1,2,col_5,% Tiempo Perdido
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,1,col_1,Resumen Produccion del dia:
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,2,col_1,Total produccion esperada:
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,2,col_2,28800 mts
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,3,col_1,Total produccion Real:
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,3,col_2,mts
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,4,col_1,Total Tiempos perdidos:
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,4,col_2,0 hrs.
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,5,col_1,Total Produccion Perdida:
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,5,col_2,0 mts.
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,6,col_1,Diferencia:
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,6,col_2,-28800 mts.
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,7,col_1,tiempo perdido por justificar:
+sanforizado,tiempos_perdidos,20261025,tiempos_perdidos_20261025.pdf,1,2,7,col_2,-40 hrs.
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,1,col_1,Item Codigo Causa Horas % Tiempo Perdido
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_1,1
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_2,12
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_3,SOPLAR - LIMPIAR MAQ.
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_4,5.25
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,2,col_5,65.63
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,3,col_1,2
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,3,col_2,20
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,3,col_3,CAMBIO DE TITULO-CAMBIO ESTILO-ENSARTE
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,3,col_4,3.00
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,3,col_5,37.50
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,4,col_1,3
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,4,col_2,3
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,4,col_3,PREPARACION DE MAQUINA
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,4,col_4,0.82
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,1,4,col_5,10.25
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,1,col_1,Resumen por Causa:
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_1,Item
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_2,Codigo
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_3,Causa
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_4,Horas Perdidas
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,2,col_5,% Tiempo Perdido
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_1,1
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_2,12
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_3,SOPLAR - LIMPIAR MAQ.
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_4,5.25
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,3,col_5,65.63
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,4,col_1,2
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,4,col_2,20
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,4,col_3,CAMBIO DE TITULO-CAMBIO ESTILO-ENSARTE
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,4,col_4,3.00
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,4,col_5,37.50
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,5,col_1,3
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,5,col_2,3
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,5,col_3,PREPARACION DE MAQUINA
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,5,col_4,0.82
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,2,5,col_5,10.25
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,1,col_1,Resumen Produccion del dia:
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,2,col_1,Total produccion esperada:
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,2,col_2,28800 mts
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,3,col_1,Total produccion Real:
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,3,col_2,22792 mts
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,4,col_1,Total Tiempos perdidos:
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,4,col_2,9.07 hrs.
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,5,col_1,Total Produccion Perdida:
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,5,col_2,16326 mts.
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,6,col_1,Diferencia:
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,6,col_2,10318 mts.
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,7,col_1,tiempo perdido por justificar:
+sanforizado,tiempos_perdidos,20261026,tiempos_perdidos_20261026.pdf,1,3,7,col_2,-18.27 hrs.
+sanforizado,inventario,20261020,inventario_20261020.pdf,1,1,1,col_1,Item
+sanforizado,inventario,20261020,inventario_20261020.pdf,1,1,1,col_2,Referencia
+sanforizado,inventario,20261020,inventario_20261020.pdf,1,1,1,col_3,Estilo
+sanforizado,inventario,20261020,inventario_20261020.pdf,1,1,1,col_4,Mts.:
+sanforizado,inventario,20261021,inventario_20261021.pdf,1,1,1,col_1,Item
+sanforizado,inventario,20261021,inventario_20261021.pdf,1,1,1,col_2,Referencia
+sanforizado,inventario,20261021,inventario_20261021.pdf,1,1,1,col_3,Estilo
+sanforizado,inventario,20261021,inventario_20261021.pdf,1,1,1,col_4,Mts.:
+sanforizado,inventario,20261022,inventario_20261022.pdf,1,1,1,col_1,Item
+sanforizado,inventario,20261022,inventario_20261022.pdf,1,1,1,col_2,Referencia
+sanforizado,inventario,20261022,inventario_20261022.pdf,1,1,1,col_3,Estilo
+sanforizado,inventario,20261022,inventario_20261022.pdf,1,1,1,col_4,Mts.:
+sanforizado,inventario,20261023,inventario_20261023.pdf,1,1,1,col_1,Item
+sanforizado,inventario,20261023,inventario_20261023.pdf,1,1,1,col_2,Referencia
+sanforizado,inventario,20261023,inventario_20261023.pdf,1,1,1,col_3,Estilo
+sanforizado,inventario,20261023,inventario_20261023.pdf,1,1,1,col_4,Mts.:
+sanforizado,inventario,20261024,inventario_20261024.pdf,1,1,1,col_1,Item
+sanforizado,inventario,20261024,inventario_20261024.pdf,1,1,1,col_2,Referencia
+sanforizado,inventario,20261024,inventario_20261024.pdf,1,1,1,col_3,Estilo
+sanforizado,inventario,20261024,inventario_20261024.pdf,1,1,1,col_4,Mts.:
+sanforizado,inventario,20261025,inventario_20261025.pdf,1,1,1,col_1,Item
+sanforizado,inventario,20261025,inventario_20261025.pdf,1,1,1,col_2,Referencia
+sanforizado,inventario,20261025,inventario_20261025.pdf,1,1,1,col_3,Estilo
+sanforizado,inventario,20261025,inventario_20261025.pdf,1,1,1,col_4,Mts.:
+sanforizado,inventario,20261026,inventario_20261026.pdf,1,1,1,col_1,Item
+sanforizado,inventario,20261026,inventario_20261026.pdf,1,1,1,col_2,Referencia
+sanforizado,inventario,20261026,inventario_20261026.pdf,1,1,1,col_3,Estilo
+sanforizado,inventario,20261026,inventario_20261026.pdf,1,1,1,col_4,Mts.:
