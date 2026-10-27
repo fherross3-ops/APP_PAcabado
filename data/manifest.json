@@ -1,16 +1,16 @@
 {
   "corte": ["corte_20261001_20261021.csv",
-"corte_20261020_20261022.csv"
+"corte_20261020_20261022.csv","corte_20261020_20261026.csv"
 ],
 
   "revision": ["revision_20261001_20261021.csv",
-"revision_20261020_20261022.csv"],
+"revision_20261020_20261022.csv","revision_20261020_20261026.csv" ],
 
   "sanforizado": ["sanforizado_20261001_20261021.csv",
-"sanforizado_20261020_20261022.csv"],
+"sanforizado_20261020_20261022.csv","sanforizado_20261020_20261026.csv" ],
 
   "revision2": ["revision2_20261001_20261021.csv", 
-"revision2_20261020_20261022.csv"],
+"revision2_20261020_20261022.csv","revision2_20261020_20261026.csv"  ],
 
   "calidad_por_referencia": "calidad_por_referencia.csv",
 
