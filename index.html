@@ -16,7 +16,7 @@
 .nav-btn:hover{color:var(--text)}.nav-btn.active{background:var(--panel-2);color:var(--accent)}
 .filter-bar{display:flex;align-items:center;gap:12px;padding:10px 32px;background:var(--panel);border-bottom:1px solid var(--border);flex-wrap:wrap;font-size:12px}
 .filter-bar label{color:var(--muted);font-weight:500}
-.filter-bar input[type=date]{background:var(--panel-2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:12px;font-family:inherit}
+.filter-bar input[type=date],.filter-bar input[type=month]{background:var(--panel-2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:12px;font-family:inherit}
 .filter-bar button{background:var(--panel-2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer}
 .filter-bar button:hover{border-color:var(--accent);color:var(--accent)}
 .filter-bar .filter-status{margin-left:auto;color:var(--muted);font-size:11px}
@@ -156,12 +156,10 @@ details.diag pre{background:rgba(0,0,0,.3);padding:8px;border-radius:4px;overflo
 </header>
 
 <div class="filter-bar" id="filter-bar">
-  <label for="f-desde">Desde</label>
-  <input type="date" id="f-desde">
-  <label for="f-hasta">Hasta</label>
-  <input type="date" id="f-hasta">
-  <button id="f-reset">Limpiar filtro</button>
-  <span class="filter-status" id="f-status">Sin filtro · mostrando todo</span>
+  <label for="f-month">Mes calendario</label>
+  <input type="month" id="f-month">
+  <button id="f-reset">Mes actual</button>
+  <span class="filter-status" id="f-status">—</span>
 </div>
 
 <main id="app">
@@ -202,23 +200,97 @@ const SUBVIEWS = [
 const HORAS_DISPONIBLES_DIA = 24;
 const OBJETIVO_DEFAULT = 493379;
 
+// ============================================================
+// MES CALENDARIO / OBJETIVO MENSUAL / INVENTARIO
+// ============================================================
+const MESES_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+                  'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+function getCurrentMonthKey() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+}
+
+function monthKeyToLabel(monthKey) {
+  if (!monthKey || !monthKey.includes('-')) return '—';
+  const [y, m] = monthKey.split('-').map(Number);
+  return `${MESES_ES[m-1]} ${y}`;
+}
+
+// Devuelve { desde:'YYYYMMDD', hasta:'YYYYMMDD' } del mes calendario
+function monthRange(monthKey) {
+  const [y, m] = monthKey.split('-').map(Number);
+  const desde = `${y}${String(m).padStart(2,'0')}01`;
+  const lastDay = new Date(y, m, 0).getDate();
+  const hasta = `${y}${String(m).padStart(2,'0')}${String(lastDay).padStart(2,'0')}`;
+  return { desde, hasta };
+}
+
+// Objetivo mensual: config `objetivo_YYYY_MM` > legado `objetivo_mensual` > default
+function getObjetivoForMonth(monthKey) {
+  const cfgKey = `objetivo_${monthKey.replace(/-/g,'_')}`;
+  const v = parseFloat(state.config[cfgKey]);
+  if (!isNaN(v) && v > 0) return v;
+  const legacy = parseFloat(state.config.objetivo_mensual);
+  if (!isNaN(legacy) && legacy > 0) return legacy;
+  const saved = localStorage.getItem(`sisgo_objetivo_${monthKey}`);
+  if (saved) { const n = parseFloat(saved); if (!isNaN(n) && n > 0) return n; }
+  return OBJETIVO_DEFAULT;
+}
+
+function getInventarioPorSanforizar() {
+  const v = parseFloat(state.config.inventario_por_sanforizar);
+  if (!isNaN(v) && v >= 0) return v;
+  const saved = parseFloat(localStorage.getItem('sisgo_inventario_por_sanforizar'));
+  if (!isNaN(saved) && saved >= 0) return saved;
+  return 0;
+}
+
+// Guarda UNA variable en config (crea la fila si no existe) vía serverless
+async function saveConfigValue(clave, valor, opts = {}) {
+  const { unidad = '', descripcion = '', lsKey = null } = opts;
+  const hoy = new Date().toISOString().slice(0,10);
+  const updated = state.configRaw.map(r =>
+    r.clave === clave ? { ...r, valor: String(valor), actualizado: hoy } : r
+  );
+  if (!updated.some(r => r.clave === clave)) {
+    updated.push({ clave, valor: String(valor), unidad, descripcion, actualizado: hoy });
+  }
+  state.configRaw = updated;
+  state.config[clave] = String(valor);
+  try {
+    await callFunction('guardar-config', { config: updated });
+  } catch (err) {
+    console.warn(`⚠️ No se pudo persistir ${clave} en GitHub:`, err.message);
+    if (lsKey) localStorage.setItem(lsKey, String(valor));
+    throw err;
+  }
+}
+
+// ============================================================
+// STATE
+// ============================================================
 const state = {
   raw: { corte:[], revision:[], sanforizado:[], revision2:[] },
   filtered: { corte:[], revision:[], sanforizado:[], revision2:[] },
   pdfs: { textos: [], tablas: [] },
   calidad: { porReferencia: [], porTurno: [], reporte: [] },
-  config: {},           // mapa clave -> valor
-  configRaw: [],        // filas completas del CSV
+  config: {},
+  configRaw: [],
   comentarios: [],
   miNombre: '',
   kpis: {},
   view: 'global',
   subview: { corte:'resumen', revision:'resumen', sanforizado:'resumen' },
   filters: { desde:'', hasta:'' },
+  viewMonth: getCurrentMonthKey(),
   objetivo: OBJETIVO_DEFAULT,
   charts: {},
 };
 
+// ============================================================
+// HELPERS
+// ============================================================
 const toNum = (v) => { const n = parseFloat(String(v??'').replace(/[^\d.\-]/g,'')); return isNaN(n)?0:n; };
 const fmtNum = (n) => new Intl.NumberFormat('es-VE').format(Math.round(n||0));
 const fmtDec = (n, d=1) => (n==null||isNaN(n))?'—':Number(n).toFixed(d);
@@ -297,6 +369,9 @@ function loadCSV(path){
   });
 }
 
+// ============================================================
+// CARGA DE DATOS
+// ============================================================
 async function loadManifest() {
   const res = await fetch(MANIFEST_PATH);
   if (!res.ok) throw new Error(`No se pudo cargar ${MANIFEST_PATH} (HTTP ${res.status})`);
@@ -386,14 +461,24 @@ async function loadAllData(){
   // Nombre guardado
   state.miNombre = localStorage.getItem('sisgo_nombre') || '';
 
-  // Objetivo: config > localStorage > default
-  if (state.config.objetivo_mensual) {
-    const n = parseFloat(state.config.objetivo_mensual);
-    if (!isNaN(n) && n > 0) state.objetivo = n;
-  } else {
-    const saved = localStorage.getItem('sisgo_objetivo');
-    if (saved) { const n = parseFloat(saved); if (!isNaN(n) && n > 0) state.objetivo = n; }
-  }
+  // ── Seed de variables maestras si aún no existen ──
+  const seedConfig = [
+    { clave: 'inventario_por_sanforizar', valor: '0', unidad: 'm',
+      descripcion: 'Inventario actual de tela pendiente por sanforizar (entrada a la cadena)' },
+  ];
+  seedConfig.forEach(seed => {
+    if (!state.configRaw.some(r => r.clave === seed.clave)) {
+      state.configRaw.push({ ...seed, actualizado: '' });
+      state.config[seed.clave] = seed.valor;
+    }
+  });
+
+  // ── Mes calendario en curso y objetivo del mes ──
+  state.viewMonth = getCurrentMonthKey();
+  const mr = monthRange(state.viewMonth);
+  state.filters.desde = mr.desde;
+  state.filters.hasta = mr.hasta;
+  state.objetivo = getObjetivoForMonth(state.viewMonth);
 
   if (errores.length) {
     document.getElementById('app').innerHTML = `
@@ -406,6 +491,9 @@ async function loadAllData(){
   }
 }
 
+// ============================================================
+// KPIs
+// ============================================================
 function computeProcessKPIs(rows, proceso){
   const cfg = CONFIG[proceso];
   let totalToMake=0, totalMade=0, totalHours=0;
@@ -715,34 +803,63 @@ function downloadCSV(filename, content) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+// ============================================================
+// VISTA GLOBAL
+// ============================================================
 function renderGlobal(app){
   const g = state.kpis.global;
+  const mesLabel = monthKeyToLabel(state.viewMonth);
+  const inventario = getInventarioPorSanforizar();
   const colorCumpl = (v) => v >= 0.95 ? 'var(--success)' : v >= 0.75 ? 'var(--warning)' : 'var(--danger)';
   const umbral = parseFloat(state.config.umbral_stock_alerta) || 30000;
   const alertStock = (Math.abs(g.diffSanfRev) > umbral || Math.abs(g.diffRevCorte) > umbral);
-  const filtroTxt = state.filters.desde || state.filters.hasta
-    ? `Filtrado: ${state.filters.desde || '…'} → ${state.filters.hasta || '…'}`
-    : 'Sin filtro · mes completo';
+  const sinDatosMes = g.diasConDatos === 0;
 
   app.innerHTML = `
     <section class="view">
       <div class="view-header">
         <div>
           <h2>Visión Global · Cadena de producción</h2>
-          <p class="muted" style="margin:4px 0 0">${filtroTxt} · ${g.diasConDatos} días con datos</p>
+          <p class="muted" style="margin:4px 0 0">
+            <b style="color:var(--accent)">${mesLabel}</b> · ${g.diasConDatos} días con datos
+          </p>
         </div>
         <div class="objetivo-edit">
-          <label>Objetivo mensual</label>
+          <label>Objetivo ${mesLabel}</label>
           <input type="number" id="obj-input" value="${Math.round(g.objetivo)}" step="1" min="1">
           <span>m</span>
           <button id="obj-save">Actualizar</button>
         </div>
       </div>
 
+      <!-- INVENTARIO POR SANFORIZAR · entrada de la cadena -->
+      <div class="card" style="border-top:3px solid #fbbf24;margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+          <div>
+            <div class="kpi-label">📦 Inventario de tela por sanforizar · entrada de la cadena</div>
+            <div class="kpi-value" style="color:#fbbf24;font-size:32px">
+              ${fmtNum(inventario)} <span style="font-size:16px;color:var(--muted)">m</span>
+            </div>
+            <div class="kpi-sub">Editable aquí y desde Configuración (<code>inventario_por_sanforizar</code>)</div>
+          </div>
+          <div class="objetivo-edit">
+            <label>Actualizar inventario</label>
+            <input type="number" id="inv-input" value="${Math.round(inventario)}" min="0" step="1">
+            <span>m</span>
+            <button id="inv-save">Guardar</button>
+          </div>
+        </div>
+      </div>
+
+      ${sinDatosMes ? `
+        <div class="warn-card">
+          ⚠️ No hay datos cargados para <b>${mesLabel}</b>. Usa el selector de mes para revisar otro período.
+        </div>` : ''}
+
       ${alertStock ? `<div class="warn-card">⚠️ Stock entre etapas supera el umbral configurado (${fmtNum(umbral)} m). Revisar flujo de producción.</div>` : ''}
 
       <div class="kpi-grid">
-        <div class="kpi-card"><div class="kpi-label">Objetivo mensual</div><div class="kpi-value">${fmtNum(g.objetivo)} <span style="font-size:14px;color:var(--muted)">m</span></div></div>
+        <div class="kpi-card"><div class="kpi-label">Objetivo ${mesLabel}</div><div class="kpi-value">${fmtNum(g.objetivo)} <span style="font-size:14px;color:var(--muted)">m</span></div></div>
         <div class="kpi-card"><div class="kpi-label">Producción final (Corte)</div><div class="kpi-value">${fmtNum(g.corteM)}</div><div class="kpi-sub">${fmtPct(g.cumplCorte)} del objetivo</div></div>
         <div class="kpi-card"><div class="kpi-label">Pendiente vs objetivo</div><div class="kpi-value" style="color:${g.pendienteObjetivo >= 0 ? 'var(--warning)' : 'var(--success)'}">${fmtNum(Math.abs(g.pendienteObjetivo))}</div><div class="kpi-sub">${g.pendienteObjetivo >= 0 ? 'm por producir' : 'm de superávit'}</div></div>
         <div class="kpi-card"><div class="kpi-label">Referencias en las 3 etapas</div><div class="kpi-value">${g.enLas3}</div><div class="kpi-sub">${g.refsSanf} sanf · ${g.refsRev} rev · ${g.refsCorte} corte</div></div>
@@ -790,12 +907,12 @@ function renderGlobal(app){
       </div>
 
       <div class="chart-row">
-        <div class="card"><h3>Cumplimiento vs objetivo</h3><canvas id="ch-cumpl"></canvas></div>
+        <div class="card"><h3>Cumplimiento vs objetivo ${mesLabel}</h3><canvas id="ch-cumpl"></canvas></div>
         <div class="card"><h3>Flujo acumulado por etapa</h3><canvas id="ch-flow"></canvas></div>
       </div>
 
       <div class="card">
-        <h3>Detalle por etapa</h3>
+        <h3>Detalle por etapa · ${mesLabel}</h3>
         <div class="table-wrap">
           <table class="data-table">
             <thead><tr>
@@ -825,25 +942,41 @@ function renderGlobal(app){
       </div>
     </section>`;
 
+  // Guardar objetivo MENSUAL (objetivo_YYYY_MM)
   document.getElementById('obj-save').addEventListener('click', async () => {
     const val = parseFloat(document.getElementById('obj-input').value);
     if (isNaN(val) || val <= 0) return;
-    state.objetivo = val;
-    localStorage.setItem('sisgo_objetivo', String(val));
-    recomputeAllKPIs();
-    // Persistir en config.csv
+    const cfgKey = `objetivo_${state.viewMonth.replace(/-/g,'_')}`;
     try {
-      const hoy = new Date().toISOString().slice(0, 10);
-      const updated = state.configRaw.map(r => r.clave === 'objetivo_mensual'
-        ? { ...r, valor: String(Math.round(val)), actualizado: hoy } : r);
-      if (!updated.some(r => r.clave === 'objetivo_mensual')) {
-        updated.push({ clave:'objetivo_mensual', valor:String(Math.round(val)), unidad:'m', descripcion:'Objetivo de metros por mes', actualizado: hoy });
-      }
-      await callFunction('guardar-config', { config: updated });
-      state.configRaw = updated;
-      state.config.objetivo_mensual = String(Math.round(val));
-    } catch (err) { console.warn('Objetivo guardado solo localmente:', err.message); }
-    render();
+      await saveConfigValue(cfgKey, Math.round(val), {
+        unidad: 'm',
+        descripcion: `Objetivo de metros para ${mesLabel}`,
+        lsKey: `sisgo_objetivo_${state.viewMonth}`,
+      });
+      state.objetivo = val;
+      recomputeAllKPIs();
+      render();
+    } catch (err) {
+      state.objetivo = val;
+      recomputeAllKPIs();
+      render();
+    }
+  });
+
+  // Guardar INVENTARIO por sanforizar
+  document.getElementById('inv-save').addEventListener('click', async () => {
+    const val = parseFloat(document.getElementById('inv-input').value);
+    if (isNaN(val) || val < 0) return;
+    try {
+      await saveConfigValue('inventario_por_sanforizar', Math.round(val), {
+        unidad: 'm',
+        descripcion: 'Inventario actual de tela pendiente por sanforizar (entrada a la cadena)',
+        lsKey: 'sisgo_inventario_por_sanforizar',
+      });
+      render();
+    } catch (err) {
+      render();
+    }
   });
 
   setTimeout(() => {
@@ -867,6 +1000,9 @@ function renderGlobal(app){
   }, 0);
 }
 
+// ============================================================
+// VISTA PROCESO
+// ============================================================
 function renderProcess(app, proceso){
   const cfg = CONFIG[proceso];
   const available = SUBVIEWS.filter(s => s.processes.includes(proceso));
@@ -875,7 +1011,9 @@ function renderProcess(app, proceso){
   app.innerHTML = `
     <section class="view">
       <div class="view-header">
-        <h2 style="color:${cfg.color}">${cfg.label}</h2>
+        <h2 style="color:${cfg.color}">${cfg.label}
+          <span style="font-size:14px;color:var(--muted);font-weight:400">· ${monthKeyToLabel(state.viewMonth)}</span>
+        </h2>
         <div class="subnav">${available.map(s => `<button class="subnav-btn ${s.id===sub?'active':''}" data-subview="${s.id}">${s.label}</button>`).join('')}</div>
       </div>
       <div id="subview-content"></div>
@@ -1145,7 +1283,7 @@ function renderPerdidas(app, proceso){
   fechas.forEach(f => data[f].causas.forEach(c => { if (!causas[c.causa]) causas[c.causa] = { causa:c.causa, horas:0, ap:0 }; causas[c.causa].horas += c.horas; causas[c.causa].ap += 1; }));
   const cs = Object.values(causas).sort((a,b)=>b.horas-a.horas);
   if (fechas.length === 0) {
-    app.innerHTML = `<div class="warn-card"><strong>Sin datos de tiempos perdidos para el rango seleccionado.</strong><p>Los PDFs de <code>tiempos_perdidos_*.pdf</code> no están disponibles o están ilegibles.</p></div>`;
+    app.innerHTML = `<div class="warn-card"><strong>Sin datos de tiempos perdidos para ${monthKeyToLabel(state.viewMonth)}.</strong><p>Los PDFs de <code>tiempos_perdidos_*.pdf</code> no están disponibles o están ilegibles.</p></div>`;
     return;
   }
   app.innerHTML = `
@@ -1191,7 +1329,7 @@ function renderRevisores(app, proceso) {
   if (proceso !== 'revision') return;
   const k = state.kpis.revision2;
   if (!k || k.totalPiezas === 0) {
-    app.innerHTML = `<div class="warn-card"><strong>Sin datos del extractor revision2.</strong><p>Verifica que el archivo esté listado en <code>data/manifest.json</code> bajo <code>revision2</code>.</p></div>`;
+    app.innerHTML = `<div class="warn-card"><strong>Sin datos del extractor revision2 para ${monthKeyToLabel(state.viewMonth)}.</strong><p>Verifica que el archivo esté listado en <code>data/manifest.json</code> bajo <code>revision2</code>.</p></div>`;
     return;
   }
   const revs = Object.values(k.revisadores).sort((a,b)=>b.mts-a.mts);
@@ -1275,7 +1413,7 @@ function renderCalidad(app, proceso){
     const ilegibles = rep.filter(r => String(r.calidad_archivo || '').trim() === 'ilegible').length;
     const sinArchivo = state.calidad.porReferencia.length === 0;
     app.innerHTML = `<div class="warn-card">
-      <strong>Sin datos de calidad para el rango seleccionado.</strong>
+      <strong>Sin datos de calidad para ${monthKeyToLabel(state.viewMonth)}.</strong>
       ${sinArchivo ? `<p>No se cargó <code>data/calidad_por_referencia.csv</code>.</p>` :
         `<p>Hay <b>${state.calidad.porReferencia.length}</b> filas cargadas, pero ninguna cae en el rango o no tienen <code>total &gt; 0</code>.</p>
         <details class="diag" open><summary>Ver diagnóstico</summary>
@@ -1392,6 +1530,15 @@ Fechas en CSV: ${[...new Set(state.calidad.porReferencia.map(r => String(r.fecha
 function renderConfiguracion(app) {
   const rows = state.configRaw || [];
   const hoy = new Date().toISOString().slice(0, 10);
+
+  // Orden preferente: maestras primero
+  const ORDEN_PREF = ['inventario_por_sanforizar', 'objetivo_'];
+  const rowsSorted = [...rows].sort((a,b) => {
+    const ia = ORDEN_PREF.findIndex(k => a.clave.startsWith(k));
+    const ib = ORDEN_PREF.findIndex(k => b.clave.startsWith(k));
+    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+  });
+
   app.innerHTML = `
     <section class="view">
       <div class="view-header">
@@ -1407,6 +1554,11 @@ function renderConfiguracion(app) {
       <div class="info-card">
         Los cambios se envían a GitHub y quedan en <code>data/config.csv</code>. Netlify redeploya en ~15s.
         Si falla, puedes descargar el CSV y subirlo manualmente.
+        <br><br>
+        <b>Variables maestras:</b>
+        <code>inventario_por_sanforizar</code> (entrada de la cadena) y
+        <code>objetivo_YYYY_MM</code> (meta mensual, ej. <code>objetivo_2025_01</code>).
+        El objetivo también se puede editar directamente desde la vista Global.
       </div>
       <div id="cfg-msg"></div>
       <div class="card">
@@ -1416,16 +1568,18 @@ function renderConfiguracion(app) {
               <th>Clave</th><th>Valor</th><th>Unidad</th><th>Descripción</th><th>Actualizado</th>
             </tr></thead>
             <tbody id="cfg-tbody">
-              ${rows.length === 0 ? '<tr><td colspan="5" class="muted">Sin variables. Haz clic en "Agregar variable".</td></tr>' :
-                rows.map((r, i) => `
-                  <tr data-idx="${i}">
+              ${rowsSorted.length === 0 ? '<tr><td colspan="5" class="muted">Sin variables. Haz clic en "Agregar variable".</td></tr>' :
+                rowsSorted.map((r) => {
+                  const realIdx = rows.indexOf(r);
+                  return `
+                  <tr data-idx="${realIdx}">
                     <td><code style="font-size:11px">${escapeHtml(r.clave)}</code></td>
-                    <td><input type="text" class="cfg-input" data-idx="${i}" data-field="valor" value="${escapeHtml(r.valor)}" style="width:120px"></td>
-                    <td><input type="text" class="cfg-input" data-idx="${i}" data-field="unidad" value="${escapeHtml(r.unidad)}" style="width:70px"></td>
-                    <td><input type="text" class="cfg-input" data-idx="${i}" data-field="descripcion" value="${escapeHtml(r.descripcion)}" style="width:100%"></td>
+                    <td><input type="text" class="cfg-input" data-idx="${realIdx}" data-field="valor" value="${escapeHtml(r.valor)}" style="width:120px"></td>
+                    <td><input type="text" class="cfg-input" data-idx="${realIdx}" data-field="unidad" value="${escapeHtml(r.unidad)}" style="width:70px"></td>
+                    <td><input type="text" class="cfg-input" data-idx="${realIdx}" data-field="descripcion" value="${escapeHtml(r.descripcion)}" style="width:100%"></td>
                     <td class="muted" style="font-size:11px">${escapeHtml(r.actualizado) || '—'}</td>
-                  </tr>
-                `).join('')}
+                  </tr>`;
+                }).join('')}
             </tbody>
           </table>
         </div>
@@ -1483,10 +1637,7 @@ function renderConfiguracion(app) {
       state.configRaw = config;
       state.config = {};
       config.forEach(c => { state.config[c.clave] = String(c.valor||'').trim(); });
-      if (state.config.objetivo_mensual) {
-        const n = parseFloat(state.config.objetivo_mensual);
-        if (!isNaN(n) && n > 0) state.objetivo = n;
-      }
+      state.objetivo = getObjetivoForMonth(state.viewMonth);
     } catch(err) {
       msg.innerHTML = `<div class="error-card">
         <strong>Error al guardar:</strong> ${escapeHtml(err.message)}
@@ -1530,7 +1681,9 @@ function renderComentarios(app) {
       <div class="view-header">
         <div>
           <h2>Comentarios y Novedades</h2>
-          <p class="muted" style="margin:4px 0 0">${filtered.length} de ${comentarios.length} registros${(desde || hasta) ? ' (filtrado por fecha)' : ''}</p>
+          <p class="muted" style="margin:4px 0 0">
+            ${filtered.length} de ${comentarios.length} registros · <b>${monthKeyToLabel(state.viewMonth)}</b>
+          </p>
         </div>
         <button class="btn-primary" id="com-new-btn">+ Nuevo comentario</button>
       </div>
@@ -1680,6 +1833,7 @@ function render(){
   else if (state.view === 'comentarios') renderComentarios(app);
   else renderProcess(app, state.view);
 }
+
 function setView(view){
   state.view = view;
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
@@ -1687,64 +1841,74 @@ function setView(view){
   if (fb) fb.style.display = (view === 'configuracion') ? 'none' : 'flex';
   render();
 }
+
 function applyFilterAndRender() {
+  // 1) Derivar desde/hasta del mes calendario seleccionado
+  const { desde, hasta } = monthRange(state.viewMonth);
+  state.filters.desde = desde;
+  state.filters.hasta = hasta;
+  // 2) Objetivo específico del mes visible
+  state.objetivo = getObjetivoForMonth(state.viewMonth);
+  // 3) Recalcular KPIs y renderizar
   recomputeAllKPIs();
   const s = document.getElementById('f-status');
-  s.textContent = (state.filters.desde || state.filters.hasta)
-    ? `Filtrado ${state.filters.desde || '…'} → ${state.filters.hasta || '…'}`
-    : 'Sin filtro · mostrando todo';
+  if (s) s.textContent = `${monthKeyToLabel(state.viewMonth)} · mes calendario`;
   render();
 }
+
 function setupFilterBar() {
-  const fd = document.getElementById('f-desde');
-  const fh = document.getElementById('f-hasta');
+  const fm = document.getElementById('f-month');
   const fr = document.getElementById('f-reset');
-  const fechas = new Set();
-  for (const p of ['corte','revision','sanforizado']) {
-    for (const row of state.raw[p]) if (row.fecha) fechas.add(row.fecha);
-  }
-  for (const row of state.raw.revision2) if (row.fecha_filtro) fechas.add(row.fecha_filtro);
-  for (const row of state.calidad.porReferencia) if (row.fecha) fechas.add(String(row.fecha).trim());
-  for (const c of state.comentarios) {
-    const f = String(c.fecha || '').replace(/-/g, '').trim();
-    if (f && f.length === 8) fechas.add(f);
-  }
-  const sorted = [...fechas].sort();
-  if (sorted.length > 0) {
-    fd.min = fh.min = yyyymmddToInput(sorted[0]);
-    fd.max = fh.max = yyyymmddToInput(sorted[sorted.length-1]);
-  }
-  const onChange = () => {
-    state.filters.desde = inputToYYYYMMDD(fd.value);
-    state.filters.hasta = inputToYYYYMMDD(fh.value);
-    if (state.filters.desde && state.filters.hasta && state.filters.desde > state.filters.hasta) {
-      const t = state.filters.desde; state.filters.desde = state.filters.hasta; state.filters.hasta = t;
-      fd.value = yyyymmddToInput(state.filters.desde);
-      fh.value = yyyymmddToInput(state.filters.hasta);
-    }
-    applyFilterAndRender();
+
+  // Rango permitido = meses con datos (para que el selector no se vaya a vacíos)
+  const months = new Set();
+  const add = (f) => {
+    if (!f) return;
+    const s = String(f).replace(/-/g,'').trim();
+    if (s.length === 8) months.add(`${s.slice(0,4)}-${s.slice(4,6)}`);
   };
-  fd.addEventListener('change', onChange);
-  fh.addEventListener('change', onChange);
-  fr.addEventListener('click', () => { fd.value=''; fh.value=''; state.filters.desde=''; state.filters.hasta=''; applyFilterAndRender(); });
+  for (const p of ['corte','revision','sanforizado']) for (const r of state.raw[p]) add(r.fecha);
+  for (const r of state.raw.revision2) add(r.fecha_filtro);
+  for (const r of state.calidad.porReferencia) add(r.fecha);
+  for (const c of state.comentarios) add(c.fecha);
+
+  if (months.size > 0) {
+    const sorted = [...months].sort();
+    fm.min = sorted[0];
+    fm.max = sorted[sorted.length - 1];
+  }
+  fm.value = state.viewMonth;
+
+  fm.addEventListener('change', () => {
+    state.viewMonth = fm.value || getCurrentMonthKey();
+    applyFilterAndRender();
+  });
+  fr.addEventListener('click', () => {
+    state.viewMonth = getCurrentMonthKey();
+    fm.value = state.viewMonth;
+    applyFilterAndRender();
+  });
+
+  applyFilterAndRender();
 }
-async function init(){
-  const status = document.getElementById('status');
-  status.textContent = 'Cargando datos…';
+
+// ============================================================
+// BOOT
+// ============================================================
+document.getElementById('main-nav').addEventListener('click', e => {
+  const btn = e.target.closest('.nav-btn');
+  if (btn) setView(btn.dataset.view);
+});
+
+(async function boot() {
   try {
     await loadAllData();
-    recomputeAllKPIs();
-    const total = Object.values(state.raw).reduce((s,r)=>s+r.length,0);
-    status.textContent = `${fmtNum(total)} registros · ${state.calidad.porReferencia.length} calidad · ${state.comentarios.length} comentarios`;
-  } catch(err) { console.error(err); status.textContent = '❌ Error de carga'; return; }
-  document.getElementById('main-nav').addEventListener('click', (e)=>{
-    const btn = e.target.closest('.nav-btn');
-    if (btn) setView(btn.dataset.view);
-  });
-  setupFilterBar();
-  render();
-}
-document.addEventListener('DOMContentLoaded', init);
+    setupFilterBar();
+    setView('global');
+  } catch (err) {
+    console.error('Boot error:', err);
+  }
+})();
 </script>
 </body>
 </html>
