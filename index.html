@@ -217,7 +217,6 @@ function monthKeyToLabel(monthKey) {
   return `${MESES_ES[m-1]} ${y}`;
 }
 
-// Devuelve { desde:'YYYYMMDD', hasta:'YYYYMMDD' } del mes calendario
 function monthRange(monthKey) {
   const [y, m] = monthKey.split('-').map(Number);
   const desde = `${y}${String(m).padStart(2,'0')}01`;
@@ -226,7 +225,6 @@ function monthRange(monthKey) {
   return { desde, hasta };
 }
 
-// Objetivo mensual: config `objetivo_YYYY_MM` > legado `objetivo_mensual` > default
 function getObjetivoForMonth(monthKey) {
   const cfgKey = `objetivo_${monthKey.replace(/-/g,'_')}`;
   const v = parseFloat(state.config[cfgKey]);
@@ -246,7 +244,6 @@ function getInventarioPorSanforizar() {
   return 0;
 }
 
-// Guarda UNA variable en config (crea la fila si no existe) vía serverless
 async function saveConfigValue(clave, valor, opts = {}) {
   const { unidad = '', descripcion = '', lsKey = null } = opts;
   const hoy = new Date().toISOString().slice(0,10);
@@ -465,6 +462,13 @@ async function loadAllData(){
   const seedConfig = [
     { clave: 'inventario_por_sanforizar', valor: '0', unidad: 'm',
       descripcion: 'Inventario actual de tela pendiente por sanforizar (entrada a la cadena)' },
+    // Contexto de producción actual (editado desde pestaña Configuración)
+    { clave: 'contexto_fecha', valor: '', unidad: '',
+      descripcion: 'Fecha en la que se definió el contexto de producción actual' },
+    { clave: 'contexto_componente', valor: '', unidad: '',
+      descripcion: 'Componente actualmente en proceso: trama o urdimbre' },
+    { clave: 'contexto_estilo', valor: '', unidad: '',
+      descripcion: 'Estilo actualmente en proceso' },
   ];
   seedConfig.forEach(seed => {
     if (!state.configRaw.some(r => r.clave === seed.clave)) {
@@ -472,6 +476,11 @@ async function loadAllData(){
       state.config[seed.clave] = seed.valor;
     }
   });
+
+  // Fallback local si el CSV no trae el contexto
+  if (!state.config.contexto_fecha) state.config.contexto_fecha = localStorage.getItem('sisgo_contexto_fecha') || '';
+  if (!state.config.contexto_componente) state.config.contexto_componente = localStorage.getItem('sisgo_contexto_componente') || '';
+  if (!state.config.contexto_estilo) state.config.contexto_estilo = localStorage.getItem('sisgo_contexto_estilo') || '';
 
   // ── Mes calendario en curso y objetivo del mes ──
   state.viewMonth = getCurrentMonthKey();
@@ -942,7 +951,6 @@ function renderGlobal(app){
       </div>
     </section>`;
 
-  // Guardar objetivo MENSUAL (objetivo_YYYY_MM)
   document.getElementById('obj-save').addEventListener('click', async () => {
     const val = parseFloat(document.getElementById('obj-input').value);
     if (isNaN(val) || val <= 0) return;
@@ -963,7 +971,6 @@ function renderGlobal(app){
     }
   });
 
-  // Guardar INVENTARIO por sanforizar
   document.getElementById('inv-save').addEventListener('click', async () => {
     const val = parseFloat(document.getElementById('inv-input').value);
     if (isNaN(val) || val < 0) return;
@@ -1531,9 +1538,17 @@ function renderConfiguracion(app) {
   const rows = state.configRaw || [];
   const hoy = new Date().toISOString().slice(0, 10);
 
-  // Orden preferente: maestras primero
+  // Contexto de producción actual
+  const ctxFecha      = String(state.config.contexto_fecha || '').trim();
+  const ctxComponente = String(state.config.contexto_componente || '').trim().toLowerCase();
+  const ctxEstilo     = String(state.config.contexto_estilo || '').trim();
+
+  // Excluir las variables del contexto de la tabla genérica
+  const CTX_KEYS = ['contexto_fecha', 'contexto_componente', 'contexto_estilo'];
+  const rowsFiltradas = rows.filter(r => !CTX_KEYS.includes(r.clave));
+
   const ORDEN_PREF = ['inventario_por_sanforizar', 'objetivo_'];
-  const rowsSorted = [...rows].sort((a,b) => {
+  const rowsSorted = [...rowsFiltradas].sort((a,b) => {
     const ia = ORDEN_PREF.findIndex(k => a.clave.startsWith(k));
     const ib = ORDEN_PREF.findIndex(k => b.clave.startsWith(k));
     return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
@@ -1544,13 +1559,46 @@ function renderConfiguracion(app) {
       <div class="view-header">
         <div>
           <h2>Configuración</h2>
-          <p class="muted" style="margin:4px 0 0">Variables de referencia usadas por los KPIs · ${rows.length} variables</p>
+          <p class="muted" style="margin:4px 0 0">Variables de referencia usadas por los KPIs · ${rowsFiltradas.length} variables</p>
         </div>
         <div style="display:flex;gap:8px">
           <button class="btn-secondary" id="cfg-add-btn">+ Agregar variable</button>
           <button class="btn-primary" id="cfg-save-btn">Guardar cambios</button>
         </div>
       </div>
+
+      <!-- Card: Contexto de Producción -->
+      <div class="card" style="border-top:3px solid #fbbf24;margin-bottom:16px">
+        <h3 style="margin-bottom:4px">🏭 Contexto de Producción</h3>
+        <p class="muted" style="margin:0 0 16px">
+          Componente y estilo actualmente en proceso. Sirven como referencia viva para la operación y los comentarios.
+        </p>
+        <div id="ctx-msg"></div>
+        <div class="form-row">
+          <div>
+            <label class="form-label">Fecha del contexto</label>
+            <input type="date" id="ctx-fecha" class="form-input" value="${escapeHtml(ctxFecha)}">
+          </div>
+          <div>
+            <label class="form-label">Componente</label>
+            <select id="ctx-componente" class="form-select">
+              <option value="">—</option>
+              <option value="trama"    ${ctxComponente === 'trama'    ? 'selected' : ''}>Trama</option>
+              <option value="urdimbre" ${ctxComponente === 'urdimbre' ? 'selected' : ''}>Urdimbre</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label class="form-label">Estilo</label>
+            <input type="text" id="ctx-estilo" class="form-input" value="${escapeHtml(ctxEstilo)}" placeholder="ej. 1234-A">
+          </div>
+          <div style="display:flex;align-items:flex-end">
+            <button class="btn-primary" id="ctx-save" style="width:100%">Guardar contexto</button>
+          </div>
+        </div>
+      </div>
+
       <div class="info-card">
         Los cambios se envían a GitHub y quedan en <code>data/config.csv</code>. Netlify redeploya en ~15s.
         Si falla, puedes descargar el CSV y subirlo manualmente.
@@ -1597,6 +1645,58 @@ function renderConfiguracion(app) {
       </div>
     </section>`;
 
+  // Guardar CONTEXTO DE PRODUCCIÓN
+  document.getElementById('ctx-save').addEventListener('click', async () => {
+    const msg = document.getElementById('ctx-msg');
+    const fecha      = document.getElementById('ctx-fecha').value;
+    const componente = document.getElementById('ctx-componente').value;
+    const estilo     = document.getElementById('ctx-estilo').value.trim();
+
+    const hoyStr = new Date().toISOString().slice(0,10);
+    const updates = {
+      contexto_fecha:      fecha,
+      contexto_componente: componente,
+      contexto_estilo:     estilo,
+    };
+    const updated = state.configRaw.map(r =>
+      Object.prototype.hasOwnProperty.call(updates, r.clave)
+        ? { ...r, valor: updates[r.clave], actualizado: hoyStr }
+        : r
+    );
+    Object.entries(updates).forEach(([clave, valor]) => {
+      if (!updated.some(r => r.clave === clave)) {
+        updated.push({ clave, valor, unidad: '', descripcion: '', actualizado: hoyStr });
+      }
+    });
+
+    msg.innerHTML = '<div class="info-card">Guardando contexto en GitHub…</div>';
+    state.configRaw = updated;
+    Object.entries(updates).forEach(([k, v]) => { state.config[k] = v; });
+
+    try {
+      await callFunction('guardar-config', { config: updated });
+      msg.innerHTML = '<div class="info-card" style="border-color:var(--success);background:rgba(74,222,128,.08)">✅ Contexto guardado.</div>';
+    } catch (err) {
+      localStorage.setItem('sisgo_contexto_fecha', fecha);
+      localStorage.setItem('sisgo_contexto_componente', componente);
+      localStorage.setItem('sisgo_contexto_estilo', estilo);
+      msg.innerHTML = `<div class="error-card">
+        <strong>Error al guardar:</strong> ${escapeHtml(err.message)}
+        <p>Guardado solo localmente. Descarga el CSV y súbelo manualmente a <code>data/config.csv</code>:</p>
+        <button class="btn-secondary" id="ctx-dl">📥 Descargar config.csv</button>
+      </div>`;
+      const dl = document.getElementById('ctx-dl');
+      if (dl) dl.addEventListener('click', () => {
+        const csv = ['clave,valor,unidad,descripcion,actualizado',
+          ...updated.map(c => [c.clave, c.valor, c.unidad, c.descripcion, c.actualizado]
+            .map(v => { const s = String(v == null ? '' : v); return (s.includes(',') || s.includes('"') || s.includes('\n')) ? '"' + s.replace(/"/g,'""') + '"' : s; })
+            .join(','))
+        ].join('\n') + '\n';
+        downloadCSV('config.csv', csv);
+      });
+    }
+  });
+
   document.getElementById('cfg-add-btn').addEventListener('click', () => {
     document.getElementById('cfg-new-card').style.display = 'block';
   });
@@ -1610,6 +1710,7 @@ function renderConfiguracion(app) {
     const desc = document.getElementById('cfg-new-desc').value.trim();
     if (!clave) { alert('La clave es obligatoria'); return; }
     if (state.configRaw.some(r => r.clave === clave)) { alert('Ya existe una variable con esa clave'); return; }
+    if (CTX_KEYS.includes(clave)) { alert('Esa clave pertenece al Contexto de Producción. Edítala desde la card superior.'); return; }
     state.configRaw.push({ clave, valor, unidad, descripcion: desc, actualizado: hoy });
     renderConfiguracion(app);
   });
@@ -1666,7 +1767,9 @@ function renderComentarios(app) {
   const categorias = ['mantenimiento', 'calidad', 'material', 'personal', 'método', 'producción', 'seguridad', 'otro'];
   const prioridades = ['baja', 'media', 'alta', 'critica'];
   const estados = ['abierto', 'en_proceso', 'cerrado'];
+  const actividadesBasicas = ['lubricacion', 'ajuste', 'reparacion', 'sustitucion', 'limpieza'];
   const lotes = getAllLotes();
+  const hoyISO = new Date().toISOString().slice(0,10);
 
   const { desde, hasta } = state.filters;
   const filtered = comentarios.filter(c => {
@@ -1675,6 +1778,23 @@ function renderComentarios(app) {
     if (hasta && f > hasta) return false;
     return true;
   });
+
+  const renderDetalle = (c) => {
+    const items = [];
+    if (c.elemento)         items.push(`<b>Elemento intervenido:</b> ${escapeHtml(c.elemento)}`);
+    if (c.actividad_basica) items.push(`<b>Actividad:</b> ${escapeHtml(c.actividad_basica.replace(/_/g,' '))}`);
+    if (items.length === 0) return '';
+    return `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;font-size:11px;color:var(--muted)">
+      ${items.map(t => `<span style="background:rgba(0,0,0,.25);padding:3px 8px;border-radius:4px">${t}</span>`).join('')}
+    </div>`;
+  };
+
+  // Contexto actual (referencia en el formulario)
+  const ctxComponente = String(state.config.contexto_componente || '').trim();
+  const ctxEstilo     = String(state.config.contexto_estilo || '').trim();
+  const ctxLabel = (ctxComponente || ctxEstilo)
+    ? `Contexto actual: ${ctxComponente ? ctxComponente : '—'}${ctxEstilo ? ' · Estilo ' + ctxEstilo : ''}`
+    : 'Sin contexto de producción configurado (editable en Configuración)';
 
   app.innerHTML = `
     <section class="view">
@@ -1690,6 +1810,25 @@ function renderComentarios(app) {
 
       <div class="card" id="com-form-card" style="display:none">
         <h3>Nuevo comentario</h3>
+        <p class="muted" style="margin:0 0 12px;font-size:12px">ℹ️ ${escapeHtml(ctxLabel)}</p>
+
+        <div class="form-row">
+          <div><label class="form-label">Fecha *</label>
+            <input type="date" id="com-fecha" class="form-input" value="${hoyISO}">
+          </div>
+          <div><label class="form-label">Actividad Básica</label>
+            <select id="com-actividad" class="form-select">
+              <option value="">—</option>
+              ${actividadesBasicas.map(a => `<option value="${a}">${a.charAt(0).toUpperCase()+a.slice(1)}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom:12px">
+          <label class="form-label">Elemento / Componente Intervenido</label>
+          <input type="text" id="com-elemento" class="form-input" placeholder="ej. Motor principal, rodillo tensor, sensor de trama">
+        </div>
+
         <div class="form-row">
           <div><label class="form-label">Proceso *</label>
             <select id="com-proceso" class="form-select">${procesos.map(p => `<option value="${p}">${p}</option>`).join('')}</select>
@@ -1754,6 +1893,7 @@ function renderComentarios(app) {
                   <span style="font-size:11px;color:var(--muted)">#${escapeHtml(c.id)}</span>
                 </div>
                 ${c.descripcion ? `<div class="comment-body">${escapeHtml(c.descripcion)}</div>` : ''}
+                ${renderDetalle(c)}
                 <div class="comment-tags">
                   <span class="tag tag-proceso">${escapeHtml(c.proceso || '')}</span>
                   <span class="tag tag-proceso">${escapeHtml(c.categoria || '')}</span>
@@ -1775,23 +1915,32 @@ function renderComentarios(app) {
   });
   document.getElementById('com-save').addEventListener('click', async () => {
     const msg = document.getElementById('com-msg');
-    const proceso = document.getElementById('com-proceso').value;
-    const categoria = document.getElementById('com-categoria').value;
-    const prioridad = document.getElementById('com-prioridad').value;
-    const estado = document.getElementById('com-estado').value;
-    const titulo = document.getElementById('com-titulo').value.trim();
-    const descripcion = document.getElementById('com-desc').value.trim();
-    const lote = document.getElementById('com-lote').value.trim();
-    const responsable = document.getElementById('com-resp').value.trim();
-    const creadoPor = document.getElementById('com-quien').value.trim();
+    const fecha            = document.getElementById('com-fecha').value;
+    const actividad_basica = document.getElementById('com-actividad').value;
+    const elemento         = document.getElementById('com-elemento').value.trim();
+    const proceso          = document.getElementById('com-proceso').value;
+    const categoria        = document.getElementById('com-categoria').value;
+    const prioridad        = document.getElementById('com-prioridad').value;
+    const estado           = document.getElementById('com-estado').value;
+    const titulo           = document.getElementById('com-titulo').value.trim();
+    const descripcion      = document.getElementById('com-desc').value.trim();
+    const lote             = document.getElementById('com-lote').value.trim();
+    const responsable      = document.getElementById('com-resp').value.trim();
+    const creadoPor        = document.getElementById('com-quien').value.trim();
 
+    if (!fecha) { msg.innerHTML = '<div class="error-card">La fecha es obligatoria.</div>'; return; }
     if (!titulo) { msg.innerHTML = '<div class="error-card">El título es obligatorio.</div>'; return; }
     if (!creadoPor) { msg.innerHTML = '<div class="error-card">Tu nombre es obligatorio para el registro.</div>'; return; }
 
     state.miNombre = creadoPor;
     localStorage.setItem('sisgo_nombre', creadoPor);
 
-    const comentario = { proceso, categoria, prioridad, estado, titulo, descripcion, lote, responsable, creado_por: creadoPor };
+    const comentario = {
+      fecha, elemento, actividad_basica,
+      proceso, categoria, prioridad, estado,
+      titulo, descripcion, lote, responsable,
+      creado_por: creadoPor,
+    };
     msg.innerHTML = '<div class="info-card">Enviando a GitHub…</div>';
     try {
       const result = await callFunction('agregar-comentario', { comentario });
@@ -1805,12 +1954,15 @@ function renderComentarios(app) {
       </div>`;
       const dl = document.getElementById('com-dl');
       if (dl) dl.addEventListener('click', () => {
-        const header = 'id,fecha,proceso,categoria,titulo,descripcion,lote,responsable,estado,prioridad,creado_por,creado_en';
-        const hoy = new Date().toISOString().slice(0,10);
+        const header = 'id,fecha,proceso,categoria,titulo,descripcion,lote,responsable,estado,prioridad,creado_por,creado_en,elemento,actividad_basica';
         const ahora = new Date().toISOString().replace('T',' ').slice(0,16);
         let maxId = 0;
         (state.comentarios||[]).forEach(c => { const n = parseInt(c.id); if (!isNaN(n) && n > maxId) maxId = n; });
-        const row = [String(maxId+1), hoy, proceso, categoria, titulo, descripcion, lote, responsable, estado, prioridad, creadoPor, ahora];
+        const row = [
+          String(maxId+1), fecha, proceso, categoria, titulo, descripcion,
+          lote, responsable, estado, prioridad, creadoPor, ahora,
+          elemento, actividad_basica,
+        ];
         const csv = header + '\n' + row.map(v => {
           const s = String(v == null ? '' : v);
           return (s.includes(',') || s.includes('"') || s.includes('\n')) ? '"' + s.replace(/"/g,'""') + '"' : s;
@@ -1843,13 +1995,10 @@ function setView(view){
 }
 
 function applyFilterAndRender() {
-  // 1) Derivar desde/hasta del mes calendario seleccionado
   const { desde, hasta } = monthRange(state.viewMonth);
   state.filters.desde = desde;
   state.filters.hasta = hasta;
-  // 2) Objetivo específico del mes visible
   state.objetivo = getObjetivoForMonth(state.viewMonth);
-  // 3) Recalcular KPIs y renderizar
   recomputeAllKPIs();
   const s = document.getElementById('f-status');
   if (s) s.textContent = `${monthKeyToLabel(state.viewMonth)} · mes calendario`;
@@ -1860,7 +2009,6 @@ function setupFilterBar() {
   const fm = document.getElementById('f-month');
   const fr = document.getElementById('f-reset');
 
-  // Rango permitido = meses con datos (para que el selector no se vaya a vacíos)
   const months = new Set();
   const add = (f) => {
     if (!f) return;
@@ -1892,9 +2040,6 @@ function setupFilterBar() {
   applyFilterAndRender();
 }
 
-// ============================================================
-// BOOT
-// ============================================================
 document.getElementById('main-nav').addEventListener('click', e => {
   const btn = e.target.closest('.nav-btn');
   if (btn) setView(btn.dataset.view);
