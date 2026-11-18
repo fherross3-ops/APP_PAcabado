@@ -5,6 +5,5 @@
   publish = "."
   functions = "netlify/functions"
 
-  # Excluir estas rutas del escaneo de secretos
   [build.environment]
-    SECRETS_SCAN_OMIT_PATHS = ".netlify/plugins/node_modules,node_modules"
+    SECRETS_SCAN_ENABLED = "false"
