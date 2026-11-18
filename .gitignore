@@ -6,3 +6,6 @@ __pycache__/
 .claude/
 .vscode/
 ABRIR_DASHBOARD.bat
+
+node_modules/
+.netlify/
