@@ -1,125 +1,127 @@
-// Netlify Function: agrega una fila a data/comentarios.csv en GitHub
-const GH = 'https://api.github.com';
+const { Octokit } = require('@octokit/rest');
+
+const CSV_PATH = 'data/comentarios.csv';
+const DEFAULT_HEADERS = [
+  'id','fecha','proceso','categoria','titulo','descripcion',
+  'lote','responsable','estado','prioridad','creado_por','creado_en',
+  'elemento','fecha_intervencion','actividad_basica'
+];
+
+function escapeCSV(v) {
+  const s = String(v == null ? '' : v);
+  return (s.includes(',') || s.includes('"') || s.includes('\n'))
+    ? '"' + s.replace(/"/g, '""') + '"'
+    : s;
+}
 
 function parseCSV(text) {
-  const rows = [];
-  let row = [], field = '', inQuotes = false;
-  let i = text.charCodeAt(0) === 0xFEFF ? 1 : 0;
-  for (; i < text.length; i++) {
-    const c = text[i];
-    if (inQuotes) {
+  const lines = text.split(/\r?\n/).filter(l => l.length > 0);
+  if (lines.length === 0) return { headers: [], rows: [] };
+  const headers = lines[0].split(',').map(h => h.trim());
+  const rows = lines.slice(1).map(line => {
+    const result = [];
+    let cur = '', inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
       if (c === '"') {
-        if (text[i + 1] === '"') { field += '"'; i++; }
-        else inQuotes = false;
-      } else field += c;
-    } else {
-      if (c === '"') inQuotes = true;
-      else if (c === ',') { row.push(field); field = ''; }
-      else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
-      else if (c === '\r') { /* skip */ }
-      else field += c;
+        if (inQuotes && line[i + 1] === '"') { cur += '"'; i++; }
+        else inQuotes = !inQuotes;
+      } else if (c === ',' && !inQuotes) {
+        result.push(cur); cur = '';
+      } else cur += c;
     }
-  }
-  if (field !== '' || row.length > 0) { row.push(field); rows.push(row); }
-  return rows.filter(r => r.length > 1 || (r[0] || '').trim() !== '');
-}
-
-function serializeCSV(rows) {
-  return rows.map(row => row.map(f => {
-    const s = String(f == null ? '' : f);
-    return (s.includes(',') || s.includes('"') || s.includes('\n') || s.includes('\r'))
-      ? '"' + s.replace(/"/g, '""') + '"'
-      : s;
-  }).join(',')).join('\n') + '\n';
-}
-
-async function getFile(path) {
-  const { GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO, GITHUB_BRANCH } = process.env;
-  const branch = GITHUB_BRANCH || 'main';
-  const url = `${GH}/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}?ref=${branch}`;
-  const res = await fetch(url, {
-    headers: {
-      'Authorization': `Bearer ${GITHUB_TOKEN}`,
-      'Accept': 'application/vnd.github+json',
-      'User-Agent': 'sisgo-dashboard'
-    }
+    result.push(cur);
+    return result;
   });
-  if (!res.ok) throw new Error(`GET ${path}: ${res.status} ${await res.text()}`);
-  const data = await res.json();
-  return { content: Buffer.from(data.content, 'base64').toString('utf8'), sha: data.sha };
-}
-
-async function putFile(path, content, sha, message) {
-  const { GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO, GITHUB_BRANCH } = process.env;
-  const branch = GITHUB_BRANCH || 'main';
-  const url = `${GH}/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`;
-  const res = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `Bearer ${GITHUB_TOKEN}`,
-      'Accept': 'application/vnd.github+json',
-      'Content-Type': 'application/json',
-      'User-Agent': 'sisgo-dashboard'
-    },
-    body: JSON.stringify({
-      message,
-      content: Buffer.from('\uFEFF' + content, 'utf8').toString('base64'),
-      sha,
-      branch
-    })
-  });
-  if (!res.ok) throw new Error(`PUT ${path}: ${res.status} ${await res.text()}`);
-  return await res.json();
+  return { headers, rows };
 }
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }
+
+  const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+  const owner  = process.env.GITHUB_OWNER;
+  const repo   = process.env.GITHUB_REPO;
+  const branch = process.env.GITHUB_BRANCH || 'main';
+
   try {
-    const body = JSON.parse(event.body || '{}');
-    const c = body.comentario;
-    if (!c || !c.titulo || !c.creado_por) {
-      return { statusCode: 400, body: JSON.stringify({ error: 'Faltan campos obligatorios: titulo, creado_por' }) };
+    const { comentario } = JSON.parse(event.body || '{}');
+    if (!comentario || !comentario.titulo) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'Falta el comentario o el título' }) };
     }
-    if (!process.env.GITHUB_TOKEN || !process.env.GITHUB_OWNER || !process.env.GITHUB_REPO) {
-      return { statusCode: 500, body: JSON.stringify({ error: 'Faltan variables de entorno GITHUB_TOKEN / GITHUB_OWNER / GITHUB_REPO' }) };
+
+    // 1) Leer archivo (si existe)
+    let sha = null;
+    let existingRows = [];
+    let headers = DEFAULT_HEADERS;
+
+    try {
+      const res = await octokit.repos.getContent({ owner, repo, path: CSV_PATH, ref: branch });
+      sha = res.data.sha;
+      const content = Buffer.from(res.data.content, 'base64').toString('utf-8');
+      const parsed = parseCSV(content);
+      if (parsed.headers.length > 0) headers = parsed.headers;
+      existingRows = parsed.rows;
+    } catch (err) {
+      if (err.status === 404) {
+        console.log('📄 comentarios.csv no existe → se creará');
+      } else {
+        throw err;
+      }
     }
-    const { content, sha } = await getFile('data/comentarios.csv');
-    const rows = parseCSV(content);
-    const header = rows[0] || ['id', 'fecha', 'proceso', 'categoria', 'titulo', 'descripcion', 'lote', 'responsable', 'estado', 'prioridad', 'creado_por', 'creado_en'];
-    const dataRows = rows.slice(1);
-    let maxId = 0;
-    for (const r of dataRows) {
-      const n = parseInt(r[0]);
-      if (!isNaN(n) && n > maxId) maxId = n;
-    }
-    const id = maxId + 1;
+
+    // 2) Nuevo ID
+    const maxId = existingRows.reduce((m, r) => {
+      const n = parseInt(r[0], 10);
+      return isNaN(n) ? m : Math.max(m, n);
+    }, 0);
+    const newId = maxId + 1;
+
+    // 3) Construir fila en el orden de los headers existentes
     const now = new Date();
-    const fecha = now.toISOString().slice(0, 10);
-    const creadoEn = now.toISOString().replace('T', ' ').slice(0, 16);
-    const newRow = [
-      String(id), fecha,
-      c.proceso || 'general', c.categoria || 'otro',
-      c.titulo || '', c.descripcion || '',
-      c.lote || '', c.responsable || '',
-      c.estado || 'abierto', c.prioridad || 'media',
-      c.creado_por || '', creadoEn
-    ];
-    dataRows.push(newRow);
-    const newContent = serializeCSV([header, ...dataRows]);
-    const result = await putFile('data/comentarios.csv', newContent, sha, `Comentario #${id}: ${c.titulo.slice(0, 50)}`);
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ok: true, id, sha: result.content.sha })
+    const rowMap = {
+      id: String(newId),
+      fecha: comentario.fecha || now.toISOString().slice(0, 10),
+      proceso: comentario.proceso || '',
+      categoria: comentario.categoria || '',
+      titulo: comentario.titulo || '',
+      descripcion: comentario.descripcion || '',
+      lote: comentario.lote || '',
+      responsable: comentario.responsable || '',
+      estado: comentario.estado || 'abierto',
+      prioridad: comentario.prioridad || 'media',
+      creado_por: comentario.creado_por || '',
+      creado_en: now.toISOString().replace('T', ' ').slice(0, 16),
+      elemento: comentario.elemento || '',
+      fecha_intervencion: comentario.fecha_intervencion || '',
+      actividad_basica: comentario.actividad_basica || '',
     };
+    const newRow = headers.map(h => rowMap[h] != null ? rowMap[h] : '');
+
+    // 4) Serializar
+    const lines = [];
+    lines.push(headers.map(escapeCSV).join(','));
+    for (const r of existingRows) lines.push(r.map(escapeCSV).join(','));
+    lines.push(newRow.map(escapeCSV).join(','));
+    const csvContent = lines.join('\n') + '\n';
+
+    // 5) PUT (create si sha es null, update si existe)
+    const encoded = Buffer.from(csvContent, 'utf-8').toString('base64');
+    await octokit.repos.createOrUpdateFileContents({
+      owner, repo, path: CSV_PATH, branch,
+      message: `Agregar comentario #${newId}: ${comentario.titulo}`,
+      content: encoded,
+      ...(sha ? { sha } : {}),
+    });
+
+    return { statusCode: 200, body: JSON.stringify({ id: newId, ok: true }) };
   } catch (err) {
     console.error('agregar-comentario error:', err);
     return {
       statusCode: 500,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: String(err.message || err) })
+      body: JSON.stringify({ error: err.message || String(err) }),
     };
   }
 };
