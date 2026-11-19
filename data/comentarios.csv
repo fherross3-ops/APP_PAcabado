@@ -2,3 +2,4 @@ id,fecha,proceso,categoria,titulo,descripcion,lote,responsable,estado,prioridad,
 1,2026-10-23,general,otro,Archivo creado,Registro inicial del sistema de comentarios. Puedes eliminar esta fila.,,Sistema,cerrado,baja,ADMIN,2026-10-23 00:00
 2,2026-11-19,sanforizado,mantenimiento,Motor Principal,,,,cerrado,media,F.R.,2026-11-19 14:31
 3,2026-11-19,sanforizado,mantenimiento,Motor Principal,,,,cerrado,media,F.R.,2026-11-19 17:56
+4,2026-11-19,sanforizado,mantenimiento,motor principal,,,,cerrado,media,fr,2026-11-19 21:22
