@@ -1873,12 +1873,18 @@ function renderComentarios(app) {
       const result = await callFunction('agregar-comentario', { comentario });
       msg.innerHTML = `<div class="info-card" style="border-color:var(--success);background:rgba(74,222,128,.08)">✅ Guardado como #${result.id}. Recarga la página en ~15s para verlo.</div>`;
       document.getElementById('com-form-card').style.display = 'none';
-    } catch(err) {
+        } catch(err) {
+      console.error('ERROR AL GUARDAR:', err);
       msg.innerHTML = `<div class="error-card">
         <strong>Error:</strong> ${escapeHtml(err.message)}
-        <p>Descarga el comentario como CSV y súbelo manualmente a <code>data/comentarios.csv</code>:</p>
-        <button class="btn-secondary" id="com-dl">📥 Descargar comentario</button>
+        <p><b>DEBUG:</b> Revisa la consola del navegador (F12) para ver el error completo.</p>
       </div>`;
+      return;
+    }
+      
+      
+      
+      
       const dl = document.getElementById('com-dl');
       if (dl) dl.addEventListener('click', () => {
         const header = 'id,fecha,proceso,categoria,titulo,descripcion,lote,responsable,estado,prioridad,creado_por,creado_en,elemento,fecha_intervencion,actividad_basica';
