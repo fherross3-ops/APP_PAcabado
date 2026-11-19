@@ -47,6 +47,21 @@ exports.handler = async (event) => {
   const branch = process.env.GITHUB_BRANCH || 'main';
 
   if (!token || !owner || !repo) {
+    
+      // === DIAGNÓSTICO TEMPORAL ===
+  console.log('DIAGNOSTICO_TOKEN_PREFIX:', token ? token.slice(0, 12) : 'N/A');
+  console.log('DIAGNOSTICO_TOKEN_LENGTH:', token ? token.length : 0);
+  console.log('DIAGNOSTICO_OWNER:', JSON.stringify(owner));
+  console.log('DIAGNOSTICO_REPO:', JSON.stringify(repo));
+  console.log('DIAGNOSTICO_BRANCH:', JSON.stringify(branch));
+  console.log('DIAGNOSTICO_API_URL:', `https://api.github.com/repos/${owner}/${repo}/contents/${CSV_PATH}`);
+  // === FIN DIAGNÓSTICO ===
+    
+    
+    
+    
+    
+    
     return {
       statusCode: 500,
       body: JSON.stringify({
