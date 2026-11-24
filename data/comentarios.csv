@@ -4,3 +4,4 @@ id,fecha,proceso,categoria,titulo,descripcion,lote,responsable,estado,prioridad,
 3,2026-11-19,sanforizado,mantenimiento,Motor Principal,,,,cerrado,media,F.R.,2026-11-19 17:56
 4,2026-11-19,sanforizado,mantenimiento,motor principal,,,,cerrado,media,fr,2026-11-19 21:22
 5,2026-11-19,corte,mantenimiento,motor principal,,,,cerrado,media,fr,2026-11-19 21:23
+6,2026-11-24,sanforizado,mantenimiento,Motor Principal,Lubricacion y limpieza.,,,cerrado,alta,F.R.,2026-11-24 12:55
