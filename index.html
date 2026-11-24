@@ -1739,6 +1739,31 @@ function renderComentarios(app) {
 
       <div id="com-msg"></div>
 
+
+      <div id="com-msg"></div>
+
+      ${(() => {
+        const totalGlobal = state.comentarios.length;
+        const totalMostrado = filtered.length;
+        if (totalGlobal > 0 && totalMostrado === 0) {
+          return `<div class="warn-card">
+            ⚠️ Hay <b>${totalGlobal}</b> comentario(s) registrado(s), pero ninguno cae dentro de <b>${monthKeyToLabel(state.viewMonth)}</b>.
+            <br>Cambia el mes en el selector superior o revisa el archivo <code>data/comentarios.csv</code> en GitHub.
+          </div>`;
+        }
+        if (totalGlobal > totalMostrado) {
+          return `<div class="info-card">
+            ℹ️ Mostrando <b>${totalMostrado}</b> de <b>${totalGlobal}</b> comentarios (filtrados por <b>${monthKeyToLabel(state.viewMonth)}</b>).
+          </div>`;
+        }
+        return '';
+      })()}
+
+      <div id="com-list">
+
+
+
+
       <div id="com-list">
         ${filtered.length === 0 ?
           '<div class="info-card">No hay comentarios en el rango seleccionado.</div>' :
@@ -1809,10 +1834,28 @@ function renderComentarios(app) {
       creado_por: creadoPor,
     };
     msg.innerHTML = '<div class="info-card">Enviando a GitHub…</div>';
-    try {
+        try {
       const result = await callFunction('agregar-comentario', { comentario });
-      msg.innerHTML = `<div class="info-card" style="border-color:var(--success);background:rgba(74,222,128,.08)">✅ Guardado como #${result.id}. Recarga la página en ~15s para verlo.</div>`;
+      msg.innerHTML = `<div class="info-card" style="border-color:var(--success);background:rgba(74,222,128,.08)">✅ Guardado como #${result.id}. Actualizando lista…</div>`;
       document.getElementById('com-form-card').style.display = 'none';
+
+      // ── NUEVO: recargar el CSV de comentarios desde GitHub ──
+      try {
+        const refreshed = await loadCSV(`${DATA_DIR}/comentarios.csv`);
+        state.comentarios = refreshed.filter(r => r.id && String(r.id).trim() !== '');
+        console.log(`🔄 Comentarios recargados: ${state.comentarios.length}`);
+      } catch (reloadErr) {
+        console.warn('No se pudo recargar el CSV, agregando en memoria:', reloadErr.message);
+        // Fallback: agregar el comentario a la lista en memoria
+        state.comentarios.push({
+          ...comentario,
+          id: String(result.id),
+          creado_en: new Date().toISOString().replace('T',' ').slice(0,16),
+        });
+      }
+
+      // Re-renderizar la vista de comentarios
+      renderComentarios(app);
     } catch(err) {
       msg.innerHTML = `<div class="error-card">
         <strong>Error:</strong> ${escapeHtml(err.message)}
