@@ -6,3 +6,4 @@ id,fecha,proceso,categoria,titulo,descripcion,lote,responsable,estado,prioridad,
 5,2026-11-19,corte,mantenimiento,motor principal,,,,cerrado,media,fr,2026-11-19 21:23
 6,2026-11-24,sanforizado,mantenimiento,Motor Principal,Lubricacion y limpieza.,,,cerrado,alta,F.R.,2026-11-24 12:55
 7,2026-11-24,sanforizado,mantenimiento,Motor Cilindro,,,,cerrado,alta,F.R.,2026-11-24 13:11
+8,2026-11-25,sanforizado,mantenimiento,Carbones del motor desajustados y sucios.,Falla recurrente. Detiene el proceso.,100068,Manuel Quiñonez,abierto,critica,María José Barco,2026-11-25 16:56
