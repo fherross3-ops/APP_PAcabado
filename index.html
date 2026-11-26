@@ -1896,11 +1896,23 @@ function render(){
   else renderProcess(app, state.view);
 }
 
-function setView(view){
+async function setView(view){
   state.view = view;
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
   const fb = document.getElementById('filter-bar');
   if (fb) fb.style.display = (view === 'configuracion') ? 'none' : 'flex';
+
+  // ── NUEVO: recargar comentarios al entrar a la vista ──
+  if (view === 'comentarios') {
+    try {
+      const refreshed = await loadCSV(`${DATA_DIR}/comentarios.csv`);
+      state.comentarios = refreshed.filter(r => r.id && String(r.id).trim() !== '');
+      console.log(`🔄 Comentarios recargados al entrar: ${state.comentarios.length}`);
+    } catch (err) {
+      console.warn('⚠️ No se pudo recargar comentarios:', err.message);
+    }
+  }
+
   render();
 }
 
