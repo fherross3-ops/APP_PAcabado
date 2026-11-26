@@ -268,8 +268,9 @@ const state = {
   view: 'global',
   subview: { corte:'resumen', revision:'resumen', sanforizado:'resumen' },
   filters: { desde:'', hasta:'' },
-  viewMonth: getCurrentMonthKey(),
+   viewMonth: getCurrentMonthKey(),
   objetivo: OBJETIVO_DEFAULT,
+  editingCommentId: null,
   charts: {},
 };
 
@@ -1641,18 +1642,29 @@ function renderComentarios(app) {
   const hoyISO = new Date().toISOString().slice(0,10);
 
   const { desde, hasta } = state.filters;
-  const filtered = comentarios.filter(c => {
-    const f = String(c.fecha || '').replace(/-/g, '').trim();
-    if (desde && f < desde) return false;
-    if (hasta && f > hasta) return false;
-    return true;
-  });
+  const mostrarSoloMes = state.soloMesComentarios === true;
+  const filtered = mostrarSoloMes
+    ? comentarios.filter(c => {
+        const f = String(c.fecha || '').replace(/-/g, '').trim();
+        if (desde && f < desde) return false;
+        if (hasta && f > hasta) return false;
+        return true;
+      })
+    : comentarios;
+
+  const isEditing = state.editingCommentId != null;
+  const editingComment = isEditing
+    ? comentarios.find(c => String(c.id) === String(state.editingCommentId))
+    : null;
 
   const renderDetalle = (c) => {
     const items = [];
     if (c.elemento)           items.push(`<b>Elemento/Componente:</b> ${escapeHtml(c.elemento)}`);
     if (c.fecha_intervencion) items.push(`<b>Fecha intervención:</b> ${escapeHtml(c.fecha_intervencion)}`);
     if (c.actividad_basica)   items.push(`<b>Actividad:</b> ${escapeHtml(c.actividad_basica.replace(/_/g,' '))}`);
+    if (c.tiempo_inicio)      items.push(`<b>Tiempo inicio:</b> ${escapeHtml(c.tiempo_inicio)}`);
+    if (c.tiempo_final)       items.push(`<b>Tiempo final:</b> ${escapeHtml(c.tiempo_final)}`);
+    if (c.editado_en)         items.push(`<b>Editado:</b> ${escapeHtml(c.editado_en)}`);
     if (items.length === 0) return '';
     return `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;font-size:11px;color:var(--muted)">
       ${items.map(t => `<span style="background:rgba(0,0,0,.25);padding:3px 8px;border-radius:4px">${t}</span>`).join('')}
@@ -1665,104 +1677,113 @@ function renderComentarios(app) {
         <div>
           <h2>Comentarios y Novedades</h2>
           <p class="muted" style="margin:4px 0 0">
-            ${filtered.length} de ${comentarios.length} registros · <b>${monthKeyToLabel(state.viewMonth)}</b>
+            ${filtered.length} de ${comentarios.length} registros
+            ${mostrarSoloMes ? ` · filtrado por <b>${monthKeyToLabel(state.viewMonth)}</b>` : ''}
           </p>
         </div>
-        <button class="btn-primary" id="com-new-btn">+ Nuevo comentario</button>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);cursor:pointer">
+            <input type="checkbox" id="com-solo-mes" ${mostrarSoloMes ? 'checked' : ''}>
+            Solo ${monthKeyToLabel(state.viewMonth)}
+          </label>
+          <button class="btn-primary" id="com-new-btn">+ Nuevo comentario</button>
+        </div>
       </div>
 
-      <div class="card" id="com-form-card" style="display:none">
-        <h3>Nuevo comentario</h3>
+      <div class="card" id="com-form-card" style="${isEditing ? 'display:block' : 'display:none'}">
+        <h3 id="com-form-title">${isEditing ? `Editar comentario #${editingComment ? escapeHtml(editingComment.id) : ''}` : 'Nuevo comentario'}</h3>
 
         <div class="form-row">
           <div><label class="form-label">Fecha *</label>
-            <input type="date" id="com-fecha" class="form-input" value="${hoyISO}">
+            <input type="date" id="com-fecha" class="form-input" value="${editingComment ? escapeHtml(editingComment.fecha || '') : hoyISO}">
           </div>
           <div><label class="form-label">Fecha Intervención</label>
-            <input type="date" id="com-fecha-intervencion" class="form-input" value="${hoyISO}">
+            <input type="date" id="com-fecha-intervencion" class="form-input" value="${editingComment ? escapeHtml(editingComment.fecha_intervencion || '') : hoyISO}">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div><label class="form-label">Tiempo Inicio</label>
+            <input type="time" id="com-tiempo-inicio" class="form-input" value="${editingComment ? escapeHtml(editingComment.tiempo_inicio || '') : ''}">
+          </div>
+          <div><label class="form-label">Tiempo Final</label>
+            <input type="time" id="com-tiempo-final" class="form-input" value="${editingComment ? escapeHtml(editingComment.tiempo_final || '') : ''}">
           </div>
         </div>
 
         <div class="form-row">
           <div><label class="form-label">Elemento/Componente</label>
-            <input type="text" id="com-elemento" class="form-input" placeholder="ej. Motor principal, rodillo tensor, sensor de trama">
+            <input type="text" id="com-elemento" class="form-input" value="${editingComment ? escapeHtml(editingComment.elemento || '') : ''}" placeholder="ej. Motor principal, rodillo tensor">
           </div>
           <div><label class="form-label">Actividad Básica</label>
             <select id="com-actividad" class="form-select">
               <option value="">—</option>
-              ${actividadesBasicas.map(a => `<option value="${a}">${a.charAt(0).toUpperCase()+a.slice(1)}</option>`).join('')}
+              ${actividadesBasicas.map(a => `<option value="${a}" ${editingComment && editingComment.actividad_basica === a ? 'selected' : ''}>${a.charAt(0).toUpperCase()+a.slice(1)}</option>`).join('')}
             </select>
           </div>
         </div>
 
         <div class="form-row">
           <div><label class="form-label">Proceso *</label>
-            <select id="com-proceso" class="form-select">${procesos.map(p => `<option value="${p}">${p}</option>`).join('')}</select>
+            <select id="com-proceso" class="form-select">${procesos.map(p => `<option value="${p}" ${editingComment && editingComment.proceso === p ? 'selected' : ''}>${p}</option>`).join('')}</select>
           </div>
           <div><label class="form-label">Categoría *</label>
-            <select id="com-categoria" class="form-select">${categorias.map(c => `<option value="${c}">${c}</option>`).join('')}</select>
+            <select id="com-categoria" class="form-select">${categorias.map(c => `<option value="${c}" ${editingComment && editingComment.categoria === c ? 'selected' : ''}>${c}</option>`).join('')}</select>
           </div>
         </div>
         <div class="form-row">
           <div><label class="form-label">Prioridad</label>
-            <select id="com-prioridad" class="form-select">${prioridades.map(p => `<option value="${p}" ${p==='media'?'selected':''}>${p}</option>`).join('')}</select>
+            <select id="com-prioridad" class="form-select">${prioridades.map(p => `<option value="${p}" ${(editingComment ? editingComment.prioridad === p : p === 'media') ? 'selected' : ''}>${p}</option>`).join('')}</select>
           </div>
           <div><label class="form-label">Estado</label>
-            <select id="com-estado" class="form-select">${estados.map(e => `<option value="${e}">${e}</option>`).join('')}</select>
+            <select id="com-estado" class="form-select">${estados.map(e => `<option value="${e}" ${editingComment && editingComment.estado === e ? 'selected' : ''}>${e}</option>`).join('')}</select>
           </div>
         </div>
         <div style="margin-bottom:12px">
           <label class="form-label">Título *</label>
-          <input type="text" id="com-titulo" class="form-input" placeholder="Resumen del evento">
+          <input type="text" id="com-titulo" class="form-input" value="${editingComment ? escapeHtml(editingComment.titulo || '') : ''}" placeholder="Resumen del evento">
         </div>
         <div style="margin-bottom:12px">
           <label class="form-label">Descripción</label>
-          <textarea id="com-desc" class="form-textarea" placeholder="Detalle del evento o novedad"></textarea>
+          <textarea id="com-desc" class="form-textarea" placeholder="Detalle del evento o novedad">${editingComment ? escapeHtml(editingComment.descripcion || '') : ''}</textarea>
         </div>
         <div class="form-row">
           <div>
             <label class="form-label">Lote</label>
-            <input type="text" id="com-lote" list="lotes-list" class="form-input" placeholder="ej. 201204">
+            <input type="text" id="com-lote" list="lotes-list" class="form-input" value="${editingComment ? escapeHtml(editingComment.lote || '') : ''}" placeholder="ej. 201204">
             <datalist id="lotes-list">${lotes.map(l => `<option value="${escapeHtml(l)}">`).join('')}</datalist>
           </div>
           <div><label class="form-label">Responsable</label>
-            <input type="text" id="com-resp" class="form-input" placeholder="A quién se asigna">
+            <input type="text" id="com-resp" class="form-input" value="${editingComment ? escapeHtml(editingComment.responsable || '') : ''}" placeholder="A quién se asigna">
           </div>
         </div>
         <div style="margin-bottom:12px">
-          <label class="form-label">Tu nombre (para el registro) *</label>
-          <input type="text" id="com-quien" class="form-input" value="${escapeHtml(state.miNombre)}" placeholder="Ej. Javier F.">
+          <label class="form-label">Tu nombre (para el registro) ${isEditing ? '' : '*'}</label>
+          <input type="text" id="com-quien" class="form-input" value="${escapeHtml(state.miNombre)}" placeholder="Ej. Javier F." ${isEditing ? 'disabled' : ''}>
+          ${isEditing ? `<small class="muted">Autor original: ${escapeHtml(editingComment ? editingComment.creado_por : '')}</small>` : ''}
         </div>
-        <button class="btn-primary" id="com-save">Guardar comentario</button>
-        <button class="btn-secondary" id="com-cancel">Cancelar</button>
+        <button class="btn-primary" id="com-save">${isEditing ? 'Actualizar comentario' : 'Guardar comentario'}</button>
+        <button class="btn-secondary" id="com-cancel">${isEditing ? 'Cancelar edición' : 'Cancelar'}</button>
       </div>
 
       <div id="com-msg"></div>
 
-
-      <div id="com-msg"></div>
-
       ${(() => {
-        const totalGlobal = state.comentarios.length;
-        const totalMostrado = filtered.length;
-        if (totalGlobal > 0 && totalMostrado === 0) {
+        const total = comentarios.length;
+        const visibles = filtered.length;
+        if (total === 0) {
           return `<div class="warn-card">
-            ⚠️ Hay <b>${totalGlobal}</b> comentario(s) registrado(s), pero ninguno cae dentro de <b>${monthKeyToLabel(state.viewMonth)}</b>.
-            <br>Cambia el mes en el selector superior o revisa el archivo <code>data/comentarios.csv</code> en GitHub.
+            ⚠️ No se han cargado comentarios desde <code>data/comentarios.csv</code>.
           </div>`;
         }
-        if (totalGlobal > totalMostrado) {
-          return `<div class="info-card">
-            ℹ️ Mostrando <b>${totalMostrado}</b> de <b>${totalGlobal}</b> comentarios (filtrados por <b>${monthKeyToLabel(state.viewMonth)}</b>).
+        if (visibles === 0) {
+          return `<div class="warn-card">
+            ⚠️ Hay <b>${total}</b> comentario(s) en el CSV, pero ninguno cae en <b>${monthKeyToLabel(state.viewMonth)}</b>.
+            Desactiva el toggle "Solo ${monthKeyToLabel(state.viewMonth)}" para verlos todos.
           </div>`;
         }
         return '';
       })()}
-
-      <div id="com-list">
-
-
-
 
       <div id="com-list">
         ${filtered.length === 0 ?
@@ -1781,7 +1802,10 @@ function renderComentarios(app) {
                       ${c.responsable ? ` · Resp: ${escapeHtml(c.responsable)}` : ''}
                     </div>
                   </div>
-                  <span style="font-size:11px;color:var(--muted)">#${escapeHtml(c.id)}</span>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <button class="btn-secondary com-edit-btn" data-id="${escapeHtml(c.id)}" style="padding:4px 10px;font-size:11px">✏️ Editar</button>
+                    <span style="font-size:11px;color:var(--muted)">#${escapeHtml(c.id)}</span>
+                  </div>
                 </div>
                 ${c.descripcion ? `<div class="comment-body">${escapeHtml(c.descripcion)}</div>` : ''}
                 ${renderDetalle(c)}
@@ -1798,16 +1822,39 @@ function renderComentarios(app) {
     </section>`;
 
   document.getElementById('com-new-btn').addEventListener('click', () => {
+    state.editingCommentId = null;
     const card = document.getElementById('com-form-card');
     card.style.display = card.style.display === 'none' ? 'block' : 'none';
+    if (card.style.display === 'block') {
+      document.getElementById('com-form-title').textContent = 'Nuevo comentario';
+    }
   });
+
   document.getElementById('com-cancel').addEventListener('click', () => {
+    state.editingCommentId = null;
     document.getElementById('com-form-card').style.display = 'none';
   });
+
+  document.getElementById('com-solo-mes').addEventListener('change', (e) => {
+    state.soloMesComentarios = e.target.checked;
+    renderComentarios(app);
+  });
+
+  app.querySelectorAll('.com-edit-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.editingCommentId = btn.dataset.id;
+      renderComentarios(app);
+      const card = document.getElementById('com-form-card');
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
   document.getElementById('com-save').addEventListener('click', async () => {
     const msg = document.getElementById('com-msg');
     const fecha               = document.getElementById('com-fecha').value;
     const fecha_intervencion  = document.getElementById('com-fecha-intervencion').value;
+    const tiempo_inicio       = document.getElementById('com-tiempo-inicio').value;
+    const tiempo_final        = document.getElementById('com-tiempo-final').value;
     const elemento            = document.getElementById('com-elemento').value.trim();
     const actividad_basica    = document.getElementById('com-actividad').value;
     const proceso             = document.getElementById('com-proceso').value;
@@ -1822,63 +1869,56 @@ function renderComentarios(app) {
 
     if (!fecha) { msg.innerHTML = '<div class="error-card">La fecha es obligatoria.</div>'; return; }
     if (!titulo) { msg.innerHTML = '<div class="error-card">El título es obligatorio.</div>'; return; }
-    if (!creadoPor) { msg.innerHTML = '<div class="error-card">Tu nombre es obligatorio para el registro.</div>'; return; }
 
-    state.miNombre = creadoPor;
-    localStorage.setItem('sisgo_nombre', creadoPor);
+    const isEditingNow = state.editingCommentId != null;
+    if (!isEditingNow && !creadoPor) {
+      msg.innerHTML = '<div class="error-card">Tu nombre es obligatorio para el registro.</div>';
+      return;
+    }
+
+    if (creadoPor) {
+      state.miNombre = creadoPor;
+      localStorage.setItem('sisgo_nombre', creadoPor);
+    }
 
     const comentario = {
-      fecha, fecha_intervencion, elemento, actividad_basica,
+      fecha, fecha_intervencion, tiempo_inicio, tiempo_final,
+      elemento, actividad_basica,
       proceso, categoria, prioridad, estado,
       titulo, descripcion, lote, responsable,
-      creado_por: creadoPor,
     };
-    msg.innerHTML = '<div class="info-card">Enviando a GitHub…</div>';
-        try {
-      const result = await callFunction('agregar-comentario', { comentario });
-      msg.innerHTML = `<div class="info-card" style="border-color:var(--success);background:rgba(74,222,128,.08)">✅ Guardado como #${result.id}. Actualizando lista…</div>`;
-      document.getElementById('com-form-card').style.display = 'none';
+    if (isEditingNow) comentario.id = state.editingCommentId;
+    else comentario.creado_por = creadoPor;
 
-      // ── NUEVO: recargar el CSV de comentarios desde GitHub ──
+    msg.innerHTML = `<div class="info-card">${isEditingNow ? 'Actualizando' : 'Enviando'} en GitHub…</div>`;
+    try {
+      const result = await callFunction('agregar-comentario', { comentario });
+      msg.innerHTML = `<div class="info-card" style="border-color:var(--success);background:rgba(74,222,128,.08)">✅ ${isEditingNow ? 'Actualizado' : 'Guardado'} como #${result.id}. Actualizando lista…</div>`;
+
       try {
         const refreshed = await loadCSV(`${DATA_DIR}/comentarios.csv`);
         state.comentarios = refreshed.filter(r => r.id && String(r.id).trim() !== '');
         console.log(`🔄 Comentarios recargados: ${state.comentarios.length}`);
       } catch (reloadErr) {
-        console.warn('No se pudo recargar el CSV, agregando en memoria:', reloadErr.message);
-        // Fallback: agregar el comentario a la lista en memoria
-        state.comentarios.push({
-          ...comentario,
-          id: String(result.id),
-          creado_en: new Date().toISOString().replace('T',' ').slice(0,16),
-        });
+        console.warn('No se pudo recargar el CSV:', reloadErr.message);
+        if (isEditingNow) {
+          const idx = state.comentarios.findIndex(c => String(c.id) === String(state.editingCommentId));
+          if (idx !== -1) state.comentarios[idx] = { ...state.comentarios[idx], ...comentario };
+        } else {
+          state.comentarios.push({
+            ...comentario,
+            id: String(result.id),
+            creado_en: new Date().toISOString().replace('T',' ').slice(0,16),
+          });
+        }
       }
 
-      // Re-renderizar la vista de comentarios
+      state.editingCommentId = null;
       renderComentarios(app);
     } catch(err) {
       msg.innerHTML = `<div class="error-card">
         <strong>Error:</strong> ${escapeHtml(err.message)}
-        <p>Descarga el comentario como CSV y súbelo manualmente a <code>data/comentarios.csv</code>:</p>
-        <button class="btn-secondary" id="com-dl">📥 Descargar comentario</button>
       </div>`;
-      const dl = document.getElementById('com-dl');
-      if (dl) dl.addEventListener('click', () => {
-        const header = 'id,fecha,proceso,categoria,titulo,descripcion,lote,responsable,estado,prioridad,creado_por,creado_en,elemento,fecha_intervencion,actividad_basica';
-        const ahora = new Date().toISOString().replace('T',' ').slice(0,16);
-        let maxId = 0;
-        (state.comentarios||[]).forEach(c => { const n = parseInt(c.id); if (!isNaN(n) && n > maxId) maxId = n; });
-        const row = [
-          String(maxId+1), fecha, proceso, categoria, titulo, descripcion,
-          lote, responsable, estado, prioridad, creadoPor, ahora,
-          elemento, fecha_intervencion, actividad_basica,
-        ];
-        const csv = header + '\n' + row.map(v => {
-          const s = String(v == null ? '' : v);
-          return (s.includes(',') || s.includes('"') || s.includes('\n')) ? '"' + s.replace(/"/g,'""') + '"' : s;
-        }).join(',') + '\n';
-        downloadCSV('comentario_nuevo.csv', csv);
-      });
     }
   });
 }
