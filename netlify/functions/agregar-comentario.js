@@ -1,10 +1,13 @@
 // Sin dependencias externas: usa fetch nativo (Netlify Node 18+)
 const CSV_PATH = 'data/comentarios.csv';
 
-const DEFAULT_HEADERS = [
+// Orden canónico de columnas. Al añadir aquí, el CSV se reescribe
+// con las columnas nuevas (las viejas filas quedan con vacío en las nuevas).
+const CANONICAL_HEADERS = [
   'id','fecha','proceso','categoria','titulo','descripcion',
   'lote','responsable','estado','prioridad','creado_por','creado_en',
-  'elemento','fecha_intervencion','actividad_basica'
+  'elemento','fecha_intervencion','actividad_basica',
+  'tiempo_inicio','tiempo_final','editado_en'
 ];
 
 function escapeCSV(v) {
@@ -47,21 +50,6 @@ exports.handler = async (event) => {
   const branch = process.env.GITHUB_BRANCH || 'main';
 
   if (!token || !owner || !repo) {
-    
-      // === DIAGNÓSTICO TEMPORAL ===
-  console.log('DIAGNOSTICO_TOKEN_PREFIX:', token ? token.slice(0, 12) : 'N/A');
-  console.log('DIAGNOSTICO_TOKEN_LENGTH:', token ? token.length : 0);
-  console.log('DIAGNOSTICO_OWNER:', JSON.stringify(owner));
-  console.log('DIAGNOSTICO_REPO:', JSON.stringify(repo));
-  console.log('DIAGNOSTICO_BRANCH:', JSON.stringify(branch));
-  console.log('DIAGNOSTICO_API_URL:', `https://api.github.com/repos/${owner}/${repo}/contents/${CSV_PATH}`);
-  // === FIN DIAGNÓSTICO ===
-    
-    
-    
-    
-    
-    
     return {
       statusCode: 500,
       body: JSON.stringify({
@@ -85,9 +73,10 @@ exports.handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify({ error: 'Falta el comentario o el título' }) };
     }
 
+    // 1) Leer archivo (si existe)
     let sha = null;
     let existingRows = [];
-    let csvHeaders = DEFAULT_HEADERS;
+    let existingHeaders = [];
 
     const getRes = await fetch(`${apiBase}?ref=${branch}`, { headers });
     if (getRes.status === 200) {
@@ -95,9 +84,9 @@ exports.handler = async (event) => {
       sha = data.sha;
       const content = Buffer.from(data.content, 'base64').toString('utf-8');
       const parsed = parseCSV(content);
-      if (parsed.headers.length > 0) csvHeaders = parsed.headers;
+      existingHeaders = parsed.headers;
       existingRows = parsed.rows;
-      console.log(`📄 CSV existente: ${existingRows.length} filas`);
+      console.log(`📄 CSV existente: ${existingRows.length} filas / ${existingHeaders.length} columnas`);
     } else if (getRes.status === 404) {
       console.log('📄 comentarios.csv no existe → se creará');
     } else {
@@ -106,44 +95,106 @@ exports.handler = async (event) => {
       return { statusCode: 500, body: JSON.stringify({ error: `GET ${getRes.status}: ${errTxt}` }) };
     }
 
-    const maxId = existingRows.reduce((m, r) => {
-      const n = parseInt(r[0], 10);
-      return isNaN(n) ? m : Math.max(m, n);
-    }, 0);
-    const newId = maxId + 1;
+    // 2) Remapear filas existentes al orden canónico (agrega columnas nuevas vacías)
+    const remappedExisting = existingRows.map(oldRow => {
+      const obj = {};
+      existingHeaders.forEach((h, i) => { obj[h] = oldRow[i]; });
+      return CANONICAL_HEADERS.map(h => obj[h] != null ? obj[h] : '');
+    });
 
+    // 3) CREATE o UPDATE
+    const isUpdate = comentario.id != null && String(comentario.id).trim() !== '';
     const now = new Date();
-    const rowMap = {
-      id: String(newId),
-      fecha: comentario.fecha || now.toISOString().slice(0, 10),
-      proceso: comentario.proceso || '',
-      categoria: comentario.categoria || '',
-      titulo: comentario.titulo || '',
-      descripcion: comentario.descripcion || '',
-      lote: comentario.lote || '',
-      responsable: comentario.responsable || '',
-      estado: comentario.estado || 'abierto',
-      prioridad: comentario.prioridad || 'media',
-      creado_por: comentario.creado_por || '',
-      creado_en: now.toISOString().replace('T', ' ').slice(0, 16),
-      elemento: comentario.elemento || '',
-      fecha_intervencion: comentario.fecha_intervencion || '',
-      actividad_basica: comentario.actividad_basica || '',
-    };
-    const newRow = csvHeaders.map(h => rowMap[h] != null ? rowMap[h] : '');
+    const nowStr = now.toISOString().replace('T', ' ').slice(0, 16);
+    let newId, finalRows, commitMessage, logMessage;
 
+    if (isUpdate) {
+      // UPDATE: buscar por ID y reemplazar
+      const editId = String(comentario.id).trim();
+      const targetIdx = remappedExisting.findIndex(r => String(r[0]).trim() === editId);
+      if (targetIdx === -1) {
+        return {
+          statusCode: 404,
+          body: JSON.stringify({ error: `Comentario #${editId} no encontrado en el CSV` }),
+        };
+      }
+      const oldRow = remappedExisting[targetIdx];
+      const oldObj = {};
+      CANONICAL_HEADERS.forEach((h, i) => { oldObj[h] = oldRow[i]; });
+
+      // Preservar creado_por y creado_en del original
+      const updatedObj = {
+        id:                 editId,
+        fecha:              comentario.fecha || oldObj.fecha,
+        proceso:            comentario.proceso || oldObj.proceso,
+        categoria:          comentario.categoria || oldObj.categoria,
+        titulo:             comentario.titulo || oldObj.titulo,
+        descripcion:        comentario.descripcion != null ? comentario.descripcion : oldObj.descripcion,
+        lote:               comentario.lote != null ? comentario.lote : oldObj.lote,
+        responsable:        comentario.responsable != null ? comentario.responsable : oldObj.responsable,
+        estado:             comentario.estado || oldObj.estado,
+        prioridad:          comentario.prioridad || oldObj.prioridad,
+        creado_por:         oldObj.creado_por || '',
+        creado_en:          oldObj.creado_en || '',
+        elemento:           comentario.elemento != null ? comentario.elemento : oldObj.elemento,
+        fecha_intervencion: comentario.fecha_intervencion != null ? comentario.fecha_intervencion : oldObj.fecha_intervencion,
+        actividad_basica:   comentario.actividad_basica != null ? comentario.actividad_basica : oldObj.actividad_basica,
+        tiempo_inicio:      comentario.tiempo_inicio != null ? comentario.tiempo_inicio : oldObj.tiempo_inicio,
+        tiempo_final:       comentario.tiempo_final != null ? comentario.tiempo_final : oldObj.tiempo_final,
+        editado_en:         nowStr,
+      };
+      remappedExisting[targetIdx] = CANONICAL_HEADERS.map(h => updatedObj[h] != null ? updatedObj[h] : '');
+      newId = editId;
+      finalRows = remappedExisting;
+      commitMessage = `Editar comentario #${newId}: ${comentario.titulo}`;
+      logMessage = `✏️ Comentario #${newId} actualizado`;
+    } else {
+      // CREATE: nuevo ID y append
+      const maxId = remappedExisting.reduce((m, r) => {
+        const n = parseInt(r[0], 10);
+        return isNaN(n) ? m : Math.max(m, n);
+      }, 0);
+      newId = maxId + 1;
+
+      const newRowObj = {
+        id:                 String(newId),
+        fecha:              comentario.fecha || now.toISOString().slice(0, 10),
+        proceso:            comentario.proceso || '',
+        categoria:          comentario.categoria || '',
+        titulo:             comentario.titulo || '',
+        descripcion:        comentario.descripcion || '',
+        lote:               comentario.lote || '',
+        responsable:        comentario.responsable || '',
+        estado:             comentario.estado || 'abierto',
+        prioridad:          comentario.prioridad || 'media',
+        creado_por:         comentario.creado_por || '',
+        creado_en:          nowStr,
+        elemento:           comentario.elemento || '',
+        fecha_intervencion: comentario.fecha_intervencion || '',
+        actividad_basica:   comentario.actividad_basica || '',
+        tiempo_inicio:      comentario.tiempo_inicio || '',
+        tiempo_final:       comentario.tiempo_final || '',
+        editado_en:         '',
+      };
+      const newRow = CANONICAL_HEADERS.map(h => newRowObj[h] != null ? newRowObj[h] : '');
+      finalRows = [...remappedExisting, newRow];
+      commitMessage = `Agregar comentario #${newId}: ${comentario.titulo}`;
+      logMessage = `➕ Comentario #${newId} creado`;
+    }
+
+    // 4) Serializar CSV completo
     const lines = [];
-    lines.push(csvHeaders.map(escapeCSV).join(','));
-    for (const r of existingRows) lines.push(r.map(escapeCSV).join(','));
-    lines.push(newRow.map(escapeCSV).join(','));
+    lines.push(CANONICAL_HEADERS.map(escapeCSV).join(','));
+    for (const r of finalRows) lines.push(r.map(escapeCSV).join(','));
     const csvContent = lines.join('\n') + '\n';
     const encoded = Buffer.from(csvContent, 'utf-8').toString('base64');
 
+    // 5) PUT
     const putRes = await fetch(apiBase, {
       method: 'PUT',
       headers,
       body: JSON.stringify({
-        message: `Agregar comentario #${newId}: ${comentario.titulo}`,
+        message: commitMessage,
         content: encoded,
         branch,
         ...(sha ? { sha } : {}),
@@ -156,7 +207,11 @@ exports.handler = async (event) => {
       return { statusCode: 500, body: JSON.stringify({ error: `PUT ${putRes.status}: ${errTxt}` }) };
     }
 
-    return { statusCode: 200, body: JSON.stringify({ id: newId, ok: true }) };
+    console.log(logMessage);
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ id: newId, ok: true, mode: isUpdate ? 'update' : 'create' }),
+    };
   } catch (err) {
     console.error('agregar-comentario crash:', err);
     return {
